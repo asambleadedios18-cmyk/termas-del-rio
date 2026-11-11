@@ -1,6 +1,7 @@
 {
   "version": "2026-11-10",
-  "estado": "esquema-previsto-fase-3",
+  "estado": "activo",
+  "formulario": "solicitar.html",
   "canal_principal": "whatsapp",
   "confirmacion": "manual-por-personal-autorizado",
   "regla": "Cada tipo de solicitud muestra los campos correspondientes. La confirmación es MANUAL por parte del personal autorizado. WhatsApp es el canal principal. Los tipos marcados como borrador no se activan hasta confirmación del establecimiento.",
@@ -8,36 +9,46 @@
     {
       "id": "hospedaje",
       "nombre": "Hospedaje en cabañas",
+      "nombre_corto": "Hospedaje",
       "estado": "activo",
       "corresponde_a": "servicios/cabanas.html",
+      "intro_whatsapp": "Hola, quisiera solicitar hospedaje en las cabañas de Termas del Río.",
       "campos": ["nombre", "telefono", "fecha_llegada", "fecha_salida", "adultos", "ninos", "mensaje"]
     },
     {
       "id": "visita-dia",
       "nombre": "Visita de un día al balneario",
+      "nombre_corto": "Visita de un día",
       "estado": "activo",
       "corresponde_a": "servicios/balneario.html",
+      "intro_whatsapp": "Hola, quisiera planear una visita de un día al balneario Termas del Río.",
       "campos": ["nombre", "telefono", "fecha", "adultos", "ninos", "mensaje"]
     },
     {
       "id": "canopy",
       "nombre": "Canopy",
+      "nombre_corto": "Canopy",
       "estado": "activo",
       "corresponde_a": "servicios/canopy.html",
+      "intro_whatsapp": "Hola, quisiera información del canopy de Termas del Río.",
       "campos": ["nombre", "telefono", "fecha", "personas", "mensaje"]
     },
     {
       "id": "grupos",
       "nombre": "Grupos y excursiones",
+      "nombre_corto": "Grupos",
       "estado": "activo",
       "corresponde_a": null,
+      "intro_whatsapp": "Hola, quisiera información para llevar un grupo a Termas del Río.",
       "campos": ["nombre", "telefono", "fecha", "personas", "tipo_de_grupo", "mensaje"]
     },
     {
       "id": "piscinas",
       "nombre": "Acceso a piscinas y servicios",
+      "nombre_corto": "Piscinas",
       "estado": "activo",
       "corresponde_a": "servicios/balneario.html",
+      "intro_whatsapp": "Hola, quisiera información sobre el acceso a las piscinas de Termas del Río.",
       "campos": ["nombre", "telefono", "fecha", "adultos", "ninos", "mensaje"]
     },
     {

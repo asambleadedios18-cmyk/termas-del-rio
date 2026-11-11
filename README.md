@@ -29,15 +29,17 @@ termas-del-rio/
 ├── galeria.html               → Galería (vacía hasta tener fotos)
 ├── ubicacion.html             → Ubicación y cómo llegar
 ├── contacto.html              → Contacto y canales
+├── solicitar.html             → Formulario de solicitudes (Fase 3)
 ├── 404.html                   → Página de error
 ├── css/style.css              → Estilos (diseño oficial + estilos de la plataforma)
 ├── js/main.js                 → Comportamientos (menú, animaciones, lightbox)
+├── js/solicitar.js            → Motor del formulario de solicitudes (WhatsApp/correo)
 ├── img/                       → Imágenes del sitio (favicon; fotos pendientes)
 ├── data/                      → CAPA DE DATOS: catálogo del contenido
 │   ├── sitio.json             → Identidad, contacto, tarifas, horario, FAQ, SEO
 │   ├── servicios.json         → Servicios: publicados y borradores
 │   ├── galeria.json           → Esquema de fotos y videos (sin fotos aún)
-│   └── solicitudes-tipos.json → Tipos de solicitud/reserva (Fase 3)
+│   └── solicitudes-tipos.json → Tipos de solicitud/reserva (activos y borradores)
 ├── robots.txt · sitemap.xml · .nojekyll
 └── README.md
 ```
@@ -88,11 +90,27 @@ Instalaciones, aventuras, naturaleza, eventos, promociones, paquetes, historia.
 - [ ] Subir fotos (portada, balneario, canopy, cabañas, restaurante, galería)
 - [ ] Quitar el modo mantenimiento y poner el sitio en línea
 
+## Sistema de solicitudes (Fase 3)
+
+La página **`solicitar.html`** permite pedir información o reservas:
+
+1. El visitante elige el tipo de solicitud (hospedaje, visita de un día,
+   canopy, grupos, piscinas) y completa sus datos.
+2. Al enviar, **se abre WhatsApp con el mensaje ya redactado** (o puede
+   enviarlo por correo). El sitio es estático: **no se envía ni guarda nada
+   en un servidor**.
+3. **La confirmación es MANUAL** por el personal autorizado del balneario.
+
+Los tipos de solicitud, sus campos y el texto de cada mensaje se definen en
+`data/solicitudes-tipos.json`. Los tipos `"estado": "borrador"`
+(restaurante, eventos, paquetes) **no aparecen** en el formulario hasta que
+el establecimiento los confirme.
+
 ## Fases del proyecto
 
-1. **Fundación modular** ← *en curso* (estructura, portada, páginas de servicios, capa de datos)
-2. Páginas individuales de cada servicio (con fotos y videos cuando existan)
-3. Sistema de solicitudes y reservas por WhatsApp (confirmación manual)
+1. **Fundación modular** ✅ *(estructura, portada, páginas de servicios, capa de datos)*
+2. Páginas individuales de cada servicio ✅ *estructura lista; falta integrar fotos y videos cuando existan*
+3. **Sistema de solicitudes por WhatsApp** ✅ *(solicitar.html + js/solicitar.js, confirmación manual)*
 4. Portal completo
 5. Administración 100 % sin código (GitHub + OpenCode)
 6. Publicación en termasdelrio.com (solo con aprobación explícita)
