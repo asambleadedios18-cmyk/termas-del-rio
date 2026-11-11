@@ -1,46 +1,51 @@
-# Termas del Río 🌊♨️
+# Termas del Río 🌊♨️ — Respaldo del sitio oficial
 
-Sitio web oficial de **Termas del Río** — aguas termales y bienestar.
+Copia de seguridad del contenido del **sitio oficial** de Termas del Río,
+publicado en **www.termasdelrio.com**.
 
-- **Página publicada:** https://asambleadedios18-cmyk.github.io/termas-del-rio/
+- **Sitio oficial (administrado en el panel):** https://www.termasdelrio.com
+- **Vista previa de este respaldo:** https://asambleadedios18-cmyk.github.io/termas-del-rio/
 - **Repositorio:** https://github.com/asambleadedios18-cmyk/termas-del-rio
 
-## Estructura del proyecto
+## Contenido actualizado (última sincronización)
+
+### General
+- **Nombre:** Termas del Río
+- **Frase:** Aguas termales y canopy en Gracias, Lempira
+- **Descripción:** Balneario de aguas termales naturales y canopy a 7 km de
+  Gracias, Lempira, Honduras. Cabañas y restaurante en el valle de Río Grande.
+
+### Contacto
+- **WhatsApp / Celular:** +504 9351-5778 (wa.me/50493515778)
+- **Correo:** reservaciones@termasdelrio.com
+- **Facebook:** https://www.facebook.com/termas.lodge.1/
+- **Instagram:** https://www.instagram.com/termas_del_rio
+- **TikTok:** https://www.tiktok.com/@termasdelriolodge
+  *(nota: el panel oficial no tiene campo para TikTok por ahora)*
+
+### Tarifas y horario
+- Entrada adultos: **L 100** · Entrada niños: **L 50** · Canopy: **L 300**
+- Horario: **7:00 a. m. a 9:00 p. m.**, uso de piscina hasta las **11:00 p. m.**
+- Cabañas por noche: consultar
+
+### Pendiente en el sitio oficial
+- [ ] Ingresar datos de contacto en el panel
+- [ ] Actualizar tarifas y horario en el panel
+- [ ] Subir fotos (portada, balneario, canopy, cabañas, restaurante, galería)
+- [ ] Quitar el modo mantenimiento y poner el sitio en línea
+
+## Estructura
 
 ```
 termas-del-rio/
-├── index.html    → Página principal (contenido en español)
-├── styles.css    → Diseño de la página (colores, tipografía, distribución)
-├── images/       → Fotos de las termas (galería)
+├── index.html    → Copia espejo del sitio oficial (mismo contenido)
+├── styles.css    → Estilos de la copia
+├── images/       → Fotos de respaldo
 └── README.md     → Este archivo
 ```
 
-## Cómo se administra esta página
+## Cómo se usa este respaldo
 
-La página es un sitio estático publicado con **GitHub Pages**. Cada cambio que se
-guarda en la rama `main` se publica automáticamente en la dirección de arriba
-(tarda unos minutos en verse reflejado).
-
-Para editarla se puede usar:
-
-1. **OpenCode** (recomendado): abre esta carpeta y pide los cambios en lenguaje
-   natural, por ejemplo: *"cambia los precios de la entrada"* o *"agrega la foto
-   images/piscina.jpg a la galería"*.
-2. **Directamente en GitHub**: edita `index.html` desde el navegador.
-
-## Pendiente de completar
-
-El contenido marcado en color naranja dentro de la página son datos que faltan:
-
-- [ ] Historia del lugar (sección *Nosotros*)
-- [ ] Lista real de servicios y tratamientos
-- [ ] Precios y horarios de atención
-- [ ] Fotos en la carpeta `images/` (se muestran en la galería)
-- [ ] Dirección, teléfono/WhatsApp, correo y redes sociales
-- [ ] Enlace de reservas o mapa
-
-## Notas técnicas
-
-- Sitio estático sin dependencias externas (carga rápido y funciona sin internet).
-- Diseño responsive (se adapta a celulares y computadoras).
-- Idioma: español (`lang="es"`).
+Este repositorio guarda los textos, precios y fotos que se administran en el
+panel de www.termasdelrio.com. Cada vez que se actualiza el sitio oficial, se
+sincronizan los cambios aquí como copia de seguridad.

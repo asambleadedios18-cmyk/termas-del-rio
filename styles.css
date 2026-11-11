@@ -317,8 +317,109 @@ body {
 
 .footer-note { opacity: 0.75; }
 
+/* ---------- Datos rápidos ---------- */
+.quick { background: #fff; border-bottom: 1px solid var(--color-borde); }
+
+.quick-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  padding: 1.8rem 0;
+}
+
+.quick-item { text-align: center; }
+
+.quick-item strong {
+  display: block;
+  font-size: 1.55rem;
+  color: var(--color-principal);
+}
+
+.quick-item span {
+  display: block;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-piedra);
+}
+
+/* ---------- Horario ---------- */
+.schedule {
+  background: var(--color-principal-suave);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+  padding: 1.4rem 1.6rem;
+  margin-top: 1.6rem;
+  text-align: center;
+}
+
+.schedule h3 { color: var(--color-oscuro); margin-bottom: 0.4rem; }
+
+.schedule p { margin: 0.15rem 0; color: var(--color-piedra); }
+
+/* ---------- Lista de comodidades ---------- */
+.checklist {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.7rem;
+  max-width: 640px;
+  margin: 0 auto 1.6rem;
+}
+
+.checklist li::before {
+  content: "✓ ";
+  color: var(--color-principal);
+  font-weight: 800;
+}
+
+/* ---------- Menú del restaurante ---------- */
+.menu {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.4rem;
+  text-align: left;
+}
+
+.menu-cat {
+  background: #fff;
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+  padding: 1.4rem 1.5rem;
+  box-shadow: var(--sombra);
+}
+
+.menu-cat h3 {
+  color: var(--color-principal);
+  font-size: 1.02rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.8rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--color-principal-suave);
+}
+
+.menu-cat ul { list-style: none; }
+
+.menu-cat li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.45rem 0;
+  border-bottom: 1px dashed var(--color-borde);
+  font-size: 0.95rem;
+}
+
+.menu-cat li:last-child { border-bottom: none; }
+
+.menu-cat li span:first-child { font-weight: 600; color: var(--color-oscuro); }
+
+.menu-cat li span:last-child { color: var(--color-piedra); text-align: right; }
+
 /* ---------- Adaptación móvil ---------- */
 @media (max-width: 620px) {
   .contact-row { grid-template-columns: 1fr; gap: 0.15rem; }
   .hero { padding-top: 5rem; }
+  .menu-cat li { flex-direction: column; gap: 0.1rem; }
+  .menu-cat li span:last-child { text-align: left; }
 }
