@@ -1,0 +1,68 @@
+{
+  "version": "2026-11-10",
+  "estado": "esquema-previsto-fase-3",
+  "canal_principal": "whatsapp",
+  "confirmacion": "manual-por-personal-autorizado",
+  "regla": "Cada tipo de solicitud muestra los campos correspondientes. La confirmación es MANUAL por parte del personal autorizado. WhatsApp es el canal principal. Los tipos marcados como borrador no se activan hasta confirmación del establecimiento.",
+  "tipos": [
+    {
+      "id": "hospedaje",
+      "nombre": "Hospedaje en cabañas",
+      "estado": "activo",
+      "corresponde_a": "servicios/cabanas.html",
+      "campos": ["nombre", "telefono", "fecha_llegada", "fecha_salida", "adultos", "ninos", "mensaje"]
+    },
+    {
+      "id": "visita-dia",
+      "nombre": "Visita de un día al balneario",
+      "estado": "activo",
+      "corresponde_a": "servicios/balneario.html",
+      "campos": ["nombre", "telefono", "fecha", "adultos", "ninos", "mensaje"]
+    },
+    {
+      "id": "canopy",
+      "nombre": "Canopy",
+      "estado": "activo",
+      "corresponde_a": "servicios/canopy.html",
+      "campos": ["nombre", "telefono", "fecha", "personas", "mensaje"]
+    },
+    {
+      "id": "grupos",
+      "nombre": "Grupos y excursiones",
+      "estado": "activo",
+      "corresponde_a": null,
+      "campos": ["nombre", "telefono", "fecha", "personas", "tipo_de_grupo", "mensaje"]
+    },
+    {
+      "id": "piscinas",
+      "nombre": "Acceso a piscinas y servicios",
+      "estado": "activo",
+      "corresponde_a": "servicios/balneario.html",
+      "campos": ["nombre", "telefono", "fecha", "adultos", "ninos", "mensaje"]
+    },
+    {
+      "id": "restaurante",
+      "nombre": "Restaurante",
+      "estado": "borrador",
+      "nota": "Activar solo si el establecimiento confirma que el restaurante admite solicitudes.",
+      "corresponde_a": "servicios/restaurante.html",
+      "campos": ["nombre", "telefono", "fecha", "personas", "mensaje"]
+    },
+    {
+      "id": "eventos",
+      "nombre": "Eventos",
+      "estado": "borrador",
+      "nota": "Activar cuando el establecimiento confirme el servicio de eventos.",
+      "corresponde_a": null,
+      "campos": ["nombre", "telefono", "fecha", "personas", "tipo_de_evento", "mensaje"]
+    },
+    {
+      "id": "paquetes",
+      "nombre": "Paquetes turísticos",
+      "estado": "borrador",
+      "nota": "Activar cuando el establecimiento confirme los paquetes disponibles.",
+      "corresponde_a": null,
+      "campos": ["nombre", "telefono", "fecha", "personas", "paquete", "mensaje"]
+    }
+  ]
+}

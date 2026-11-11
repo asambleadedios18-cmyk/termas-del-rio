@@ -1,0 +1,212 @@
+{
+  "version": "2026-11-10",
+  "regla": "estado 'publicado' = visible en el sitio web. estado 'borrador' = categoría prevista que NO se publica hasta que el establecimiento la confirme. No inventar servicios, precios, horarios ni información comercial.",
+  "servicios": [
+    {
+      "id": "balneario",
+      "nombre": "Balneario y piscinas termales",
+      "nombre_corto": "Balneario",
+      "url": "servicios/balneario.html",
+      "estado": "publicado",
+      "confirmado": true,
+      "resumen": "Piscinas termales naturales entre 35 y 42 °C y áreas verdes en un valle junto al río, a 7 km de Gracias.",
+      "descripcion": [
+        "Termas del Río es un balneario de aguas termales geotérmicas en la aldea Río Grande, sobre la carretera que une Gracias con Santa Rosa de Copán.",
+        "Ven a pasar el día en familia: báñate en las piscinas termales, vuela en el canopy sobre el valle y termina con una buena comida en nuestro restaurante."
+      ],
+      "caracteristicas": [
+        { "nombre": "Piscinas termales", "detalle": "Agua mineral caliente de origen volcánico, entre 35 y 42 °C." },
+        { "nombre": "Vestidores y baños", "detalle": "Para cambiarte con comodidad antes y después del baño." },
+        { "nombre": "Áreas verdes", "detalle": "Jardines y zonas para descansar en un valle abierto, junto al río." },
+        { "nombre": "Zona de asados", "detalle": "Espacio para compartir en familia o con amigos." }
+      ],
+      "horario": "Todos los días de 7:00 a. m. a 9:00 p. m. (uso de la piscina hasta las 11:00 p. m.)",
+      "precios": [
+        { "concepto": "Entrada adultos", "valor": "L 100", "detalle": "entrada al balneario" },
+        { "concepto": "Entrada niños", "valor": "L 50", "detalle": "entrada al balneario" }
+      ],
+      "condiciones": [
+        "Precios referenciales, sujetos a cambio. No necesitas reservar para visitas de día.",
+        "Trae traje de baño, toalla y sandalias.",
+        "Hidrátate: el agua caliente relaja, pero deshidrata."
+      ],
+      "fotos": {
+        "estado": "pendiente",
+        "espacios_previstos": ["img/hero.webp", "img/balneario.webp"],
+        "referencia_panel_oficial": ["img[hero_image]", "img[about_image]"]
+      },
+      "videos": [],
+      "solicitud": "visita-dia"
+    },
+    {
+      "id": "canopy",
+      "nombre": "Canopy sobre el valle",
+      "nombre_corto": "Canopy",
+      "url": "servicios/canopy.html",
+      "estado": "publicado",
+      "confirmado": true,
+      "resumen": "Recorre 5 líneas de canopy entre los árboles y disfruta la vista del valle de Río Grande desde lo alto.",
+      "descripcion": [
+        "Recorre 5 líneas de canopy entre los árboles y disfruta la vista del valle de Río Grande desde lo alto.",
+        "Después de la adrenalina, nada mejor que relajar los músculos en el agua termal."
+      ],
+      "caracteristicas": [
+        { "nombre": "5 líneas", "detalle": "Recorrido entre los árboles sobre el valle." }
+      ],
+      "horario": null,
+      "horario_nota": "Consultar el horario vigente en recepción o por WhatsApp.",
+      "precios": [
+        { "concepto": "Canopy", "valor": "L 300", "detalle": "por persona · 5 líneas" }
+      ],
+      "condiciones": [
+        "El canopy se paga aparte de la entrada al balneario.",
+        "Consulta el precio vigente y el horario en recepción o por WhatsApp."
+      ],
+      "fotos": {
+        "estado": "pendiente",
+        "espacios_previstos": ["img/canopy.webp"],
+        "referencia_panel_oficial": ["img[canopy_image]"]
+      },
+      "videos": [],
+      "solicitud": "canopy"
+    },
+    {
+      "id": "cabanas",
+      "nombre": "Cabañas y hospedaje",
+      "nombre_corto": "Cabañas",
+      "url": "servicios/cabanas.html",
+      "estado": "publicado",
+      "confirmado": true,
+      "resumen": "Quédate la noche, disfruta las termas cuando hay más calma y despierta con el sonido del río.",
+      "descripcion": [
+        "Nuestras cabañas están dentro del balneario, rodeadas de jardines y naturaleza. Son ideales para parejas, familias o grupos que visitan Gracias y quieren descansar lejos del ruido.",
+        "Al hospedarte tienes acceso a las piscinas termales y puedes disfrutarlas de noche y temprano por la mañana."
+      ],
+      "caracteristicas": [
+        { "nombre": "Acceso a las piscinas termales", "detalle": "Disfrútalas de noche y temprano por la mañana." },
+        { "nombre": "Rodeadas de naturaleza", "detalle": "Dentro del balneario, junto al río." },
+        { "nombre": "Restaurante en el lugar", "detalle": "Comida típica hondureña." },
+        { "nombre": "Estacionamiento", "detalle": "" },
+        { "nombre": "A 7 km del centro de Gracias", "detalle": "" }
+      ],
+      "horario": null,
+      "horario_nota": "Reserva con anticipación, sobre todo en fines de semana, feriados y Semana Santa.",
+      "precios": [
+        { "concepto": "Precio por noche", "valor": "Consultar", "detalle": "" }
+      ],
+      "condiciones": [
+        "Reserva con anticipación, sobre todo en fines de semana, feriados y Semana Santa."
+      ],
+      "fotos": {
+        "estado": "pendiente",
+        "espacios_previstos": ["img/cabanas.webp"],
+        "referencia_panel_oficial": ["img[cabins_image]"]
+      },
+      "videos": [],
+      "solicitud": "hospedaje"
+    },
+    {
+      "id": "restaurante",
+      "nombre": "Restaurante",
+      "nombre_corto": "Restaurante",
+      "url": "servicios/restaurante.html",
+      "estado": "publicado",
+      "confirmado": true,
+      "resumen": "Comida típica hondureña para recuperar energía entre baño y baño.",
+      "descripcion": [
+        "Platos caseros, preparados al momento, para disfrutar con vista a los jardines del balneario. Pregunta por las especialidades del día."
+      ],
+      "caracteristicas": [],
+      "horario": "Abierto durante el horario del balneario",
+      "precios": [],
+      "menu": [
+        {
+          "categoria": "Desayunos",
+          "opciones": [
+            { "nombre": "Desayuno típico", "descripcion": "Huevos, frijoles, plátano, queso, mantequilla y tortillas." }
+          ]
+        },
+        {
+          "categoria": "Platos fuertes",
+          "opciones": [
+            { "nombre": "Carne asada", "descripcion": "Con chimol, frijoles, tortillas y encurtido." },
+            { "nombre": "Pollo frito", "descripcion": "Con tajadas y ensalada." },
+            { "nombre": "Pescado frito", "descripcion": "Con tajadas, ensalada y arroz." }
+          ]
+        },
+        {
+          "categoria": "Antojitos",
+          "opciones": [
+            { "nombre": "Baleadas", "descripcion": "Sencillas o con todo." }
+          ]
+        },
+        {
+          "categoria": "Bebidas",
+          "opciones": [
+            { "nombre": "Café de altura", "descripcion": "Café de la región de Lempira." },
+            { "nombre": "Refrescos naturales", "descripcion": "" }
+          ]
+        }
+      ],
+      "condiciones": [
+        "Precios y disponibilidad sujetos a cambio."
+      ],
+      "fotos": {
+        "estado": "pendiente",
+        "espacios_previstos": ["img/restaurante.webp"],
+        "referencia_panel_oficial": ["img[food_image]", "img_cat[food_cat_*]"]
+      },
+      "videos": [],
+      "solicitud": "grupos"
+    },
+    {
+      "id": "instalaciones",
+      "nombre": "Instalaciones",
+      "estado": "borrador",
+      "confirmado": false,
+      "nota": "Categoría prevista para la plataforma. No publicar hasta confirmación del establecimiento. Lo confirmado hoy en cuanto a instalaciones (vestidores, áreas verdes, zona de asados) se muestra dentro del servicio Balneario."
+    },
+    {
+      "id": "aventuras",
+      "nombre": "Aventuras y actividades recreativas",
+      "estado": "borrador",
+      "confirmado": false,
+      "nota": "Categoría prevista para la plataforma. No publicar hasta confirmación del establecimiento. El canopy es la actividad de aventura confirmada hoy."
+    },
+    {
+      "id": "naturaleza",
+      "nombre": "Naturaleza y experiencias",
+      "estado": "borrador",
+      "confirmado": false,
+      "nota": "Categoría prevista para la plataforma. No publicar hasta confirmación del establecimiento."
+    },
+    {
+      "id": "eventos",
+      "nombre": "Eventos y actividades grupales",
+      "estado": "borrador",
+      "confirmado": false,
+      "nota": "Categoría prevista para la plataforma. No publicar hasta confirmación del establecimiento."
+    },
+    {
+      "id": "promociones",
+      "nombre": "Promociones",
+      "estado": "borrador",
+      "confirmado": false,
+      "nota": "Categoría prevista para la plataforma. No publicar hasta confirmación del establecimiento."
+    },
+    {
+      "id": "paquetes",
+      "nombre": "Paquetes turísticos",
+      "estado": "borrador",
+      "confirmado": false,
+      "nota": "Categoría prevista para la plataforma. No publicar hasta confirmación del establecimiento."
+    },
+    {
+      "id": "historia",
+      "nombre": "Historia de Termas del Río",
+      "estado": "borrador",
+      "confirmado": false,
+      "nota": "Categoría prevista para la plataforma. No publicar hasta confirmación del establecimiento."
+    }
+  ]
+}

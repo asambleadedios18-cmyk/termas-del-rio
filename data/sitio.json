@@ -1,0 +1,77 @@
+{
+  "version": "2026-11-10",
+  "origen": "Contenido real extraído del panel oficial www.termasdelrio.com (admin/index.php). Regla: no inventar servicios, precios, horarios ni información comercial.",
+  "identidad": {
+    "nombre": "Termas del Río",
+    "submarca": "Aguas termales",
+    "tagline": "Aguas termales y canopy en Gracias, Lempira"
+  },
+  "contacto": {
+    "whatsapp": "50493515778",
+    "telefono": "+504 9351-5778",
+    "telefono_enlace": "tel:+50493515778",
+    "correo": "reservaciones@termasdelrio.com",
+    "facebook": "https://www.facebook.com/termas.lodge.1/",
+    "instagram": "https://www.instagram.com/termas_del_rio"
+  },
+  "mensajes_whatsapp": {
+    "general": "Hola, quisiera información sobre Termas del Río",
+    "precios_horario": "Hola, quisiera consultar precios y horario de Termas del Río",
+    "canopy": "Hola, quisiera información sobre el canopy de Termas del Río",
+    "reserva_cabana": "Hola, quisiera reservar una cabaña en Termas del Río",
+    "restaurante": "Hola, quisiera información del restaurante de Termas del Río"
+  },
+  "ubicacion": {
+    "direccion": "Km 7, carretera Gracias – Santa Rosa de Copán, aldea Río Grande, Gracias, Lempira, Honduras",
+    "direccion_corta": "Km 7, Gracias – Santa Rosa de Copán",
+    "consulta_mapas": "Termas del Rio, Gracias, Lempira, Honduras",
+    "como_llegar_carro": "Desde el centro de Gracias toma la carretera hacia Santa Rosa de Copán. La entrada está señalizada a la altura del kilómetro 7.",
+    "como_llegar_bus": "Toma el bus que va hacia Santa Rosa de Copán, La Iguala o Lepaera y pide que te bajen en la entrada de Termas del Río."
+  },
+  "horario": "Todos los días de 7:00 a. m. a 9:00 p. m. (uso de la piscina hasta las 11:00 p. m.)",
+  "tarifas": {
+    "nota": "Precios referenciales, sujetos a cambio. No necesitas reservar para visitas de día.",
+    "entrada_adultos": { "valor": "L 100", "detalle": "entrada al balneario" },
+    "entrada_ninos": { "valor": "L 50", "detalle": "entrada al balneario" },
+    "canopy": { "valor": "L 300", "detalle": "por persona · 5 líneas" },
+    "cabanas_noche": { "valor": "Consultar", "detalle": "precio por noche" }
+  },
+  "datos_rapidos": [
+    { "valor": "35–42 °C", "etiqueta": "Agua termal natural" },
+    { "valor": "5 líneas", "etiqueta": "De canopy" },
+    { "valor": "7 km", "etiqueta": "Desde Gracias" },
+    { "valor": "L 100", "etiqueta": "Entrada adultos" }
+  ],
+  "consejos_visita": [
+    "Trae traje de baño, toalla y sandalias",
+    "Hidrátate: el agua caliente relaja, pero deshidrata",
+    "Viernes noche, fines de semana y feriados hay más ambiente",
+    "Entre semana es ideal para descansar con calma"
+  ],
+  "faq": [
+    {
+      "pregunta": "¿Necesito reservar?",
+      "respuesta": "Para pasar el día en el balneario no. Para las cabañas sí conviene reservar con anticipación, sobre todo en feriados."
+    },
+    {
+      "pregunta": "¿Qué temperatura tiene el agua?",
+      "respuesta": "Las piscinas están entre 35 y 42 °C, según la piscina. Si es tu primera vez, empieza por la más templada."
+    },
+    {
+      "pregunta": "¿El canopy está incluido en la entrada?",
+      "respuesta": "No, el canopy se paga aparte. Consulta el precio vigente y el horario en recepción o por WhatsApp."
+    },
+    {
+      "pregunta": "¿Hay comida en el lugar?",
+      "respuesta": "Sí, tenemos restaurante con comida típica hondureña."
+    },
+    {
+      "pregunta": "¿Qué más hay para conocer cerca?",
+      "respuesta": "Gracias es una de las ciudades coloniales más antiguas de Honduras: visita el Fuerte de San Cristóbal, sus iglesias coloniales y el Parque Nacional Montaña de Celaque, con el punto más alto del país."
+    }
+  ],
+  "seo": {
+    "titulo_inicio": "Termas del Río | Aguas termales y canopy en Gracias, Lempira",
+    "descripcion": "Termas del Río: balneario de aguas termales naturales y canopy a 7 km de Gracias, Lempira, Honduras. Cabañas y restaurante en el valle de Río Grande."
+  }
+}

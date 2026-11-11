@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://asambleadedios18-cmyk.github.io/termas-del-rio/sitemap.xml

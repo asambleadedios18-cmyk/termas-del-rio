@@ -1,0 +1,20 @@
+{
+  "version": "2026-11-10",
+  "estado": "sin-fotos",
+  "nota": "Aún no hay fotos ni videos cargados. Esta estructura se poblará cuando el establecimiento entregue el material fotográfico.",
+  "secciones": [
+    { "id": "balneario", "nombre": "Balneario" },
+    { "id": "canopy", "nombre": "Canopy" },
+    { "id": "cabanas", "nombre": "Cabañas" },
+    { "id": "restaurante", "nombre": "Restaurante" }
+  ],
+  "fotos": [],
+  "videos": [],
+  "esquema_foto": {
+    "archivo": "img/galeria/<seccion>-<numero>.webp",
+    "campos": ["archivo", "seccion", "titulo", "descripcion", "mostrar_en_portada"]
+  },
+  "esquema_video": {
+    "campos": ["archivo", "seccion", "titulo", "descripcion", "miniatura"]
+  }
+}
