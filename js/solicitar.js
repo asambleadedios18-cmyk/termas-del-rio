@@ -158,24 +158,23 @@
         location.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(buildMessage());
     });
 
-    fetch(DATA_URL)
-        .then(function (r) { return r.json(); })
-        .then(function (data) {
-            types = (data.tipos || []).filter(function (t) { return t.estado === 'activo'; });
-            if (!types.length) throw new Error('sin tipos activos');
-            types.forEach(function (t) {
-                var b = document.createElement('button');
-                b.type = 'button';
-                b.setAttribute('data-id', t.id);
-                b.setAttribute('aria-pressed', 'false');
-                b.textContent = t.nombre_corto || t.nombre;
-                b.addEventListener('click', function () { selectType(t); });
-                nav.appendChild(b);
-            });
-            selectType(findType(parseTipo()) || types[0]);
-        })
-        .catch(function () {
-            form.hidden = true;
-            if (fallback) fallback.hidden = false;
+    var load = fetch(DATA_URL).then(function (r) { return r.json(); });
+    load.then(function (data) {
+        types = (data.tipos || []).filter(function (t) { return t.estado === 'activo'; });
+        if (!types.length) throw new Error('sin tipos activos');
+        types.forEach(function (t) {
+            var b = document.createElement('button');
+            b.type = 'button';
+            b.setAttribute('data-id', t.id);
+            b.setAttribute('aria-pressed', 'false');
+            b.textContent = t.nombre_corto || t.nombre;
+            b.addEventListener('click', function () { selectType(t); });
+            nav.appendChild(b);
         });
+        selectType(findType(parseTipo()) || types[0]);
+    });
+    load['catch'](function () {
+        form.hidden = true;
+        if (fallback) fallback.hidden = false;
+    });
 })();
