@@ -28,9 +28,10 @@ publicado en **www.termasdelrio.com**.
 - Horario: **7:00 a. m. a 9:00 p. m.**, uso de piscina hasta las **11:00 p. m.**
 - Cabañas por noche: consultar
 
-### Pendiente en el sitio oficial
-- [ ] Ingresar datos de contacto en el panel
-- [ ] Actualizar tarifas y horario en el panel
+### Estado del panel oficial (www.termasdelrio.com)
+- [x] Datos de contacto ingresados (WhatsApp, teléfono, correo, Facebook, Instagram)
+- [x] Tarifas actualizadas (adultos L 100, niños L 50)
+- [x] Horario actualizado en el panel
 - [ ] Subir fotos (portada, balneario, canopy, cabañas, restaurante, galería)
 - [ ] Quitar el modo mantenimiento y poner el sitio en línea
 
