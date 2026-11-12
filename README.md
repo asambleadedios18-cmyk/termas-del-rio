@@ -38,6 +38,7 @@ termas-del-rio/
 ├── data/                      → CAPA DE DATOS: catálogo del contenido
 │   ├── sitio.json             → Identidad, contacto, tarifas, horario, FAQ, SEO
 │   ├── servicios.json         → Servicios: publicados y borradores
+│   ├── menu.json               → Menú oficial del restaurante (transcrito del PDF)
 │   ├── galeria.json           → Esquema de fotos y videos (sin fotos aún)
 │   └── solicitudes-tipos.json → Tipos de solicitud/reserva (activos y borradores)
 ├── robots.txt · sitemap.xml · .nojekyll
@@ -51,6 +52,7 @@ La administración se hace con **GitHub + OpenCode** en lenguaje natural:
 1. Abre OpenCode en este repositorio.
 2. Pide el cambio en español, por ejemplo:
    - «Cambia el precio de entrada de adultos a L 120 en todo el sitio»
+   - «Cambia el precio del desayuno americano en el menú del restaurante»
    - «Agrega una nueva promoción» (queda como borrador si no está confirmada)
    - «Actualiza el horario de atención»
    - «Sube estas fotos a la galería» (indicando las rutas de los archivos)
@@ -75,6 +77,24 @@ pero la vía principal es pedirle los cambios a OpenCode.
 - Entrada adultos: **L 100** · Entrada niños: **L 50** · Canopy: **L 300** (5 líneas)
 - Horario: **todos los días de 7:00 a. m. a 9:00 p. m.** (uso de la piscina hasta las 11:00 p. m.)
 - Cabañas por noche: **consultar**
+
+### Menú del restaurante (confirmado, transcripción del PDF oficial)
+
+El menú completo de la carta está transcrito en **`data/menu.json`** y publicado
+en `servicios/restaurante.html`: 8 categorías (desayunos, antojos, campestres,
+sugerencias de la casa, mariscos, bebidas frías, cervezas y cócteles, bebidas
+calientes) con precios en lempiras e impuestos incluidos. Fuente: PDF
+«MENU A LA CARTA TERMAS DEL RIO» del establecimiento (octubre 2026).
+
+**Regla de edición:** el menú vive en DOS lugares que deben coincidir —
+`data/menu.json` (catálogo editable) y `servicios/restaurante.html` (página
+pública). Para cambiar un precio o platillo: edita `data/menu.json` y pide a
+OpenCode «sincroniza el menú de la página del restaurante», o edita ambos a mano.
+
+**Error detectado en el PDF original:** la descripción en inglés de
+«Tajadas de plátano con carne molida» repite el texto de los panqueques
+(error de copia y pega en el archivo fuente). En el sitio se omite esa
+descripción en inglés hasta que el establecimiento confirme la corrección.
 
 ### Servicios confirmados (publicados)
 Balneario, canopy, cabañas, restaurante.

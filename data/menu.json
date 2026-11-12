@@ -1,0 +1,231 @@
+{
+  "version": "2026-11-10",
+  "estado": "publicado",
+  "fuente": "Transcripción fiel del menú oficial «MENU A LA CARTA TERMAS DEL RIO» (PDF del establecimiento, octubre 2026, 5 páginas de carta + portada).",
+  "regla": "Solo datos reales del menú oficial. Para cambiar un precio o un platillo: editar este archivo y pedir a OpenCode que sincronice servicios/restaurante.html (o hacerlo a mano en ambos). No inventar platillos, precios ni descripciones.",
+  "moneda": "Lempiras (L.)",
+  "notas": [
+    "Impuestos incluidos.",
+    "Precios y disponibilidad sujetos a cambio."
+  ],
+  "categorias": [
+    {
+      "id": "desayunos",
+      "nombre": "Desayunos",
+      "subtitulo": null,
+      "items": [
+        {
+          "nombre": "Desayuno americano",
+          "nombre_en": "American Breakfast",
+          "descripcion": "Huevos al gusto acompañados de pan tostado, tocino, 2 panqueques, mantequilla, sirope y frutas de la temporada.",
+          "descripcion_en": "Eggs to taste, served with toast, bacon, 2 pancakes, butter, syrup and seasonal fruit.",
+          "precio": "L. 200.00"
+        },
+        {
+          "nombre": "Desayuno tradicional",
+          "nombre_en": "Traditional Breakfast",
+          "descripcion": "Servido con frijoles fritos, mantequilla, jamón, huevos revueltos, tajadas de plátano maduro y tortillas de maíz.",
+          "descripcion_en": "Served with fried beans, butter, ham, scrambled eggs, slices of ripe plantain and corn tortillas.",
+          "precio": "L. 140.00"
+        },
+        {
+          "nombre": "Panqueques",
+          "nombre_en": "Pancakes",
+          "descripcion": "Orden de tres panqueques, servidos con mantequilla, sirope y frutas de la temporada.",
+          "descripcion_en": "Order of three pancakes, served with butter, syrup and seasonal fruits.",
+          "precio": "L. 125.00"
+        },
+        {
+          "nombre": "Cereales con leche",
+          "nombre_en": "Cereal with Milk",
+          "descripcion": "Cereales crujientes, acompañados de leche fría o tibia y rodajas de banano.",
+          "descripcion_en": "Crunchy cereal, served with cold or warm milk and banana slices.",
+          "precio": "L. 80.00"
+        }
+      ]
+    },
+    {
+      "id": "antojos",
+      "nombre": "Los Antojos",
+      "subtitulo": "Para compartir, disfrutar y consentirse",
+      "items": [
+        {
+          "nombre": "Tajadas de plátano con carne molida",
+          "nombre_en": "Plantain Slices with Ground Beef",
+          "descripcion": "Tajadas de plátano verde, carne molida (7 onzas) con chismol y aderezo de la casa.",
+          "descripcion_en": null,
+          "nota_en": "En el PDF original la descripción en inglés de este platillo tiene un error (repite el texto de los panqueques). Se omite hasta que el establecimiento lo corrija.",
+          "precio": "L. 165.00"
+        },
+        {
+          "nombre": "Nachos de pollo",
+          "nombre_en": "Chicken Nachos",
+          "descripcion": "Tortilla chip de maíz, bañados con queso chedar, pollo desmenuzado, frijoles fritos, mantequilla, chismol y queso parmesano.",
+          "descripcion_en": "Corn tortilla chips topped with melted cheddar cheese, shredded chicken, fried beans, butter, chismol and parmesan cheese.",
+          "precio": "L. 210.00"
+        },
+        {
+          "nombre": "Anáfre",
+          "nombre_en": "Anáfre",
+          "descripcion": "Exquisitos frijoles fritos fundidos con quesillo de hacienda, acompañados con tortillas chip de maíz y chismol. Opcional: chile en salsa roja.",
+          "descripcion_en": "Gourmet fried beans melted with ranch-style cheese, served with corn tortilla chips and chismol. Optional: Chile in red sauce.",
+          "precio": "L. 130.00"
+        },
+        {
+          "nombre": "Papas fritas",
+          "nombre_en": "French Fries",
+          "descripcion": "Orden de papas fritas (12 onzas) acompañadas de aderezo de casa y ketchup.",
+          "descripcion_en": "Order of french fries (12 oz) served with house dressing and ketchup.",
+          "precio": "L. 110.00"
+        },
+        {
+          "nombre": "Hamburguesa clásica de res",
+          "nombre_en": "Classic Beef Burger",
+          "descripcion": "Preparada con una torta de res hecha en casa, queso americano, lechuga, tomate. Acompañada de papas fritas, aderezo de la casa y ketchup.",
+          "descripcion_en": "Prepared with a homemade beef patty, American cheese, lettuce, tomato. Served with french fries, house dressing and ketchup.",
+          "precio": "L. 235.00"
+        },
+        {
+          "nombre": "Chicken finger",
+          "nombre_en": "Chicken Finger",
+          "descripcion": "Deliciosos dedos de pechuga de pollo empanizados, acompañados de papas fritas y aderezo de la casa.",
+          "descripcion_en": "Delicious breaded chicken fingers, served with french fries and house sauce.",
+          "precio": "L. 200.00"
+        },
+        {
+          "nombre": "Alitas de pollo (12 unidades)",
+          "nombre_en": "Chicken Wings (12 Pieces)",
+          "descripcion": "Preparadas en salsa barbacoa o búfalo, según su elección. Acompañadas de apio y zanahoria, salsa tártara y ketchup.",
+          "descripcion_en": "Prepared in barbecue or buffalo sauce, as you choose. Served with celery and carrots, tartar sauce and ketchup.",
+          "precio": "L. 300.00"
+        },
+        {
+          "nombre": "Alitas de pollo con papas fritas (6 unidades)",
+          "nombre_en": "Chicken Wings with French Fries (6 Pieces)",
+          "descripcion": null,
+          "descripcion_en": null,
+          "precio": "L. 200.00"
+        },
+        {
+          "nombre": "Alitas de pollo con papas fritas (12 unidades)",
+          "nombre_en": "Chicken Wings with French Fries (12 Pieces)",
+          "descripcion": "Preparadas en salsa barbacoa o búfalo, según su elección. Acompañadas de papas fritas, salsa tártara y ketchup.",
+          "descripcion_en": "Prepared in barbecue or buffalo sauce as you choose. Served with french fries, tartar sauce and ketchup.",
+          "precio": "L. 350.00"
+        }
+      ]
+    },
+    {
+      "id": "campestres",
+      "nombre": "Los Campestres",
+      "subtitulo": "Buenos sabores, mejores momentos.",
+      "items": [
+        {
+          "nombre": "Plato campestre mixto",
+          "nombre_en": "Mixed Country Plate",
+          "opciones": [
+            {
+              "nombre": "Opción 1 · Carne de res",
+              "descripcion": "Carne de res a la plancha (6 onzas) y chorizo parrillero, acompañado de frijoles fritos, chismol, arroz, queso y tortillas de maíz.",
+              "precio": "L. 360.00"
+            },
+            {
+              "nombre": "Opción 2 · Pechuga de pollo",
+              "descripcion": "Pechuga de pollo a la plancha (8 onzas) y chorizo parrillero, acompañado de frijoles fritos, chismol, arroz, queso y tortillas de maíz.",
+              "precio": "L. 260.00"
+            }
+          ]
+        },
+        {
+          "nombre": "Carne de res a la plancha",
+          "nombre_en": "Grilled Steak",
+          "descripcion": "Carne especial (6 onzas) acompañada de frijoles fritos, chismol, queso, arroz y tortillas de maíz.",
+          "descripcion_en": "Special cut steak (6 oz) served with fried beans, chismol, cheese, rice and corn tortillas.",
+          "precio": "L. 300.00"
+        }
+      ]
+    },
+    {
+      "id": "sugerencias",
+      "nombre": "Sugerencias de la casa",
+      "subtitulo": null,
+      "nota": "Platos de la carta de Los Campestres.",
+      "items": [
+        {
+          "nombre": "Pechuga de pollo empanizado",
+          "nombre_en": "Breaded Chicken Breast",
+          "descripcion": "Pechuga de pollo empanizado (8 onzas), acompañada de arroz o papas fritas, ensalada verde, salsa tártara y aderezo de la casa.",
+          "descripcion_en": "Breaded chicken breast (8 oz). Served with rice or french fries, green salad, tartar sauce and house dressing.",
+          "precio": "L. 245.00"
+        },
+        {
+          "nombre": "Pechuga de pollo a la plancha",
+          "nombre_en": "Grilled Chicken Breast",
+          "descripcion": "Pechuga de pollo a la plancha (8 onzas), acompañada de arroz o papa al horno, ensalada verde, aderezo y tortilla de maíz.",
+          "descripcion_en": "Grilled chicken breast (8 oz). Served with rice or baked potato, green salad, dressing and corn tortillas.",
+          "precio": "L. 200.00"
+        }
+      ]
+    },
+    {
+      "id": "mariscos",
+      "nombre": "Mariscos",
+      "subtitulo": null,
+      "items": [
+        {
+          "nombre": "Camarones",
+          "nombre_en": "Shrimp",
+          "descripcion": "Opción 1: empanizados. Opción 2: al ajillo. Acompañados de tajadas de guineo verde, arroz, ensalada verde y aderezo de la casa.",
+          "descripcion_en": "Option 1: Breaded. Option 2: Garlic sautéed. Served with green plantain slices, rice, green salad and house dressing.",
+          "precio": "L. 300.00"
+        },
+        {
+          "nombre": "Pescado frito",
+          "nombre_en": "Fried Fish",
+          "descripcion": "Pescado frito (14-16 onzas), acompañado de tajadas de guineo verde, arroz, ensalada verde y aderezo de la casa.",
+          "descripcion_en": "Fried fish (14-16 oz) served with green plantain slices, rice, green salad and house dressing.",
+          "precio": "L. 300.00"
+        }
+      ]
+    },
+    {
+      "id": "bebidas-frias",
+      "nombre": "Bebidas frías",
+      "subtitulo": null,
+      "tipo": "lista",
+      "items": [
+        { "nombre": "Refresco gaseoso", "precio": "L. 38.00" },
+        { "nombre": "Té frío Liptón", "precio": "L. 40.00" },
+        { "nombre": "Agua de botella 1.5 L", "precio": "L. 35.00" },
+        { "nombre": "Agua de botella litro", "precio": "L. 30.00" },
+        { "nombre": "Jugos Naturalitos en bote", "precio": "L. 40.00" },
+        { "nombre": "Jugo de naranja", "precio": "L. 20.00" }
+      ]
+    },
+    {
+      "id": "cervezas-cocteles",
+      "nombre": "Cervezas y cócteles",
+      "subtitulo": null,
+      "tipo": "lista",
+      "items": [
+        { "nombre": "Cerveza nacional en lata", "precio": "L. 60.00" },
+        { "nombre": "Cerveza importada en lata", "precio": "L. 75.00" },
+        { "nombre": "Margarita", "precio": "L. 120.00" },
+        { "nombre": "Piña colada", "precio": "L. 120.00" },
+        { "nombre": "Michelada / cerveza nacional", "precio": "L. 110.00" },
+        { "nombre": "Michelada / cerveza importada", "precio": "L. 130.00" }
+      ]
+    },
+    {
+      "id": "bebidas-calientes",
+      "nombre": "Bebidas calientes",
+      "subtitulo": null,
+      "tipo": "lista",
+      "items": [
+        { "nombre": "Café termal", "precio": "L. 25.00" },
+        { "nombre": "Café termal con leche", "precio": "L. 30.00" },
+        { "nombre": "Té (manzanilla, canela)", "precio": "L. 25.00" }
+      ]
+    }
+  ]
+}

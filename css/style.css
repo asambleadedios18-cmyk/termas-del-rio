@@ -481,7 +481,7 @@ p { margin: 0 0 1em; }
 }
 .pill svg { width: 20px; height: 20px; fill: none; stroke: var(--water); stroke-width: 2; stroke-linecap: round; }
 
-/* Menú del restaurante: una franja por categoría (foto opcional) con tarjetas deslizables */
+/* Menú del restaurante: una franja por categoría; platillos en cuadrícula y bebidas en listas con puntos */
 .menu { display: grid; grid-template-columns: minmax(0, 1fr); gap: 3rem; max-width: 1040px; margin: 0 auto 2rem; }
 .menu__cat { min-width: 0; }
 .menu__banner {
@@ -519,6 +519,30 @@ p { margin: 0 0 1em; }
 .menu__name { margin: 0; font-family: var(--sans); font-size: 1rem; font-weight: 700; color: var(--deep); }
 .menu__price { font-family: var(--serif); font-weight: 700; color: var(--gold-dark); white-space: nowrap; }
 .menu__desc { margin: 0; font-size: .9rem; line-height: 1.6; color: var(--muted); }
+.menu__track--grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
+    gap: 1.15rem; padding: .2rem 0 0; overflow: visible; scroll-snap-type: none;
+}
+.menu__track--grid .menu__card { flex: none; }
+.menu__en {
+    margin: -.15rem 0 .45rem; font-family: var(--sans); font-size: .72rem; font-weight: 600;
+    letter-spacing: .07em; text-transform: uppercase; color: var(--water);
+}
+.menu__sub { margin: 0; font-family: var(--sans); font-size: .92rem; font-weight: 700; color: var(--deep); }
+.menu__opt + .menu__opt { margin-top: 1.05rem; padding-top: 1.05rem; border-top: 1px dashed var(--stone-2); }
+.menu__lists { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.6rem 3rem; }
+.menu__list-h {
+    margin: 0 0 .7rem; padding-bottom: .55rem; border-bottom: 1px solid var(--stone-2);
+    font-family: var(--sans); font-size: .8rem; font-weight: 700; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--muted);
+}
+.menu__list { list-style: none; margin: 0; padding: 0; }
+.menu__list li {
+    display: flex; align-items: baseline; gap: .55rem; padding: .4rem 0;
+    font-family: var(--sans); font-size: .95rem; font-weight: 500; color: var(--deep);
+}
+.menu__list .menu__price { font-size: 1rem; }
+.menu__dots { flex: 1; min-width: 1.4rem; border-bottom: 1px dotted rgba(18, 59, 58, .32); }
 @media (max-width: 760px) {
     .menu__banner { aspect-ratio: 16 / 7; }
     .menu__nav-txt { display: none; }

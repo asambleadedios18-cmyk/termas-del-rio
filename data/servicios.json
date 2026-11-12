@@ -114,41 +114,18 @@
       "confirmado": true,
       "resumen": "Comida típica hondureña para recuperar energía entre baño y baño.",
       "descripcion": [
-        "Platos caseros, preparados al momento, para disfrutar con vista a los jardines del balneario. Pregunta por las especialidades del día."
+        "Cocina hondureña preparada al momento con ingredientes frescos: desayunos, antojos para compartir, platos campestres, mariscos, bebidas y cócteles."
       ],
       "caracteristicas": [],
-      "horario": "Abierto durante el horario del balneario",
+      "horario": null,
+      "horario_nota": "Pendiente de confirmación con el establecimiento. No publicar un horario del restaurante hasta confirmarlo.",
       "precios": [],
-      "menu": [
-        {
-          "categoria": "Desayunos",
-          "opciones": [
-            { "nombre": "Desayuno típico", "descripcion": "Huevos, frijoles, plátano, queso, mantequilla y tortillas." }
-          ]
-        },
-        {
-          "categoria": "Platos fuertes",
-          "opciones": [
-            { "nombre": "Carne asada", "descripcion": "Con chimol, frijoles, tortillas y encurtido." },
-            { "nombre": "Pollo frito", "descripcion": "Con tajadas y ensalada." },
-            { "nombre": "Pescado frito", "descripcion": "Con tajadas, ensalada y arroz." }
-          ]
-        },
-        {
-          "categoria": "Antojitos",
-          "opciones": [
-            { "nombre": "Baleadas", "descripcion": "Sencillas o con todo." }
-          ]
-        },
-        {
-          "categoria": "Bebidas",
-          "opciones": [
-            { "nombre": "Café de altura", "descripcion": "Café de la región de Lempira." },
-            { "nombre": "Refrescos naturales", "descripcion": "" }
-          ]
-        }
-      ],
+      "menu": {
+        "fuente": "data/menu.json",
+        "nota": "Menú oficial transcrito del PDF «MENU A LA CARTA TERMAS DEL RIO» (octubre 2026). Para editar precios o platillos: cambiar data/menu.json y sincronizar servicios/restaurante.html (o pedir a OpenCode que lo sincronice)."
+      },
       "condiciones": [
+        "Precios en lempiras, impuestos incluidos.",
         "Precios y disponibilidad sujetos a cambio."
       ],
       "fotos": {

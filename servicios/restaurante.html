@@ -4,18 +4,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Restaurante | Termas del Río</title>
-    <meta name="description" content="Restaurante de comida típica hondureña en Termas del Río: desayunos, platos fuertes, antojitos, café de altura y refrescos naturales. Gracias, Lempira.">
+    <meta name="description" content="Menú a la carta del restaurante de Termas del Río en Gracias, Lempira: desayunos, antojos, platos campestres, mariscos, bebidas y cócteles. Precios en lempiras, impuestos incluidos.">
     <meta name="theme-color" content="#123b3a">
     <link rel="canonical" href="https://asambleadedios18-cmyk.github.io/termas-del-rio/servicios/restaurante.html">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Restaurante | Termas del Río">
-    <meta property="og:description" content="Restaurante de comida típica hondureña en Termas del Río: desayunos, platos fuertes, antojitos y café de altura. Gracias, Lempira.">
+    <meta property="og:description" content="Menú a la carta del restaurante de Termas del Río en Gracias, Lempira: desayunos, antojos, platos campestres, mariscos, bebidas y cócteles. Precios en lempiras, impuestos incluidos.">
     <meta property="og:url" content="https://asambleadedios18-cmyk.github.io/termas-del-rio/servicios/restaurante.html">
     <link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css?v=9">
+    <link rel="stylesheet" href="../css/style.css?v=10">
     <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
@@ -76,11 +76,17 @@
 
 <section class="section">
     <div class="container container--narrow center-text reveal">
-        <div class="prose"><p>Platos caseros, preparados al momento, para disfrutar con vista a los jardines del balneario. Pregunta por las especialidades del día.</p></div>
-        <p class="pill">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-            Abierto durante el horario del balneario
-        </p>
+        <div class="prose"><p>Cocina hondureña preparada al momento con ingredientes frescos: desayunos, antojos para compartir, platos campestres, mariscos, bebidas y cócteles.</p></div>
+        <div class="hero__actions" style="justify-content:center">
+            <p class="pill">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg>
+                Impuestos incluidos
+            </p>
+            <p class="pill">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.6 13.4l-7.2 7.2a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg>
+                Precios en lempiras
+            </p>
+        </div>
         <div class="hero__actions" style="justify-content:center">
             <a class="btn btn--primary" href="https://wa.me/50493515778?text=Hola%2C%20quisiera%20informaci%C3%B3n%20del%20restaurante%20de%20Termas%20del%20R%C3%ADo" target="_blank" rel="noopener">Consultar por WhatsApp</a>
             <a class="btn btn--outline" href="../solicitar.html?tipo=grupos">Solicitar información</a>
@@ -95,93 +101,241 @@
             <h2>Menú</h2>
         </header>
         <div class="menu">
-            <section class="menu__cat reveal" aria-label="Desayunos">
+            <section class="menu__cat reveal" aria-labelledby="m-desayunos">
                 <div class="menu__head">
-                    <h3>Desayunos <small>1 opción</small></h3>
-                    <div class="menu__nav" hidden>
-                        <button type="button" data-dir="-1" aria-label="Anteriores: Desayunos"><span aria-hidden="true">‹</span> <span class="menu__nav-txt">Anterior</span></button>
-                        <button type="button" data-dir="1" aria-label="Siguientes: Desayunos"><span class="menu__nav-txt">Siguiente</span> <span aria-hidden="true">›</span></button>
-                    </div>
+                    <h3 id="m-desayunos">Desayunos <small>4 platillos</small></h3>
                 </div>
-                <div class="menu__track" tabindex="0">
+                <div class="menu__track menu__track--grid">
                     <article class="menu__card">
                         <div class="menu__row">
-                            <h4 class="menu__name">Desayuno típico</h4>
+                            <h4 class="menu__name">Desayuno americano</h4>
+                            <span class="menu__price">L. 200.00</span>
                         </div>
-                        <p class="menu__desc">Huevos, frijoles, plátano, queso, mantequilla y tortillas.</p>
+                        <p class="menu__en">American Breakfast</p>
+                        <p class="menu__desc">Huevos al gusto acompañados de pan tostado, tocino, 2 panqueques, mantequilla, sirope y frutas de la temporada.</p>
+                    </article>
+                    <article class="menu__card">
+                        <div class="menu__row">
+                            <h4 class="menu__name">Desayuno tradicional</h4>
+                            <span class="menu__price">L. 140.00</span>
+                        </div>
+                        <p class="menu__en">Traditional Breakfast</p>
+                        <p class="menu__desc">Servido con frijoles fritos, mantequilla, jamón, huevos revueltos, tajadas de plátano maduro y tortillas de maíz.</p>
+                    </article>
+                    <article class="menu__card">
+                        <div class="menu__row">
+                            <h4 class="menu__name">Panqueques</h4>
+                            <span class="menu__price">L. 125.00</span>
+                        </div>
+                        <p class="menu__en">Pancakes</p>
+                        <p class="menu__desc">Orden de tres panqueques, servidos con mantequilla, sirope y frutas de la temporada.</p>
+                    </article>
+                    <article class="menu__card">
+                        <div class="menu__row">
+                            <h4 class="menu__name">Cereales con leche</h4>
+                            <span class="menu__price">L. 80.00</span>
+                        </div>
+                        <p class="menu__en">Cereal with Milk</p>
+                        <p class="menu__desc">Cereales crujientes, acompañados de leche fría o tibia y rodajas de banano.</p>
                     </article>
                 </div>
             </section>
-            <section class="menu__cat reveal" aria-label="Platos fuertes">
+            <section class="menu__cat reveal" aria-labelledby="m-antojos">
                 <div class="menu__head">
-                    <h3>Platos fuertes <small>3 opciones</small></h3>
-                    <div class="menu__nav" hidden>
-                        <button type="button" data-dir="-1" aria-label="Anteriores: Platos fuertes"><span aria-hidden="true">‹</span> <span class="menu__nav-txt">Anterior</span></button>
-                        <button type="button" data-dir="1" aria-label="Siguientes: Platos fuertes"><span class="menu__nav-txt">Siguiente</span> <span aria-hidden="true">›</span></button>
-                    </div>
+                    <h3 id="m-antojos">Los Antojos <small>Para compartir, disfrutar y consentirse</small></h3>
                 </div>
-                <div class="menu__track" tabindex="0">
+                <div class="menu__track menu__track--grid">
                     <article class="menu__card">
                         <div class="menu__row">
-                            <h4 class="menu__name">Carne asada</h4>
+                            <h4 class="menu__name">Tajadas de plátano con carne molida</h4>
+                            <span class="menu__price">L. 165.00</span>
                         </div>
-                        <p class="menu__desc">Con chimol, frijoles, tortillas y encurtido.</p>
+                        <p class="menu__en">Plantain Slices with Ground Beef</p>
+                        <p class="menu__desc">Tajadas de plátano verde, carne molida (7 onzas) con chismol y aderezo de la casa.</p>
                     </article>
                     <article class="menu__card">
                         <div class="menu__row">
-                            <h4 class="menu__name">Pollo frito</h4>
+                            <h4 class="menu__name">Nachos de pollo</h4>
+                            <span class="menu__price">L. 210.00</span>
                         </div>
-                        <p class="menu__desc">Con tajadas y ensalada.</p>
+                        <p class="menu__en">Chicken Nachos</p>
+                        <p class="menu__desc">Tortilla chip de maíz, bañados con queso chedar, pollo desmenuzado, frijoles fritos, mantequilla, chismol y queso parmesano.</p>
+                    </article>
+                    <article class="menu__card">
+                        <div class="menu__row">
+                            <h4 class="menu__name">Anáfre</h4>
+                            <span class="menu__price">L. 130.00</span>
+                        </div>
+                        <p class="menu__desc">Exquisitos frijoles fritos fundidos con quesillo de hacienda, acompañados con tortillas chip de maíz y chismol. Opcional: chile en salsa roja.</p>
+                    </article>
+                    <article class="menu__card">
+                        <div class="menu__row">
+                            <h4 class="menu__name">Papas fritas</h4>
+                            <span class="menu__price">L. 110.00</span>
+                        </div>
+                        <p class="menu__en">French Fries</p>
+                        <p class="menu__desc">Orden de papas fritas (12 onzas) acompañadas de aderezo de casa y ketchup.</p>
+                    </article>
+                    <article class="menu__card">
+                        <div class="menu__row">
+                            <h4 class="menu__name">Hamburguesa clásica de res</h4>
+                            <span class="menu__price">L. 235.00</span>
+                        </div>
+                        <p class="menu__en">Classic Beef Burger</p>
+                        <p class="menu__desc">Preparada con una torta de res hecha en casa, queso americano, lechuga, tomate. Acompañada de papas fritas, aderezo de la casa y ketchup.</p>
+                    </article>
+                    <article class="menu__card">
+                        <div class="menu__row">
+                            <h4 class="menu__name">Chicken finger</h4>
+                            <span class="menu__price">L. 200.00</span>
+                        </div>
+                        <p class="menu__desc">Deliciosos dedos de pechuga de pollo empanizados, acompañados de papas fritas y aderezo de la casa.</p>
+                    </article>
+                    <article class="menu__card">
+                        <div class="menu__row">
+                            <h4 class="menu__name">Alitas de pollo (12 unidades)</h4>
+                            <span class="menu__price">L. 300.00</span>
+                        </div>
+                        <p class="menu__en">Chicken Wings (12 Pieces)</p>
+                        <p class="menu__desc">Preparadas en salsa barbacoa o búfalo, según su elección. Acompañadas de apio y zanahoria, salsa tártara y ketchup.</p>
+                    </article>
+                    <article class="menu__card">
+                        <div class="menu__row">
+                            <h4 class="menu__name">Alitas de pollo con papas fritas (6 unidades)</h4>
+                            <span class="menu__price">L. 200.00</span>
+                        </div>
+                        <p class="menu__en">Chicken Wings with French Fries (6 Pieces)</p>
+                    </article>
+                    <article class="menu__card">
+                        <div class="menu__row">
+                            <h4 class="menu__name">Alitas de pollo con papas fritas (12 unidades)</h4>
+                            <span class="menu__price">L. 350.00</span>
+                        </div>
+                        <p class="menu__en">Chicken Wings with French Fries (12 Pieces)</p>
+                        <p class="menu__desc">Preparadas en salsa barbacoa o búfalo, según su elección. Acompañadas de papas fritas, salsa tártara y ketchup.</p>
+                    </article>
+                </div>
+            </section>
+            <section class="menu__cat reveal" aria-labelledby="m-campestres">
+                <div class="menu__head">
+                    <h3 id="m-campestres">Los Campestres <small>Buenos sabores, mejores momentos</small></h3>
+                </div>
+                <div class="menu__track menu__track--grid">
+                    <article class="menu__card">
+                        <div class="menu__row">
+                            <h4 class="menu__name">Plato campestre mixto</h4>
+                        </div>
+                        <p class="menu__en">Mixed Country Plate</p>
+                        <div class="menu__opt">
+                            <div class="menu__row">
+                                <h5 class="menu__sub">Opción 1 · Carne de res</h5>
+                                <span class="menu__price">L. 360.00</span>
+                            </div>
+                            <p class="menu__desc">Carne de res a la plancha (6 onzas) y chorizo parrillero, acompañado de frijoles fritos, chismol, arroz, queso y tortillas de maíz.</p>
+                        </div>
+                        <div class="menu__opt">
+                            <div class="menu__row">
+                                <h5 class="menu__sub">Opción 2 · Pechuga de pollo</h5>
+                                <span class="menu__price">L. 260.00</span>
+                            </div>
+                            <p class="menu__desc">Pechuga de pollo a la plancha (8 onzas) y chorizo parrillero, acompañado de frijoles fritos, chismol, arroz, queso y tortillas de maíz.</p>
+                        </div>
+                    </article>
+                    <article class="menu__card">
+                        <div class="menu__row">
+                            <h4 class="menu__name">Carne de res a la plancha</h4>
+                            <span class="menu__price">L. 300.00</span>
+                        </div>
+                        <p class="menu__en">Grilled Steak</p>
+                        <p class="menu__desc">Carne especial (6 onzas) acompañada de frijoles fritos, chismol, queso, arroz y tortillas de maíz.</p>
+                    </article>
+                </div>
+            </section>
+            <section class="menu__cat reveal" aria-labelledby="m-sugerencias">
+                <div class="menu__head">
+                    <h3 id="m-sugerencias">Sugerencias de la casa <small>De la carta de Los Campestres</small></h3>
+                </div>
+                <div class="menu__track menu__track--grid">
+                    <article class="menu__card">
+                        <div class="menu__row">
+                            <h4 class="menu__name">Pechuga de pollo empanizado</h4>
+                            <span class="menu__price">L. 245.00</span>
+                        </div>
+                        <p class="menu__en">Breaded Chicken Breast</p>
+                        <p class="menu__desc">Pechuga de pollo empanizado (8 onzas), acompañada de arroz o papas fritas, ensalada verde, salsa tártara y aderezo de la casa.</p>
+                    </article>
+                    <article class="menu__card">
+                        <div class="menu__row">
+                            <h4 class="menu__name">Pechuga de pollo a la plancha</h4>
+                            <span class="menu__price">L. 200.00</span>
+                        </div>
+                        <p class="menu__en">Grilled Chicken Breast</p>
+                        <p class="menu__desc">Pechuga de pollo a la plancha (8 onzas), acompañada de arroz o papa al horno, ensalada verde, aderezo y tortilla de maíz.</p>
+                    </article>
+                </div>
+            </section>
+            <section class="menu__cat reveal" aria-labelledby="m-mariscos">
+                <div class="menu__head">
+                    <h3 id="m-mariscos">Mariscos <small>2 platillos</small></h3>
+                </div>
+                <div class="menu__track menu__track--grid">
+                    <article class="menu__card">
+                        <div class="menu__row">
+                            <h4 class="menu__name">Camarones</h4>
+                            <span class="menu__price">L. 300.00</span>
+                        </div>
+                        <p class="menu__en">Shrimp</p>
+                        <p class="menu__desc">Opción 1: empanizados. Opción 2: al ajillo. Acompañados de tajadas de guineo verde, arroz, ensalada verde y aderezo de la casa.</p>
                     </article>
                     <article class="menu__card">
                         <div class="menu__row">
                             <h4 class="menu__name">Pescado frito</h4>
+                            <span class="menu__price">L. 300.00</span>
                         </div>
-                        <p class="menu__desc">Con tajadas, ensalada y arroz.</p>
+                        <p class="menu__en">Fried Fish</p>
+                        <p class="menu__desc">Pescado frito (14-16 onzas), acompañado de tajadas de guineo verde, arroz, ensalada verde y aderezo de la casa.</p>
                     </article>
                 </div>
             </section>
-            <section class="menu__cat reveal" aria-label="Antojitos">
+            <section class="menu__cat reveal" aria-labelledby="m-bebidas">
                 <div class="menu__head">
-                    <h3>Antojitos <small>1 opción</small></h3>
-                    <div class="menu__nav" hidden>
-                        <button type="button" data-dir="-1" aria-label="Anteriores: Antojitos"><span aria-hidden="true">‹</span> <span class="menu__nav-txt">Anterior</span></button>
-                        <button type="button" data-dir="1" aria-label="Siguientes: Antojitos"><span class="menu__nav-txt">Siguiente</span> <span aria-hidden="true">›</span></button>
+                    <h3 id="m-bebidas">Bebidas <small>15 bebidas</small></h3>
+                </div>
+                <div class="menu__lists">
+                    <div>
+                        <h4 class="menu__list-h">Bebidas frías</h4>
+                        <ul class="menu__list">
+                            <li><span>Refresco gaseoso</span><span class="menu__dots" aria-hidden="true"></span><span class="menu__price">L. 38.00</span></li>
+                            <li><span>Té frío Liptón</span><span class="menu__dots" aria-hidden="true"></span><span class="menu__price">L. 40.00</span></li>
+                            <li><span>Agua de botella 1.5 L</span><span class="menu__dots" aria-hidden="true"></span><span class="menu__price">L. 35.00</span></li>
+                            <li><span>Agua de botella litro</span><span class="menu__dots" aria-hidden="true"></span><span class="menu__price">L. 30.00</span></li>
+                            <li><span>Jugos Naturalitos en bote</span><span class="menu__dots" aria-hidden="true"></span><span class="menu__price">L. 40.00</span></li>
+                            <li><span>Jugo de naranja</span><span class="menu__dots" aria-hidden="true"></span><span class="menu__price">L. 20.00</span></li>
+                        </ul>
                     </div>
-                </div>
-                <div class="menu__track" tabindex="0">
-                    <article class="menu__card">
-                        <div class="menu__row">
-                            <h4 class="menu__name">Baleadas</h4>
-                        </div>
-                        <p class="menu__desc">Sencillas o con todo.</p>
-                    </article>
-                </div>
-            </section>
-            <section class="menu__cat reveal" aria-label="Bebidas">
-                <div class="menu__head">
-                    <h3>Bebidas <small>2 opciones</small></h3>
-                    <div class="menu__nav" hidden>
-                        <button type="button" data-dir="-1" aria-label="Anteriores: Bebidas"><span aria-hidden="true">‹</span> <span class="menu__nav-txt">Anterior</span></button>
-                        <button type="button" data-dir="1" aria-label="Siguientes: Bebidas"><span class="menu__nav-txt">Siguiente</span> <span aria-hidden="true">›</span></button>
+                    <div>
+                        <h4 class="menu__list-h">Cervezas y cócteles</h4>
+                        <ul class="menu__list">
+                            <li><span>Cerveza nacional en lata</span><span class="menu__dots" aria-hidden="true"></span><span class="menu__price">L. 60.00</span></li>
+                            <li><span>Cerveza importada en lata</span><span class="menu__dots" aria-hidden="true"></span><span class="menu__price">L. 75.00</span></li>
+                            <li><span>Margarita</span><span class="menu__dots" aria-hidden="true"></span><span class="menu__price">L. 120.00</span></li>
+                            <li><span>Piña colada</span><span class="menu__dots" aria-hidden="true"></span><span class="menu__price">L. 120.00</span></li>
+                            <li><span>Michelada / cerveza nacional</span><span class="menu__dots" aria-hidden="true"></span><span class="menu__price">L. 110.00</span></li>
+                            <li><span>Michelada / cerveza importada</span><span class="menu__dots" aria-hidden="true"></span><span class="menu__price">L. 130.00</span></li>
+                        </ul>
                     </div>
-                </div>
-                <div class="menu__track" tabindex="0">
-                    <article class="menu__card">
-                        <div class="menu__row">
-                            <h4 class="menu__name">Café de altura</h4>
-                        </div>
-                        <p class="menu__desc">Café de la región de Lempira.</p>
-                    </article>
-                    <article class="menu__card">
-                        <div class="menu__row">
-                            <h4 class="menu__name">Refrescos naturales</h4>
-                        </div>
-                    </article>
+                    <div>
+                        <h4 class="menu__list-h">Bebidas calientes</h4>
+                        <ul class="menu__list">
+                            <li><span>Café termal</span><span class="menu__dots" aria-hidden="true"></span><span class="menu__price">L. 25.00</span></li>
+                            <li><span>Café termal con leche</span><span class="menu__dots" aria-hidden="true"></span><span class="menu__price">L. 30.00</span></li>
+                            <li><span>Té (manzanilla, canela)</span><span class="menu__dots" aria-hidden="true"></span><span class="menu__price">L. 25.00</span></li>
+                        </ul>
+                    </div>
                 </div>
             </section>
         </div>
-        <p class="center muted">Precios y disponibilidad sujetos a cambio.</p>
+        <p class="center muted">Precios en lempiras, impuestos incluidos. Precios y disponibilidad sujetos a cambio.</p>
     </div>
 </section>
 
