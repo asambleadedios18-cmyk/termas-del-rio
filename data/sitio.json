@@ -33,7 +33,7 @@
     "nota": "Precios referenciales, sujetos a cambio. No necesitas reservar para visitas de día.",
     "entrada_adultos": { "valor": "L 100", "detalle": "entrada al balneario" },
     "entrada_ninos": { "valor": "L 50", "detalle": "entrada al balneario" },
-    "canopy": { "valor": "L 300", "detalle": "por persona · 5 líneas" },
+    "canopy": { "valor": "L 800", "detalle": "por persona · 5 líneas" },
     "cabanas_noche": { "valor": "Consultar", "detalle": "precio por noche" }
   },
   "datos_rapidos": [

@@ -74,7 +74,7 @@ pero la vía principal es pedirle los cambios a OpenCode.
   *(nota: el panel oficial no tiene campo para TikTok por ahora)*
 
 ### Tarifas y horario (confirmados en el panel oficial)
-- Entrada adultos: **L 100** · Entrada niños: **L 50** · Canopy: **L 300** (5 líneas)
+- Entrada adultos: **L 100** · Entrada niños: **L 50** · Canopy: **L 800** (5 líneas)
 - Horario: **todos los días de 7:00 a. m. a 9:00 p. m.** (uso de la piscina hasta las 11:00 p. m.)
 - Cabañas por noche: **consultar**
 
@@ -105,8 +105,9 @@ Instalaciones, aventuras, naturaleza, eventos, promociones, paquetes, historia.
 ## Estado del panel oficial (www.termasdelrio.com)
 
 - [x] Datos de contacto ingresados (WhatsApp, teléfono, correo, Facebook, Instagram)
-- [x] Tarifas actualizadas (adultos L 100, niños L 50)
+- [x] Tarifas actualizadas (adultos L 100, niños L 50, canopy L 800)
 - [x] Horario actualizado en el panel
+- [x] Menú del restaurante publicado en `s[food_menu]` (2026-11-12): 8 categorías, 35 líneas, precios con «L.» y alitas de 12 unidades corregidas a L 350
 - [ ] Subir fotos (portada, balneario, canopy, cabañas, restaurante, galería)
 - [ ] Quitar el modo mantenimiento y poner el sitio en línea
 
