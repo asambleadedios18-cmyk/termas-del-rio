@@ -679,6 +679,66 @@ p { margin: 0 0 1em; }
 }
 .field .field-error { display: none; color: #b3412e; font-size: .78rem; margin: .3rem 0 0; }
 .field.is-invalid .field-error { display: block; }
-.field.is-invalid input, .field.is-invalid textarea { border-color: #b3412e; }
+.field.is-invalid input, .field.is-invalid select, .field.is-invalid textarea { border-color: #b3412e; }
 .request-actions { display: flex; flex-wrap: wrap; gap: .8rem; justify-content: center; margin-top: 1.6rem; }
 .request-privacy { text-align: center; color: var(--muted); font-size: .82rem; margin: 1.2rem 0 0; }
+
+/* ---------- Tipos de cabaña (página pública) ---------- */
+.cabin-types { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1.4rem, 3vw, 2.2rem); }
+.cabin-type {
+    display: flex; flex-direction: column; overflow: hidden;
+    background: var(--white); border: 1px solid var(--stone-2);
+    border-radius: var(--radius); box-shadow: 0 14px 34px -26px rgba(12,42,41,.45);
+}
+.cabin-type__media { position: relative; aspect-ratio: 4 / 3; background: var(--stone-2); overflow: hidden; }
+.cabin-type__media img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
+.cabin-type:hover .cabin-type__media img { transform: scale(1.04); }
+.cabin-type__tag {
+    position: absolute; top: 1rem; left: 1rem;
+    padding: .35rem .8rem; border-radius: 999px;
+    background: rgba(12,42,41,.82); color: var(--white);
+    font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+    backdrop-filter: blur(4px);
+}
+.cabin-type__body { padding: 1.6rem 1.6rem 1.8rem; display: flex; flex-direction: column; flex: 1; }
+.cabin-type__body h3 { margin-bottom: .5rem; }
+.cabin-type__meta {
+    display: flex; flex-wrap: wrap; gap: .4rem .9rem;
+    font-size: .78rem; color: var(--muted); margin-bottom: 1rem;
+}
+.cabin-type__meta span { display: inline-flex; align-items: center; gap: .35rem; }
+.cabin-type__meta svg { width: 15px; height: 15px; fill: none; stroke: var(--water); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.cabin-type__desc { color: var(--muted); font-size: .93rem; margin: 0 0 1rem; }
+.cabin-type__desc p { margin: 0 0 .7rem; }
+.cabin-type__desc p:last-child { margin-bottom: 0; }
+.cabin-type__foot { margin-top: auto; display: flex; flex-wrap: wrap; gap: .7rem; align-items: center; }
+.cabin-type__price { font-family: var(--serif); font-size: 1.25rem; color: var(--deep); }
+.cabin-type__price small { font-family: var(--sans); font-size: .72rem; color: var(--muted); font-weight: 400; }
+
+/* ---------- Formulario público: consentimiento, trampa y resultado ---------- */
+.request-honeypot {
+    position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden;
+}
+.request-consent {
+    display: flex; align-items: flex-start; gap: .6rem;
+    margin: 1.4rem auto 0; max-width: 640px;
+    font-size: .82rem; color: var(--muted); line-height: 1.5; cursor: pointer;
+}
+.request-consent input { width: 18px; height: 18px; margin-top: .15rem; flex: 0 0 auto; accent-color: var(--water); }
+.request-consent__error { display: none; text-align: center; margin: .55rem 0 0; color: #b3412e; font-size: .8rem; }
+.request-consent__error.is-visible { display: block; }
+.request-result {
+    margin-top: 1.6rem; padding: 1.4rem 1.5rem;
+    background: rgba(47, 143, 138, .08); border: 1px solid rgba(47, 143, 138, .35);
+    border-radius: var(--radius); text-align: center;
+}
+.request-result h3 { margin: 0 0 .4rem; font-size: 1.5rem; letter-spacing: .04em; }
+.request-result__text { margin: 0; color: var(--muted); font-size: .9rem; }
+.request-result__actions { display: flex; flex-wrap: wrap; gap: .6rem; justify-content: center; margin-top: 1rem; }
+.request-error { text-align: center; margin: 1rem auto 0; max-width: 640px; }
+
+@media (max-width: 820px) {
+    .cabin-types { grid-template-columns: 1fr; }
+}
+
+.cabin-types__note { margin: 1.4rem auto 0; max-width: 720px; text-align: center; font-size: .8rem; color: var(--muted); }

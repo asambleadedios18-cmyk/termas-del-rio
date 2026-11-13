@@ -1,5 +1,5 @@
 {
-  "version": "2026-11-10",
+  "version": "2026-11-12",
   "estado": "activo",
   "formulario": "solicitar.html",
   "canal_principal": "whatsapp",
@@ -13,7 +13,7 @@
       "estado": "activo",
       "corresponde_a": "servicios/cabanas.html",
       "intro_whatsapp": "Hola, quisiera solicitar hospedaje en las cabañas de Termas del Río.",
-      "campos": ["nombre", "telefono", "fecha_llegada", "fecha_salida", "adultos", "ninos", "mensaje"]
+      "campos": ["nombre", "telefono", "email", "pais", "tipo_cabana", "fecha_llegada", "fecha_salida", "adultos", "ninos", "mensaje"]
     },
     {
       "id": "visita-dia",

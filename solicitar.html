@@ -15,7 +15,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?v=10">
+    <link rel="stylesheet" href="css/style.css?v=11">
     <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
@@ -111,11 +111,34 @@
         <form class="request-card reveal" id="request-form" novalidate>
             <p class="eyebrow" id="form-type-eyebrow">Solicitud</p>
             <div class="form-grid" id="form-fields"></div>
+
+            <div class="request-honeypot" aria-hidden="true">
+                <label for="f-empresa">No completar este campo</label>
+                <input type="text" id="f-empresa" name="empresa" tabindex="-1" autocomplete="off">
+            </div>
+
+            <label class="request-consent">
+                <input type="checkbox" id="f-consentimiento" name="consentimiento" required>
+                <span>Autorizo que Termas del Río use mis datos únicamente para atender esta solicitud de reservación.</span>
+            </label>
+            <p class="field-error request-consent__error" id="consent-error">Marca la autorización para poder enviar tu solicitud.</p>
+
             <div class="request-actions">
-                <button type="submit" class="btn btn--primary">Enviar por WhatsApp</button>
+                <button type="submit" class="btn btn--primary" id="send-request">Enviar solicitud</button>
+                <button type="button" class="btn btn--ghost" id="send-whatsapp">Prefiero WhatsApp</button>
                 <button type="button" class="btn btn--ghost" id="send-mail">Enviar por correo</button>
             </div>
-            <p class="request-privacy">Este sitio web no guarda ningún dato: tu solicitud se abre directamente en WhatsApp o en tu correo, y la confirma manualmente nuestro personal autorizado.</p>
+            <p class="request-privacy" id="request-privacy">La confirmación de cada solicitud es manual por parte de nuestro personal autorizado.</p>
+            <div class="request-result" id="request-result" hidden>
+                <p class="eyebrow">Solicitud recibida</p>
+                <h3 id="request-result-code">—</h3>
+                <p id="request-result-text" class="request-result__text"></p>
+                <div class="request-result__actions">
+                    <button type="button" class="btn btn--primary" id="request-result-wa">Enviar también por WhatsApp</button>
+                    <button type="button" class="btn btn--ghost" id="request-result-new">Hacer otra solicitud</button>
+                </div>
+            </div>
+            <p class="form__error request-error" id="request-error" role="alert" hidden></p>
         </form>
 
         <p class="contact-note" id="form-fallback" hidden>
@@ -192,7 +215,8 @@
     <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.7c-2 0-4-.6-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.7 10.7 0 1 1 16 26.7zm5.9-8c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.8 8.8 0 0 1-4.4-3.8c-.3-.6.3-.5 1-1.7.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.1 1.1-1.1 2.7s1.2 3.1 1.3 3.3c.2.2 2.3 3.5 5.5 4.9 2 .9 2.8.9 3.8.8.6-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5-.1-.2-.3-.3-.7-.5z"/></svg>
 </a>
 
+<script src="js/supabase-config.js?v=1" defer></script>
 <script src="js/main.js?v=3" defer></script>
-<script src="js/solicitar.js?v=1" defer></script>
+<script src="js/solicitar.js?v=2" defer></script>
 </body>
 </html>

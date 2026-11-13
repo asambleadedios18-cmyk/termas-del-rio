@@ -33,8 +33,15 @@ termas-del-rio/
 ├── 404.html                   → Página de error
 ├── css/style.css              → Estilos (diseño oficial + estilos de la plataforma)
 ├── js/main.js                 → Comportamientos (menú, animaciones, lightbox)
-├── js/solicitar.js            → Motor del formulario de solicitudes (WhatsApp/correo)
-├── img/                       → Imágenes del sitio (favicon; fotos pendientes)
+├── js/solicitar.js            → Motor del formulario de solicitudes
+├── js/supabase-config.js      → URL y clave pública (anon) de Supabase
+├── admin/                     → PANEL DE RESERVACIONES (SPA estática)
+│   ├── index.html             → Acceso, login y arranque del panel
+│   ├── css/admin.css          → Diseño del panel (escritorio, tableta y móvil)
+│   └── js/                    → Router, conexión y módulos del panel
+├── supabase/                  → Esquema, funciones, RLS y datos iniciales (SQL)
+│   └── README.md              → Guía de instalación paso a paso
+├── img/                       → Imágenes del sitio (incluye img/cabanas/)
 ├── data/                      → CAPA DE DATOS: catálogo del contenido
 │   ├── sitio.json             → Identidad, contacto, tarifas, horario, FAQ, SEO
 │   ├── servicios.json         → Servicios: publicados y borradores
@@ -99,6 +106,18 @@ descripción en inglés hasta que el establecimiento confirme la corrección.
 ### Servicios confirmados (publicados)
 Balneario, canopy, cabañas, restaurante.
 
+### Cabañas
+Dos tipos publicados en `servicios/cabanas.html`, con descripciones proporcionadas
+por el establecimiento:
+
+- **Cabaña Doble** — 2 camas Queen, hasta 2 personas.
+- **Cabaña Triple** — 2 camas Queen + 1 cama unipersonal, hasta 3 personas.
+
+El **precio por noche se consulta** (aún no hay tarifa pública cargada). El
+inventario inicial es de **10 cabañas dobles y 4 triples**, editable desde el
+panel. Las tarifas se configuran en el panel cuando el establecimiento las
+confirme.
+
 ### Categorías previstas (borrador, NO publicar hasta confirmación)
 Instalaciones, aventuras, naturaleza, eventos, promociones, paquetes, historia.
 
@@ -117,15 +136,36 @@ La página **`solicitar.html`** permite pedir información o reservas:
 
 1. El visitante elige el tipo de solicitud (hospedaje, visita de un día,
    canopy, grupos, piscinas) y completa sus datos.
-2. Al enviar, **se abre WhatsApp con el mensaje ya redactado** (o puede
-   enviarlo por correo). El sitio es estático: **no se envía ni guarda nada
-   en un servidor**.
+2. Al enviar, la solicitud se registra en el panel de reservaciones mediante
+   Supabase y recibe un código **`SOL-...`**. Si Supabase aún no está
+   configurado o no hay conexión, el formulario abre **WhatsApp** (o el correo)
+   con el mensaje ya redactado, sin perder los datos.
 3. **La confirmación es MANUAL** por el personal autorizado del balneario.
+   El formulario nunca confirma ni cobra una reserva por sí solo.
 
 Los tipos de solicitud, sus campos y el texto de cada mensaje se definen en
 `data/solicitudes-tipos.json`. Los tipos `"estado": "borrador"`
 (restaurante, eventos, paquetes) **no aparecen** en el formulario hasta que
 el establecimiento los confirme.
+
+## Panel de reservaciones (administración)
+
+El panel es una aplicación estática dentro de **`admin/`**:
+
+- **Vista previa:** https://asambleadedios18-cmyk.github.io/termas-del-rio/admin/
+- **Módulos:** tablero, reservaciones, calendario de disponibilidad, cabañas y
+  tarifas, huéspedes, pagos, solicitudes web, notificaciones y seguridad
+  (roles y auditoría).
+- **Acceso:** solo usuarios creados en Supabase Auth y marcados como
+  `rol = 'admin'` o `rol = 'recepcion'` con `activo = true`.
+- **Instalación:** sigue **`supabase/README.md`** (ejecutar `01`→`05`, crear el
+  usuario administrador, promoverlo y copiar la URL y la clave `anon public` en
+  `admin/js/config.js` y `js/supabase-config.js`).
+- **Seguridad:** la clave `service_role` **nunca** se escribe en el sitio. Las
+  reglas RLS limitan lo que cada rol puede leer y modificar; la web pública solo
+  puede crear solicitudes mediante una función controlada.
+- **Disponibilidad:** una restricción de exclusión impide reservas traslapadas
+  para la misma cabaña en estado pendiente o confirmada.
 
 ## Fases del proyecto
 
@@ -133,8 +173,9 @@ el establecimiento los confirme.
 2. Páginas individuales de cada servicio ✅ *estructura lista; falta integrar fotos y videos cuando existan*
 3. **Sistema de solicitudes por WhatsApp** ✅ *(solicitar.html + js/solicitar.js, confirmación manual)*
 4. Portal completo
-5. Administración 100 % sin código (GitHub + OpenCode)
-6. Publicación en termasdelrio.com (solo con aprobación explícita)
+5. **Panel de reservaciones con Supabase** ✅ *código listo; pendiente conectar el proyecto y crear el usuario administrador*
+6. Administración 100 % sin código (GitHub + OpenCode)
+7. Publicación en termasdelrio.com (solo con aprobación explícita)
 
 ## Notas técnicas
 
@@ -145,6 +186,7 @@ el establecimiento los confirme.
   con CSS (no imágenes genéricas de banco). Cuando lleguen las fotos reales,
   se reemplazan los marcadores.
 - Reservas y solicitudes: canal principal WhatsApp; la confirmación es manual
-  por personal autorizado (no hay pagos ni reservas automáticas en línea).
+  por personal autorizado. El panel permite registrar pagos, pero **no procesa
+  cobros en línea** ni confirma reservas automáticamente.
 - Los archivos `styles.css` e `images/` del respaldo inicial fueron retirados
   en la Fase 1 (quedan en el historial de Git si se necesitan).
