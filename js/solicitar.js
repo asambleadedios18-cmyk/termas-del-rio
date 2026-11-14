@@ -97,6 +97,11 @@
         return m ? decodeURIComponent(m[1]) : null;
     }
 
+    function parseCabana() {
+        var m = location.search.match(/[?&]cabana=([a-z0-9\-]+)/i);
+        return m ? decodeURIComponent(m[1]).toLowerCase() : null;
+    }
+
     function findType(id) {
         for (var i = 0; i < types.length; i++) if (types[i].id === id) return types[i];
         return null;
@@ -147,6 +152,16 @@
                     op.textContent = o.texto;
                     control.appendChild(op);
                 });
+                if (def.dinamico) {
+                    var pref = parseCabana();
+                    if (pref) {
+                        Array.prototype.forEach.call(control.options, function (op) {
+                            if (!control.value && op.value && op.text.toLowerCase().indexOf(pref) !== -1) {
+                                control.value = op.value;
+                            }
+                        });
+                    }
+                }
             } else {
                 control = document.createElement('input');
                 control.type = def.tipo;
