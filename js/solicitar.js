@@ -1,272 +1,104 @@
 /* ==========================================================
-   Termas del Río · Formulario público de solicitudes
+   Termas del Río · Motor de reservaciones por WhatsApp
    ----------------------------------------------------------
-   Cada solicitud se registra en el panel de reservaciones
-   mediante la función pública `crear_solicitud_publica`.
-   La confirmación SIEMPRE es manual por el personal.
-
-   Si Supabase no está configurado o no responde, el visitante
-   puede enviar la misma solicitud por WhatsApp o correo.
-   Los tipos activos se leen de data/solicitudes-tipos.json.
+   Flujo:
+   1) El visitante elige servicio, fecha, personas y sus datos.
+   2) "Revisar solicitud" valida y muestra un resumen.
+   3) "Confirmar reservación por WhatsApp" abre wa.me con el
+      mensaje organizado. El número sale de data/sitio.json.
+   4) La solicitud queda PENDIENTE DE CONFIRMACIÓN. Si Supabase
+      está configurado, se registra como pendiente en el panel;
+      si no, el mensaje de WhatsApp es igual de válido.
    ========================================================== */
-(function () {
-    var WA_NUMBER = '50493515778';
-    var EMAIL = 'reservaciones@termasdelrio.com';
-    var DATA_URL = 'data/solicitudes-tipos.json';
+(function (w, d) {
+    'use strict';
 
-    /* Tipos de cabaña de respaldo: se usan solo si Supabase no responde.
-       Con Supabase activo, los tipos reales vienen de la base de datos. */
-    var TIPOS_RESPALDO = [
-        { id: null, nombre: 'Cabaña Doble – 2 camas', capacidad_max: 2, camas: '2 camas Queen' },
-        { id: null, nombre: 'Cabaña Triple – 3 camas', capacidad_max: 3, camas: '2 camas Queen + 1 cama unipersonal' }
-    ];
+    var T = w.TermasData;
+    var form = d.getElementById('reserve-form');
+    if (!form || !T) return;
 
-    /* Presentación de cada campo (el orden y la composición vienen del JSON) */
-    var CAMPOS = {
-        nombre:        { etiqueta: 'Nombre completo',      tipo: 'text',     requerido: true,  ancho: 'medio', placeholder: 'Tu nombre y apellidos' },
-        telefono:      { etiqueta: 'Teléfono / WhatsApp',  tipo: 'tel',      requerido: true,  ancho: 'medio', placeholder: '+504 0000-0000' },
-        email:         { etiqueta: 'Correo electrónico',   tipo: 'email',                      ancho: 'medio', placeholder: 'correo@ejemplo.com' },
-        pais:          { etiqueta: 'País',                 tipo: 'text',                       ancho: 'medio', placeholder: 'Honduras' },
-        fecha:         { etiqueta: 'Fecha de la visita',   tipo: 'date',                       ancho: 'medio' },
-        fecha_llegada: { etiqueta: 'Fecha de llegada',     tipo: 'date',     requerido: true,  ancho: 'medio' },
-        fecha_salida:  { etiqueta: 'Fecha de salida',      tipo: 'date',     requerido: true,  ancho: 'medio' },
-        tipo_cabana:   { etiqueta: 'Tipo de cabaña',       tipo: 'select',   requerido: true,  ancho: 'ancho', dinamico: true },
-        adultos:       { etiqueta: 'Adultos',              tipo: 'number',   min: 1,           ancho: 'medio', valor: '2' },
-        ninos:         { etiqueta: 'Niños',                tipo: 'number',   min: 0,           ancho: 'medio', valor: '0' },
-        personas:      { etiqueta: 'Personas',             tipo: 'number',   min: 1,           ancho: 'medio' },
-        tipo_de_grupo: { etiqueta: 'Tipo de grupo',        tipo: 'select',
-                         opciones: ['Familiar', 'Escolar', 'Trabajo o empresa', 'Iglesia', 'Turismo', 'Otro'],
-                         ancho: 'medio' },
-        mensaje:       { etiqueta: 'Mensaje (opcional)',   tipo: 'textarea',                   ancho: 'ancho',
-                         placeholder: 'Cualquier detalle que quieras agregar' }
-    };
+    var ids = ['servicio', 'fecha', 'hora', 'adultos', 'ninos', 'alojamiento', 'noches', 'notas', 'nombre', 'telefono'];
+    var f = {};
+    ids.forEach(function (id) { f[id] = d.getElementById('f-' + id); });
 
-    var nav = document.getElementById('type-nav');
-    var eyebrow = document.getElementById('form-type-eyebrow');
-    var fieldsBox = document.getElementById('form-fields');
-    var form = document.getElementById('request-form');
-    var btnRegistrar = document.getElementById('send-request');
-    var btnWhatsApp = document.getElementById('send-whatsapp');
-    var btnMail = document.getElementById('send-mail');
-    var consent = document.getElementById('f-consentimiento');
-    var consentError = document.getElementById('consent-error');
-    var honeypot = document.getElementById('f-empresa');
-    var privacy = document.getElementById('request-privacy');
-    var resultBox = document.getElementById('request-result');
-    var resultCode = document.getElementById('request-result-code');
-    var resultText = document.getElementById('request-result-text');
-    var resultWa = document.getElementById('request-result-wa');
-    var resultNew = document.getElementById('request-result-new');
-    var errorBox = document.getElementById('request-error');
-    var fallback = document.getElementById('form-fallback');
+    var consent = d.getElementById('f-consentimiento');
+    var consentError = d.getElementById('consent-error');
+    var serviceNote = d.getElementById('service-note');
+    var resumen = d.getElementById('resumen');
+    var summaryList = d.getElementById('summary-list');
+    var confirmar = d.getElementById('confirmar-wa');
+    var editar = d.getElementById('editar-solicitud');
+    var waFallback = d.getElementById('wa-fallback');
+    var waStatus = d.getElementById('wa-status');
+    var errorBox = d.getElementById('request-error');
+    var fallback = d.getElementById('form-fallback');
+    var privacy = d.getElementById('request-privacy');
 
-    var types = [];
-    var current = null;
-    var tiposCabana = TIPOS_RESPALDO;
-    var clientePromesa = null;
+    var servicios = [];
+    var tipos = [];
+    var tiposCabana = [];
+    var currentServicio = null;
+    var ultimosDatos = null;
     var ultimoMensaje = '';
-    var enviando = false;
 
-    var supabaseConfig = window.TERMAS_SUPABASE || null;
+    var supabaseConfig = w.TERMAS_SUPABASE || null;
     var usarSupabase = Boolean(supabaseConfig && typeof supabaseConfig.configurado === 'function' && supabaseConfig.configurado());
+    var clientePromesa = null;
+
+    function esc(v) { return T.escapeHtml(v); }
+
+    function parametro(nombre) {
+        try {
+            var v = new URLSearchParams(w.location.search).get(nombre);
+            return v ? decodeURIComponent(v) : null;
+        } catch (e) {
+            var m = w.location.search.match(new RegExp('[?&]' + nombre + '=([^&]+)', 'i'));
+            return m ? decodeURIComponent(m[1]) : null;
+        }
+    }
 
     function hoyISO() {
-        var d = new Date();
-        var m = String(d.getMonth() + 1);
-        var dia = String(d.getDate());
-        return d.getFullYear() + '-' + (m.length < 2 ? '0' + m : m) + '-' + (dia.length < 2 ? '0' + dia : dia);
+        var x = new Date();
+        return x.getFullYear() + '-' + String(x.getMonth() + 1).padStart(2, '0') + '-' + String(x.getDate()).padStart(2, '0');
     }
 
     function sumarDias(iso, dias) {
+        if (!iso) return '';
         var p = iso.split('-');
-        var d = new Date(Number(p[0]), Number(p[1]) - 1, Number(p[2]));
-        d.setDate(d.getDate() + dias);
-        var m = String(d.getMonth() + 1);
-        var dia = String(d.getDate());
-        return d.getFullYear() + '-' + (m.length < 2 ? '0' + m : m) + '-' + (dia.length < 2 ? '0' + dia : dia);
+        var x = new Date(Number(p[0]), Number(p[1]) - 1, Number(p[2]));
+        x.setDate(x.getDate() + Number(dias || 0));
+        return x.getFullYear() + '-' + String(x.getMonth() + 1).padStart(2, '0') + '-' + String(x.getDate()).padStart(2, '0');
     }
 
-    function fmtDate(v) {
-        if (!v) return '';
-        var p = v.split('-');
-        return p.length === 3 ? (p[2] + '/' + p[1] + '/' + p[0]) : v;
+    function fmtFecha(iso) {
+        if (!iso) return '';
+        var p = iso.split('-');
+        return p.length === 3 ? p[2] + '/' + p[1] + '/' + p[0] : iso;
     }
 
-    function parseTipo() {
-        var m = location.search.match(/[?&]tipo=([a-z0-9\-]+)/i);
-        return m ? decodeURIComponent(m[1]) : null;
-    }
-
-    function parseCabana() {
-        var m = location.search.match(/[?&]cabana=([a-z0-9\-]+)/i);
-        return m ? decodeURIComponent(m[1]).toLowerCase() : null;
-    }
-
-    function findType(id) {
-        for (var i = 0; i < types.length; i++) if (types[i].id === id) return types[i];
+    function encontrarServicio(id) {
+        for (var i = 0; i < servicios.length; i++) if (servicios[i].id === id) return servicios[i];
         return null;
     }
 
-    function selectType(t) {
-        current = t;
-        Array.prototype.forEach.call(nav.children, function (b) {
-            b.setAttribute('aria-pressed', b.getAttribute('data-id') === t.id ? 'true' : 'false');
+    function encontrarTipo(id) {
+        for (var i = 0; i < tipos.length; i++) if (tipos[i].id === id) return tipos[i];
+        return null;
+    }
+
+    function limpierErrors() {
+        Array.prototype.forEach.call(form.querySelectorAll('.field'), function (el) {
+            el.classList.remove('is-invalid');
         });
-        if (eyebrow) eyebrow.textContent = t.nombre;
-        ocultarResultado();
-        ocultarError();
-        renderFields(t.campos || []);
-        if (consent) consent.checked = false;
-    }
-
-    function renderFields(campos) {
-        fieldsBox.innerHTML = '';
-        campos.forEach(function (c) {
-            var def = CAMPOS[c];
-            if (!def) return;
-            var wrap = document.createElement('div');
-            wrap.className = 'field' + (def.ancho === 'ancho' ? ' field--wide' : '');
-
-            var label = document.createElement('label');
-            label.setAttribute('for', 'f-' + c);
-            label.textContent = def.etiqueta;
-            wrap.appendChild(label);
-
-            var control;
-            if (def.tipo === 'textarea') {
-                control = document.createElement('textarea');
-                control.rows = 4;
-                if (def.placeholder) control.placeholder = def.placeholder;
-            } else if (def.tipo === 'select') {
-                control = document.createElement('select');
-                var empty = document.createElement('option');
-                empty.value = '';
-                empty.textContent = 'Elige una opción';
-                control.appendChild(empty);
-                var opciones = def.dinamico
-                    ? tiposCabana.map(function (t) { return { valor: t.id || t.nombre, texto: t.nombre }; })
-                    : (def.opciones || []).map(function (o) { return { valor: o, texto: o }; });
-                opciones.forEach(function (o) {
-                    var op = document.createElement('option');
-                    op.value = o.valor;
-                    op.textContent = o.texto;
-                    control.appendChild(op);
-                });
-                if (def.dinamico) {
-                    var pref = parseCabana();
-                    if (pref) {
-                        Array.prototype.forEach.call(control.options, function (op) {
-                            if (!control.value && op.value && op.text.toLowerCase().indexOf(pref) !== -1) {
-                                control.value = op.value;
-                            }
-                        });
-                    }
-                }
-            } else {
-                control = document.createElement('input');
-                control.type = def.tipo;
-                if (def.min !== undefined) control.min = def.min;
-                if (def.placeholder) control.placeholder = def.placeholder;
-                if (def.valor !== undefined) control.value = def.valor;
-            }
-            control.id = 'f-' + c;
-            control.name = c;
-            if (def.requerido) control.required = true;
-
-            if (def.tipo === 'date') {
-                control.min = hoyISO();
-                if (c === 'fecha_salida') control.min = sumarDias(hoyISO(), 1);
-            }
-
-            if (c === 'fecha_llegada' && control.addEventListener) {
-                control.addEventListener('change', function () {
-                    var salida = document.getElementById('f-fecha_salida');
-                    if (!salida) return;
-                    salida.min = control.value ? sumarDias(control.value, 1) : sumarDias(hoyISO(), 1);
-                    if (salida.value && salida.value <= control.value) salida.value = sumarDias(control.value, 1);
-                });
-            }
-
-            wrap.appendChild(control);
-
-            if (def.requerido) {
-                var err = document.createElement('p');
-                err.className = 'field-error';
-                err.textContent = 'Completa este dato, por favor.';
-                wrap.appendChild(err);
-            }
-            fieldsBox.appendChild(wrap);
-        });
-    }
-
-    function recogerCampos() {
-        var datos = {};
-        (current.campos || []).forEach(function (c) {
-            var el = document.getElementById('f-' + c);
-            if (!el) return;
-            datos[c] = (el.value || '').trim();
-        });
-        return datos;
-    }
-
-    function datosMensaje() {
-        var datos = recogerCampos();
-        var lineas = [];
-        (current.campos || []).forEach(function (c) {
-            var def = CAMPOS[c];
-            var v = datos[c];
-            if (!def || !v) return;
-            if (def.tipo === 'date') v = fmtDate(v);
-            lineas.push(def.etiqueta + ': ' + v);
-        });
-        return lineas;
-    }
-
-    function construirMensaje() {
-        var intro = current.intro_whatsapp || ('Hola, quisiera información de ' + current.nombre + ' de Termas del Río.');
-        return [intro].concat(datosMensaje()).join('\n');
-    }
-
-    function validar() {
-        var ok = true;
-        var firstBad = null;
-        (current.campos || []).forEach(function (c) {
-            var def = CAMPOS[c];
-            var el = document.getElementById('f-' + c);
-            if (!def || !el) return;
-            if (def.requerido && !el.value.trim()) {
-                el.parentNode.classList.add('is-invalid');
-                if (!firstBad) firstBad = el;
-                ok = false;
-            } else {
-                el.parentNode.classList.remove('is-invalid');
-            }
-        });
-
-        if (consent && !consent.checked) {
-            if (consentError) consentError.classList.add('is-visible');
-            ok = false;
-            if (!firstBad) firstBad = consent;
-        } else if (consentError) {
-            consentError.classList.remove('is-visible');
-        }
-
-        var entrada = document.getElementById('f-fecha_llegada');
-        var salida = document.getElementById('f-fecha_salida');
-        if (entrada && salida && entrada.value && salida.value && salida.value <= entrada.value) {
-            salida.parentNode.classList.add('is-invalid');
-            var msg = salida.parentNode.querySelector('.field-error');
-            if (msg) msg.textContent = 'La salida debe ser posterior a la llegada.';
-            ok = false;
-            if (!firstBad) firstBad = salida;
-        }
-
-        if (firstBad) firstBad.focus();
-        return ok;
-    }
-
-    function ocultarError() {
+        if (consentError) consentError.classList.remove('is-visible');
         if (errorBox) { errorBox.hidden = true; errorBox.textContent = ''; }
+    }
+
+    function marcar(id) {
+        var el = f[id];
+        if (!el) return;
+        var field = el.closest('.field');
+        if (field) field.classList.add('is-invalid');
     }
 
     function mostrarError(texto) {
@@ -275,33 +107,204 @@
         errorBox.hidden = false;
     }
 
-    function ocultarResultado() {
-        if (resultBox) resultBox.hidden = true;
-        if (btnRegistrar) btnRegistrar.disabled = false;
-        enviando = false;
+    function ocultarResumen() {
+        if (resumen) resumen.hidden = true;
+        if (waStatus) { waStatus.textContent = ''; waStatus.className = 'wa-status'; }
     }
 
-    function mostrarResultado(codigo) {
-        ultimoMensaje = construirMensaje();
-        if (resultCode) resultCode.textContent = codigo || 'Solicitud recibida';
-        if (resultText) {
-            resultText.textContent = 'Nuestro equipo revisará la disponibilidad y te confirmará por WhatsApp o correo. Guarda este código para dar seguimiento.';
+    function setVisible(id, visible) {
+        var field = form.querySelector('[data-field="' + id + '"]');
+        if (field) field.classList.toggle('field--hidden', !visible);
+        if (f[id]) f[id].required = Boolean(visible && f[id].required !== undefined && (id === 'alojamiento' || id === 'noches'));
+    }
+
+    function renderServicios() {
+        var preferido = parametro('servicio') || parametro('cabana') ? (parametro('servicio') || 'cabanas') : null;
+        var tipoParam = parametro('tipo');
+        var opciones = '<option value="">Elige un servicio</option>';
+
+        servicios.forEach(function (s) {
+            opciones += '<option value="' + esc(s.id) + '">' + esc(s.nombre_corto || s.nombre) + '</option>';
+        });
+        f.servicio.innerHTML = opciones;
+
+        if (!preferido && tipoParam) {
+            servicios.forEach(function (s) {
+                if (s.solicitud === tipoParam) preferido = s.id;
+            });
         }
-        if (resultBox) resultBox.hidden = false;
-        if (btnRegistrar) btnRegistrar.disabled = true;
-        resultBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        if (preferido && encontrarServicio(preferido)) {
+            f.servicio.value = preferido;
+        }
+        alCambiarServicio();
     }
 
-    function abrirWhatsApp(texto) {
-        window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(texto), '_blank', 'noopener');
+    function llenarAlojamientos() {
+        if (!f.alojamiento) return;
+        var actual = f.alojamiento.value;
+        var html = '<option value="">Elige una opción</option>';
+        tiposCabana.forEach(function (t) {
+            var valor = t.id || t.slug || t.nombre;
+            var texto = t.nombre + (t.camas ? ' · ' + t.camas : '');
+            html += '<option value="' + esc(valor) + '">' + esc(texto) + '</option>';
+        });
+        f.alojamiento.innerHTML = html;
+        if (actual) f.alojamiento.value = actual;
+
+        var pref = parametro('cabana');
+        if (pref && !f.alojamiento.value) {
+            Array.prototype.forEach.call(f.alojamiento.options, function (op) {
+                if (!f.alojamiento.value && (op.value.toLowerCase().indexOf(pref) !== -1 || op.text.toLowerCase().indexOf(pref) !== -1)) {
+                    f.alojamiento.value = op.value;
+                }
+            });
+        }
     }
 
-    function abrirCorreo(texto) {
-        var subject = 'Solicitud: ' + current.nombre + ' - Termas del Río';
-        location.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(texto);
+    function alCambiarServicio() {
+        currentServicio = encontrarServicio(f.servicio.value);
+        var esCabana = Boolean(currentServicio && currentServicio.id === 'cabanas');
+
+        setVisible('alojamiento', esCabana);
+        setVisible('noches', esCabana);
+        if (esCabana) llenarAlojamientos();
+
+        if (currentServicio && serviceNote) {
+            var partes = [];
+            if (currentServicio.resumen) partes.push(currentServicio.resumen);
+            if (currentServicio.horario) partes.push('Horario: ' + currentServicio.horario);
+            else if (currentServicio.horario_nota) partes.push(currentServicio.horario_nota);
+            if (currentServicio.precios && currentServicio.precios.length) {
+                var p = currentServicio.precios[0];
+                partes.push('Tarifa referencial: ' + p.valor + (p.detalle ? ' (' + p.detalle + ')' : ''));
+            }
+            serviceNote.textContent = partes.join(' ');
+            serviceNote.hidden = false;
+        } else if (serviceNote) {
+            serviceNote.hidden = true;
+        }
+        ocultarResumen();
     }
 
-    /* ---------- Supabase ---------- */
+    function sincronizarNoches() {
+        if (!currentServicio || currentServicio.id !== 'cabanas') return;
+        var entrada = f.fecha.value;
+        var salida = sumarDias(entrada, Math.max(1, Number(f.noches.value) || 1));
+        f.noches.dataset.salida = salida;
+    }
+
+    function validar() {
+        limpierErrors();
+        var ok = true;
+        var primero = null;
+
+        function requerir(id, condicion) {
+            if (!condicion) {
+                marcar(id);
+                ok = false;
+                if (!primero) primero = f[id];
+            }
+        }
+
+        requerir('servicio', Boolean(currentServicio));
+        requerir('fecha', Boolean(f.fecha.value));
+        if (f.fecha.value && f.fecha.value < hoyISO()) {
+            marcar('fecha'); ok = false; if (!primero) primero = f.fecha;
+        }
+        requerir('adultos', Number(f.adultos.value) >= 1);
+        requerir('nombre', (f.nombre.value || '').trim().length >= 2);
+        requerir('telefono', /^[0-9+()\s-]{8,}$/.test((f.telefono.value || '').trim()));
+
+        if (currentServicio && currentServicio.id === 'cabanas') {
+            requerir('alojamiento', Boolean(f.alojamiento.value));
+            requerir('noches', Number(f.noches.value) >= 1);
+        }
+
+        if (!consent || !consent.checked) {
+            if (consentError) consentError.classList.add('is-visible');
+            ok = false;
+            if (!primero) primero = consent;
+        }
+
+        if (!ok && primero) {
+            primero.focus();
+            mostrarError('Revisa los campos marcados antes de continuar.');
+        }
+        return ok;
+    }
+
+    function recoger() {
+        return {
+            servicioId: currentServicio ? currentServicio.id : '',
+            servicio: currentServicio ? (currentServicio.nombre || currentServicio.nombre_corto) : '',
+            tipo: currentServicio ? (currentServicio.solicitud || 'visita-dia') : 'visita-dia',
+            fecha: f.fecha.value || '',
+            hora: f.hora.value || '',
+            adultos: f.adultos.value || '0',
+            ninos: f.ninos.value || '0',
+            alojamiento: currentServicio && currentServicio.id === 'cabanas' ? (f.alojamiento.options[f.alojamiento.selectedIndex] || {}).text || '' : '',
+            alojamientoValor: currentServicio && currentServicio.id === 'cabanas' ? f.alojamiento.value : '',
+            noches: currentServicio && currentServicio.id === 'cabanas' ? (f.noches.value || '1') : '',
+            salida: currentServicio && currentServicio.id === 'cabanas' ? sumarDias(f.fecha.value, Math.max(1, Number(f.noches.value) || 1)) : '',
+            notas: (f.notas.value || '').trim(),
+            nombre: (f.nombre.value || '').trim(),
+            telefono: (f.telefono.value || '').trim()
+        };
+    }
+
+    function fila(dt, dd, ancho) {
+        if (!dd) return '';
+        return '<div' + (ancho ? ' class="summary-list__wide"' : '') + '><dt>' + esc(dt) + '</dt><dd>' + esc(dd) + '</dd></div>';
+    }
+
+    function mostrarResumen(datos) {
+        var html = '';
+        html += fila('Servicio', datos.servicio, true);
+        html += fila('Fecha', fmtFecha(datos.fecha));
+        html += fila('Hora estimada de llegada', datos.hora);
+        html += fila('Adultos', datos.adultos);
+        html += fila('Niños', datos.ninos);
+        html += fila('Alojamiento', datos.alojamiento, true);
+        html += fila('Noches', datos.noches);
+        html += fila('Fecha estimada de salida', fmtFecha(datos.salida));
+        html += fila('Nombre', datos.nombre);
+        html += fila('Teléfono / WhatsApp', datos.telefono);
+        html += fila('Información adicional', datos.notas, true);
+        summaryList.innerHTML = html;
+
+        ultimosDatos = datos;
+        ultimoMensaje = construirMensaje(datos);
+        waFallback.href = T.wa(ultimoMensaje);
+        waFallback.hidden = false;
+        resumen.hidden = false;
+        resumen.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function construirMensaje(datos) {
+        var lineas = [
+            'Hola, quisiera solicitar una reservación en Termas del Río.',
+            '',
+            'SOLICITUD PENDIENTE DE CONFIRMACIÓN',
+            '',
+            'Servicio: ' + datos.servicio,
+            'Fecha: ' + fmtFecha(datos.fecha)
+        ];
+        if (datos.hora) lineas.push('Hora estimada de llegada: ' + datos.hora + ' (sujeta a confirmación)');
+        lineas.push('Adultos: ' + datos.adultos);
+        lineas.push('Niños: ' + datos.ninos);
+        if (datos.alojamiento) lineas.push('Alojamiento: ' + datos.alojamiento);
+        if (datos.noches) lineas.push('Noches: ' + datos.noches);
+        if (datos.salida) lineas.push('Salida estimada: ' + fmtFecha(datos.salida));
+        if (datos.notas) lineas.push('Información adicional: ' + datos.notas);
+        lineas.push('');
+        lineas.push('Nombre: ' + datos.nombre);
+        lineas.push('Teléfono / WhatsApp: ' + datos.telefono);
+        lineas.push('');
+        lineas.push('Favor de confirmar disponibilidad. Entiendo que esta solicitud no queda confirmada hasta que el personal de Termas del Río la apruebe.');
+        return lineas.join('\n');
+    }
+
+    /* ---------- Supabase opcional: solo registra como pendiente ---------- */
     function obtenerCliente() {
         if (!usarSupabase) return Promise.resolve(null);
         if (clientePromesa) return clientePromesa;
@@ -311,14 +314,11 @@
                     auth: { persistSession: false, autoRefreshToken: false }
                 });
             })
-            .catch(function () {
-                usarSupabase = false;
-                return null;
-            });
+            .catch(function () { usarSupabase = false; return null; });
         return clientePromesa;
     }
 
-    function cargarTiposCabana() {
+    function cargarTiposCabanaRemotos() {
         return obtenerCliente().then(function (cliente) {
             if (!cliente) return null;
             return cliente.rpc('tipos_cabana_publicos').then(function (res) {
@@ -326,6 +326,7 @@
                 return res.data.map(function (t) {
                     return {
                         id: t.id,
+                        slug: t.slug,
                         nombre: t.nombre,
                         capacidad_max: t.capacidad_max,
                         camas: t.camas
@@ -335,149 +336,116 @@
         }).catch(function () { return null; });
     }
 
-    function enviarSolicitud() {
-        if (enviando) return;
-        if (!validateAndPrepare()) return;
+    function registrar(datos, mensaje) {
+        if (!usarSupabase) return Promise.resolve(null);
+        return obtenerCliente().then(function (cliente) {
+            if (!cliente) return null;
+            var extras = [];
+            if (datos.hora) extras.push('Hora estimada de llegada: ' + datos.hora);
+            if (datos.alojamiento) extras.push('Alojamiento: ' + datos.alojamiento);
+            if (datos.noches) extras.push('Noches: ' + datos.noches);
+            var cuerpo = (datos.notas ? datos.notas + '\n' : '') + extras.join('\n');
+            var uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(datos.alojamientoValor || '') ? datos.alojamientoValor : null;
 
-        /* Campo trampa: se descarta en silencio. */
-        if (honeypot && honeypot.value) {
-            mostrarResultado('Solicitud recibida');
-            return;
-        }
-
-        if (!usarSupabase) {
-            abrirWhatsApp(construirMensaje());
-            return;
-        }
-
-        var datos = recogerCampos();
-        var tipoCabana = datos.tipo_cabana || '';
-        var esUuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(tipoCabana);
-        var entrada = current.id === 'hospedaje' ? datos.fecha_llegada : datos.fecha;
-        var salida = current.id === 'hospedaje' ? datos.fecha_salida : null;
-        var adultos = datos.adultos !== undefined && datos.adultos !== '' ? Number(datos.adultos)
-            : (datos.personas ? Number(datos.personas) : 0);
-        var ninos = datos.ninos ? Number(datos.ninos) : 0;
-
-        var mensaje = (datos.mensaje || '').trim();
-        if (datos.tipo_de_grupo && mensaje.indexOf('Tipo de grupo') === -1) {
-            mensaje = (mensaje ? mensaje + '\n' : '') + 'Tipo de grupo: ' + datos.tipo_de_grupo;
-        }
-
-        enviando = true;
-        btnRegistrar.disabled = true;
-        btnRegistrar.textContent = 'Enviando…';
-        ocultarError();
-
-        obtenerCliente().then(function (cliente) {
-            if (!cliente) throw new Error('SIN_CONEXION');
             return cliente.rpc('crear_solicitud_publica', {
-                p_tipo: current.id,
+                p_tipo: datos.tipo,
                 p_nombre: datos.nombre,
                 p_telefono: datos.telefono,
-                p_email: datos.email || null,
-                p_pais: datos.pais || null,
-                p_tipo_cabana_id: esUuid ? tipoCabana : null,
-                p_fecha_entrada: entrada || null,
-                p_fecha_salida: salida || null,
-                p_adultos: adultos,
-                p_ninos: ninos,
-                p_mensaje: mensaje || null,
+                p_email: null,
+                p_pais: null,
+                p_tipo_cabana_id: uuid,
+                p_fecha_entrada: datos.fecha || null,
+                p_fecha_salida: datos.salida || null,
+                p_adultos: Number(datos.adultos) || 0,
+                p_ninos: Number(datos.ninos) || 0,
+                p_mensaje: cuerpo || mensaje,
                 p_consentimiento: true,
                 p_honeypot: ''
             }).then(function (res) {
                 if (res.error) throw res.error;
                 return res.data;
             });
-        }).then(function (codigo) {
-            mostrarResultado(codigo);
-            form.reset();
-        }).catch(function (error) {
-            var texto = String((error && (error.message || error.error_description)) || '');
-            if (texto === 'SIN_CONEXION' || /failed to fetch|network|load failed/i.test(texto)) {
-                mostrarError('No se pudo enviar al sistema en este momento. Puedes enviar tu solicitud por WhatsApp o correo con los mismos datos.');
-            } else {
-                mostrarError(texto || 'No se pudo registrar la solicitud. Intenta de nuevo o escríbenos por WhatsApp.');
-            }
-        }).then(function () {
-            enviando = false;
-            btnRegistrar.disabled = false;
-            btnRegistrar.textContent = 'Enviar solicitud';
-        });
-    }
-
-    function validateAndPrepare() {
-        if (!current) return false;
-        if (!validar()) return false;
-        if (!form.reportValidity()) return false;
-        return true;
+        }).catch(function () { return null; });
     }
 
     /* ---------- Eventos ---------- */
+    f.servicio.addEventListener('change', alCambiarServicio);
+    f.fecha.addEventListener('change', sincronizarNoches);
+    f.noches.addEventListener('input', sincronizarNoches);
+
     form.addEventListener('submit', function (e) {
         e.preventDefault();
-        enviarSolicitud();
+        if (!validar()) return;
+        mostrarResumen(recoger());
     });
 
-    btnWhatsApp.addEventListener('click', function () {
-        if (!validateAndPrepare()) return;
-        abrirWhatsApp(construirMensaje());
+    form.addEventListener('reset', function () {
+        w.setTimeout(function () {
+            limpierErrors();
+            ocultarResumen();
+            if (f.noches) f.noches.value = '1';
+            alCambiarServicio();
+        }, 0);
     });
 
-    btnMail.addEventListener('click', function () {
-        if (!validateAndPrepare()) return;
-        abrirCorreo(construirMensaje());
+    editar.addEventListener('click', function () {
+        ocultarResumen();
+        form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        f.servicio.focus();
     });
 
-    resultWa.addEventListener('click', function () {
-        abrirWhatsApp(ultimoMensaje || construirMensaje());
-    });
+    confirmar.addEventListener('click', function () {
+        if (!validar()) {
+            resumen.hidden = true;
+            form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            return;
+        }
+        ultimosDatos = recoger();
+        ultimoMensaje = construirMensaje(ultimosDatos);
+        var enlace = T.wa(ultimoMensaje);
+        waFallback.href = enlace;
+        waFallback.hidden = false;
+        waStatus.className = 'wa-status';
+        waStatus.textContent = 'Abriendo WhatsApp… si no se abre, usa el enlace manual.';
+        w.open(enlace, '_blank', 'noopener');
 
-    resultNew.addEventListener('click', function () {
-        form.reset();
-        ocultarResultado();
-        ocultarError();
-        if (consent) consent.checked = false;
-        if (consentError) consentError.classList.remove('is-visible');
-        renderFields(current.campos || []);
-        fieldsBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        registrar(ultimosDatos, ultimoMensaje).then(function (codigo) {
+            waStatus.className = 'wa-status is-ok';
+            if (codigo) {
+                waStatus.textContent = 'Solicitud registrada con código ' + codigo + '. Estado: pendiente de confirmación. Te escribiremos para confirmar.';
+            } else {
+                waStatus.textContent = 'Mensaje listo en WhatsApp. Tu solicitud está pendiente de confirmación; el personal te responderá por ese medio.';
+            }
+        });
     });
 
     /* ---------- Arranque ---------- */
-    function iniciar() {
+    T.listo().then(function () {
+        servicios = T.servicios();
+        tipos = T.tipos();
+        tiposCabana = T.tiposCabana();
+
+        f.fecha.min = hoyISO();
+        if (f.noches) f.noches.min = '1';
+
         if (privacy) {
             privacy.textContent = usarSupabase
-                ? 'Tu solicitud queda registrada en nuestro sistema de reservaciones y la confirma manualmente nuestro personal autorizado. También puedes enviarla por WhatsApp o correo.'
-                : 'Este sitio no guarda datos en un servidor: tu solicitud se abre directamente en WhatsApp o en tu correo, y la confirma manualmente nuestro personal autorizado.';
+                ? 'Tu solicitud queda registrada como pendiente en nuestro sistema y la confirma manualmente el personal autorizado. También se abre en WhatsApp.'
+                : 'Este sitio no guarda datos en un servidor: tu solicitud se abre directamente en WhatsApp y la confirma manualmente el personal autorizado.';
         }
-        if (!usarSupabase && btnRegistrar) btnRegistrar.textContent = 'Enviar por WhatsApp';
 
-        var tiposPromesa = usarSupabase ? cargarTiposCabana() : Promise.resolve(null);
-        var tiposData = fetch(DATA_URL).then(function (r) { return r.json(); });
+        if (!servicios.length) throw new Error('sin servicios publicados');
+        renderServicios();
+        T.aplicarEnlaces();
 
-        return Promise.all([tiposData, tiposPromesa]).then(function (res) {
-            var data = res[0];
-            if (res[1] && res[1].length) tiposCabana = res[1];
-
-            types = (data.tipos || []).filter(function (t) { return t.estado === 'activo'; });
-            if (!types.length) throw new Error('sin tipos activos');
-
-            types.forEach(function (t) {
-                var b = document.createElement('button');
-                b.type = 'button';
-                b.setAttribute('data-id', t.id);
-                b.setAttribute('aria-pressed', 'false');
-                b.textContent = t.nombre_corto || t.nombre;
-                b.addEventListener('click', function () { selectType(t); });
-                nav.appendChild(b);
-            });
-
-            selectType(findType(parseTipo()) || types[0]);
+        cargarTiposCabanaRemotos().then(function (remotos) {
+            if (remotos && remotos.length) {
+                tiposCabana = remotos;
+                if (currentServicio && currentServicio.id === 'cabanas') llenarAlojamientos();
+            }
         });
-    }
-
-    iniciar()['catch'](function () {
+    }).catch(function () {
         form.hidden = true;
         if (fallback) fallback.hidden = false;
     });
-})();
+})(window, document);

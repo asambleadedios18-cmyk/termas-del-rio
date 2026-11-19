@@ -42,6 +42,20 @@
     { "valor": "7 km", "etiqueta": "Desde Gracias" },
     { "valor": "L 100", "etiqueta": "Entrada adultos" }
   ],
+  "tipos_cabana": [
+    {
+      "slug": "triple",
+      "nombre": "Cabaña Triple – 3 camas",
+      "capacidad_max": 3,
+      "camas": "2 camas Queen + 1 cama unipersonal"
+    },
+    {
+      "slug": "doble",
+      "nombre": "Cabaña Doble – 2 camas",
+      "capacidad_max": 2,
+      "camas": "2 camas Queen"
+    }
+  ],
   "consejos_visita": [
     "Trae traje de baño, toalla y sandalias",
     "Hidrátate: el agua caliente relaja, pero deshidrata",

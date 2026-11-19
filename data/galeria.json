@@ -1,20 +1,79 @@
 {
-  "version": "2026-11-10",
-  "estado": "sin-fotos",
-  "nota": "Aún no hay fotos ni videos cargados. Esta estructura se poblará cuando el establecimiento entregue el material fotográfico.",
+  "version": "2026-11-19",
+  "estado": "con-fotos-reales",
+  "nota": "Solo fotografías reales del establecimiento. No se inventan imágenes de servicios no confirmados. Las secciones restaurante y canopy quedan sin fotos hasta que el establecimiento las entregue.",
   "secciones": [
+    { "id": "todas", "nombre": "Todas" },
     { "id": "balneario", "nombre": "Balneario" },
-    { "id": "canopy", "nombre": "Canopy" },
     { "id": "cabanas", "nombre": "Cabañas" },
-    { "id": "restaurante", "nombre": "Restaurante" }
+    { "id": "entorno", "nombre": "Entorno natural" },
+    { "id": "restaurante", "nombre": "Restaurante", "fotos": 0, "nota": "Sin fotografías reales disponibles todavía." },
+    { "id": "canopy", "nombre": "Canopy", "fotos": 0, "nota": "Sin fotografías reales disponibles todavía." }
   ],
-  "fotos": [],
-  "videos": [],
-  "esquema_foto": {
-    "archivo": "img/galeria/<seccion>-<numero>.webp",
-    "campos": ["archivo", "seccion", "titulo", "descripcion", "mostrar_en_portada"]
-  },
-  "esquema_video": {
-    "campos": ["archivo", "seccion", "titulo", "descripcion", "miniatura"]
-  }
+  "fotos": [
+    {
+      "archivo": "img/cabanas/piscina-principal.jpg",
+      "seccion": "balneario",
+      "titulo": "Piscina principal",
+      "descripcion": "Piscina de aguas termales del balneario.",
+      "ancho": 720,
+      "alto": 1280,
+      "mostrar_en_portada": true
+    },
+    {
+      "archivo": "img/cabanas/piscina-secundaria.jpg",
+      "seccion": "balneario",
+      "titulo": "Piscina secundaria",
+      "descripcion": "Otra de las piscinas termales del complejo.",
+      "ancho": 1200,
+      "alto": 1600,
+      "mostrar_en_portada": true
+    },
+    {
+      "archivo": "img/cabanas/cabanas-bosque-01.jpg",
+      "seccion": "cabanas",
+      "titulo": "Cabañas entre el bosque",
+      "descripcion": "Cabañas rodeadas de vegetación dentro del balneario.",
+      "ancho": 1300,
+      "alto": 868,
+      "mostrar_en_portada": true
+    },
+    {
+      "archivo": "img/cabanas/cabanas-bosque-02.jpg",
+      "seccion": "cabanas",
+      "titulo": "Entorno de las cabañas",
+      "descripcion": "Área natural que rodea las cabañas.",
+      "ancho": 1300,
+      "alto": 868,
+      "mostrar_en_portada": true
+    },
+    {
+      "archivo": "img/cabanas/cabanas-exterior.jpg",
+      "seccion": "cabanas",
+      "titulo": "Exterior de cabaña",
+      "descripcion": "Fachada de una de las cabañas del establecimiento.",
+      "ancho": 591,
+      "alto": 739,
+      "mostrar_en_portada": false
+    },
+    {
+      "archivo": "img/cabanas/cabanas-interior.jpg",
+      "seccion": "cabanas",
+      "titulo": "Interior de cabaña",
+      "descripcion": "Espacio interior de una cabaña.",
+      "ancho": 1023,
+      "alto": 1280,
+      "mostrar_en_portada": true
+    },
+    {
+      "archivo": "img/cabanas/camino-bosque.jpg",
+      "seccion": "entorno",
+      "titulo": "Camino al bosque",
+      "descripcion": "Sendero natural en los alrededores de Termas del Río.",
+      "ancho": 1280,
+      "alto": 1600,
+      "mostrar_en_portada": true
+    }
+  ],
+  "videos": []
 }

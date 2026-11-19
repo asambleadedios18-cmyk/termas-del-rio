@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="es">
 <head>
     <meta charset="utf-8">
@@ -8,17 +8,21 @@
     <meta name="theme-color" content="#123b3a">
     <link rel="canonical" href="https://asambleadedios18-cmyk.github.io/termas-del-rio/">
     <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Termas del Río">
     <meta property="og:title" content="Termas del Río | Aguas termales y canopy en Gracias, Lempira">
-    <meta property="og:description" content="Termas del Río: balneario de aguas termales naturales y canopy a 7 km de Gracias, Lempira, Honduras. Cabañas y restaurante en el valle de Río Grande.">
+    <meta property="og:description" content="Aguas termales naturales, canopy, cabañas y restaurante en Gracias, Lempira. Solicita tu reservación por WhatsApp.">
+    <meta property="og:image" content="https://asambleadedios18-cmyk.github.io/termas-del-rio/img/cabanas/piscina-principal.jpg">
     <meta property="og:url" content="https://asambleadedios18-cmyk.github.io/termas-del-rio/">
     <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?v=11">
+    <link rel="preload" as="image" href="img/cabanas/piscina-principal.jpg">
+    <link rel="stylesheet" href="css/style.css?v=12">
     <script>document.documentElement.classList.add('js');</script>
     <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"TouristAttraction","name":"Termas del Río","description":"Termas del Río: balneario de aguas termales naturales y canopy a 7 km de Gracias, Lempira, Honduras. Cabañas y restaurante en el valle de Río Grande.","url":"https://asambleadedios18-cmyk.github.io/termas-del-rio/","telephone":"+504 9351-5778","address":{"@type":"PostalAddress","streetAddress":"Km 7 carretera Gracias – Santa Rosa de Copán, aldea Río Grande","addressLocality":"Gracias","addressRegion":"Lempira","addressCountry":"HN"},"isAccessibleForFree":false}    </script>
+    {"@context":"https://schema.org","@type":"TouristAttraction","name":"Termas del Río","description":"Balneario de aguas termales naturales y canopy en Gracias, Lempira, Honduras.","url":"https://asambleadedios18-cmyk.github.io/termas-del-rio/","image":"https://asambleadedios18-cmyk.github.io/termas-del-rio/img/cabanas/piscina-principal.jpg","telephone":"+504 9351-5778","address":{"@type":"PostalAddress","streetAddress":"Km 7, carretera Gracias - Santa Rosa de Copán, aldea Río Grande","addressLocality":"Gracias","addressRegion":"Lempira","addressCountry":"HN"}}
+    </script>
 </head>
 <body>
 <a class="skip" href="#contenido">Saltar al contenido</a>
@@ -27,40 +31,37 @@
     <div class="container topbar__inner">
         <span class="topbar__item">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
-            Km 7, Gracias – Santa Rosa de Copán
+            <span data-horario>Todos los días de 7:00 a. m. a 9:00 p. m.</span>
         </span>
-        <a class="topbar__item" href="tel:+50493515778">
+        <a class="topbar__item" data-tel href="tel:+50493515778">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
-            +504 9351-5778
+            <span>+504 9351-5778</span>
         </a>
-        <a class="topbar__item" href="mailto:reservaciones@termasdelrio.com">
+        <a class="topbar__item" data-mail href="mailto:reservaciones@termasdelrio.com">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
-            reservaciones@termasdelrio.com
+            <span>reservaciones@termasdelrio.com</span>
         </a>
     </div>
 </div>
 
 <header class="site-header" id="top">
     <div class="container site-header__inner">
-        <a class="brand" href="./">
-            <img src="img/favicon.svg" alt="" width="40" height="40">
-            <span>
-                <strong>Termas del Río</strong>
-                <small>Aguas termales</small>
-            </span>
+        <a class="brand" href="./" aria-label="Termas del Río, inicio">
+            <img src="img/favicon.svg" alt="" width="42" height="42">
+            <span><strong>Termas del Río</strong><small>Aguas termales</small></span>
         </a>
         <button class="nav-toggle" type="button" aria-controls="nav" aria-expanded="false" aria-label="Abrir menú">
             <span></span><span></span><span></span>
         </button>
         <nav class="nav" id="nav" aria-label="Principal">
+            <a href="./" class="is-active">Inicio</a>
             <a href="servicios/balneario.html">Balneario</a>
-            <a href="servicios/canopy.html">Canopy</a>
-            <a href="servicios/cabanas.html">Cabañas</a>
             <a href="servicios/restaurante.html">Restaurante</a>
-            <a href="galeria.html">Galería</a>
-            <a href="ubicacion.html">Cómo llegar</a>
+            <a href="servicios/cabanas.html">Cabañas</a>
+            <a href="servicios/canopy.html">Canopy</a>
+            <a href="solicitar.html">Reservaciones</a>
             <a href="contacto.html">Contacto</a>
-            <a href="solicitar.html">Solicitar</a>
+            <a class="nav__wa" data-wa="general" data-wa-text="@sitio" href="#">WhatsApp</a>
         </nav>
     </div>
 </header>
@@ -68,234 +69,107 @@
 <main id="contenido">
 
 <section class="hero">
-    <div class="hero__steam" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+    <div class="hero__fondo" aria-hidden="true"></div>
     <div class="container hero__inner">
-        <div class="hero__card">
-            <p class="eyebrow">Balneario · Gracias, Lempira</p>
-            <h1>Agua caliente que nace de la montaña</h1>
-            <p class="hero__lead">Piscinas termales naturales entre 35 y 42 °C y canopy sobre el valle de Río Grande, a solo 7 km de la ciudad colonial de Gracias.</p>
-            <div class="hero__actions">
-                <a class="btn btn--primary" href="#tarifas">Ver tarifas</a>
-                <a class="btn btn--ghost" href="#experiencias">Explorar servicios</a>
-            </div>
+        <p class="eyebrow eyebrow--light">Gracias, Lempira · Honduras</p>
+        <h1>Donde el agua termal<br>se encuentra con el bosque</h1>
+        <p class="hero__lead">Balneario de aguas termales naturales, canopy, cabañas y restaurante a 7 km de Gracias. Un lugar para desconectar, compartir y volver a cargar energía.</p>
+        <div class="hero__actions">
+            <a class="btn btn--light btn--lg" href="solicitar.html">Reservar experiencia</a>
+            <a class="btn btn--ghost-light btn--lg" href="#experiencias">Explorar experiencias</a>
         </div>
+        <a class="hero__scroll" href="#experiencias" aria-label="Desplazarse a las experiencias"><span></span></a>
     </div>
 </section>
 
-<section class="facts" aria-label="Datos rápidos">
-    <div class="container facts__grid">
-        <div class="fact"><strong>35–42 °C</strong><span>Agua termal natural</span></div>
-        <div class="fact"><strong>5 líneas</strong><span>De canopy</span></div>
-        <div class="fact"><strong>7 km</strong><span>Desde Gracias</span></div>
-        <div class="fact"><strong>L 100</strong><span>Entrada adultos</span></div>
-    </div>
-</section>
-
-<section class="section about" id="balneario">
-    <div class="container about__grid">
-        <div class="about__media reveal">
-            <div class="placeholder placeholder--water" role="img" aria-label="Piscina termal"></div>
-            <div class="about__badge"><span>Agua a</span><strong>35–42 °C</strong><span>todo el año</span></div>
-        </div>
-        <div class="about__text reveal">
-            <p class="eyebrow">El balneario</p>
-            <h2>Un respiro de calor natural</h2>
-            <div class="prose"><p>Termas del Río es un balneario de aguas termales geotérmicas en la aldea Río Grande, sobre la carretera que une Gracias con Santa Rosa de Copán.</p><p>Ven a pasar el día en familia: báñate en las piscinas termales, vuela en el canopy sobre el valle y termina con una buena comida en nuestro restaurante.</p></div>
-            <a class="btn btn--outline" href="servicios/balneario.html">Conocer el balneario</a>
-        </div>
-    </div>
+<section class="facts" aria-label="Datos destacados">
+    <div class="container facts__grid" id="facts-grid"></div>
 </section>
 
 <section class="section section--tint" id="experiencias">
     <div class="container">
         <header class="section__head reveal">
-            <p class="eyebrow">Experiencias</p>
-            <h2>Servicios del balneario</h2>
+            <p class="eyebrow">Vive Termas del Río</p>
+            <h2>Elige tu experiencia</h2>
+            <p class="section__lead">Cuatro formas de disfrutar el valle, todas con la misma calidez termal.</p>
         </header>
-        <div class="promo-grid">
-            <a class="promo reveal" href="servicios/balneario.html">
-                <div class="promo__img placeholder placeholder--water"></div>
-                <div class="promo__body">
-                    <h3>Piscinas termales</h3>
-                    <p>Agua mineral caliente de origen volcánico, entre 35 y 42 °C, en un valle abierto junto al río.</p>
-                    <span class="promo__link">Ver el balneario →</span>
+        <div class="exp-grid" id="experiencias-grid">
+            <noscript>
+                <div class="exp-grid">
+                    <article class="exp-card"><div class="exp-card__body"><h3>Balneario</h3><p>Piscinas termales naturales entre 35 y 42 °C.</p><a class="btn" href="servicios/balneario.html">Ver detalle</a></div></article>
+                    <article class="exp-card"><div class="exp-card__body"><h3>Restaurante</h3><p>Comida típica hondureña en el lugar.</p><a class="btn" href="servicios/restaurante.html">Ver detalle</a></div></article>
+                    <article class="exp-card"><div class="exp-card__body"><h3>Cabañas</h3><p>Hospedaje rodeado de naturaleza.</p><a class="btn" href="servicios/cabanas.html">Ver detalle</a></div></article>
+                    <article class="exp-card"><div class="exp-card__body"><h3>Canopy</h3><p>5 líneas sobre el valle de Río Grande.</p><a class="btn" href="servicios/canopy.html">Ver detalle</a></div></article>
                 </div>
-            </a>
-            <a class="promo reveal" href="servicios/canopy.html">
-                <div class="promo__img placeholder placeholder--forest"></div>
-                <div class="promo__body">
-                    <h3>Canopy</h3>
-                    <p>5 líneas entre los árboles con la vista del valle de Río Grande desde lo alto.</p>
-                    <span class="promo__link">Ver el canopy →</span>
-                </div>
-            </a>
-            <a class="promo reveal" href="servicios/cabanas.html">
-                <div class="promo__img placeholder placeholder--forest"></div>
-                <div class="promo__body">
-                    <h3>Cabañas</h3>
-                    <p>Quédate la noche, disfruta las termas cuando hay más calma y despierta con el sonido del río.</p>
-                    <span class="promo__link">Ver cabañas →</span>
-                </div>
-            </a>
-            <a class="promo reveal" href="servicios/restaurante.html">
-                <div class="promo__img placeholder placeholder--warm"></div>
-                <div class="promo__body">
-                    <h3>Restaurante</h3>
-                    <p>Comida típica hondureña para recuperar energía entre baño y baño.</p>
-                    <span class="promo__link">Ver el menú →</span>
-                </div>
-            </a>
+            </noscript>
         </div>
     </div>
 </section>
 
-<section class="feature" id="canopy">
-    <div class="feature__media placeholder placeholder--forest" role="img" aria-label="Canopy en Termas del Río"></div>
-    <div class="feature__body reveal">
-        <p class="eyebrow">Aventura</p>
-        <h2>Canopy sobre el valle</h2>
-        <div class="prose"><p>Recorre 5 líneas de canopy entre los árboles y disfruta la vista del valle de Río Grande desde lo alto.</p><p>Después de la adrenalina, nada mejor que relajar los músculos en el agua termal.</p></div>
-        <div class="feature__stats">
-            <div><strong>5</strong><span>líneas</span></div>
-            <div><strong>L 800</strong><span>por persona</span></div>
+<section class="section split-story">
+    <div class="container split">
+        <div class="reveal">
+            <p class="eyebrow">Un valle para descansar</p>
+            <h2>Más que un balneario,<br>un lugar para quedarse</h2>
+            <div class="prose">
+                <p>Nuestras aguas termales brotan de forma natural en el valle de Río Grande. Ven a pasar el día en familia, vuela en canopy sobre los árboles y termina con una comida típica en nuestro restaurante.</p>
+                <p>Si quieres quedarte la noche, nuestras cabañas están dentro del balneario: despierta con el sonido del río y disfruta las piscinas cuando hay más calma.</p>
+            </div>
+            <a class="btn btn--primary" href="solicitar.html">Solicitar disponibilidad</a>
         </div>
-        <div class="hero__actions">
-            <a class="btn btn--light" href="https://wa.me/50493515778?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20el%20canopy%20de%20Termas%20del%20R%C3%ADo" target="_blank" rel="noopener">Consultar canopy</a>
-            <a class="btn btn--ghost-light" href="servicios/canopy.html">Ver el canopy</a>
-        </div>
+        <aside class="story-card reveal">
+            <img src="img/cabanas/cabanas-bosque-01.jpg" alt="Cabañas rodeadas de bosque" loading="lazy" width="1300" height="868">
+            <div class="story-card__body">
+                <span class="tag">Hospedaje</span>
+                <h3>Cabañas en el bosque</h3>
+                <p>Dobles y triples, con acceso a las piscinas termales.</p>
+                <a class="link-arrow" href="servicios/cabanas.html">Conocer las cabañas →</a>
+            </div>
+        </aside>
     </div>
 </section>
 
-<section class="section" id="tarifas">
+<section class="section section--tint" id="galeria">
     <div class="container">
         <header class="section__head reveal">
-            <p class="eyebrow">Planea tu visita</p>
-            <h2>Tarifas y horario</h2>
+            <p class="eyebrow">Galería</p>
+            <h2>Así se ve Termas del Río</h2>
+            <p class="section__lead">Fotografías reales del balneario, las cabañas y el entorno natural.</p>
         </header>
-        <div class="prices reveal">
-            <div class="price">
-                <span class="price__label">Adultos</span>
-                <strong class="price__value">L 100</strong>
-                <span class="price__unit">entrada al balneario</span>
-            </div>
-            <div class="price">
-                <span class="price__label">Niños</span>
-                <strong class="price__value">L 50</strong>
-                <span class="price__unit">entrada al balneario</span>
-            </div>
-            <div class="price price--feature">
-                <span class="price__label">Canopy</span>
-                <strong class="price__value">L 800</strong>
-                <span class="price__unit">por persona · 5 líneas</span>
-            </div>
-        </div>
-        <div class="hours reveal">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-            <div>
-                <strong>Todos los días de 7:00 a. m. a 9:00 p. m. (uso de la piscina hasta las 11:00 p. m.)</strong>
-                <p>Precios referenciales, sujetos a cambio. No necesitas reservar para visitas de día.</p>
-            </div>
-            <a class="btn btn--primary" href="https://wa.me/50493515778?text=Hola%2C%20quisiera%20consultar%20precios%20y%20horario%20de%20Termas%20del%20R%C3%ADo" target="_blank" rel="noopener">Consultar por WhatsApp</a>
-        </div>
-        <ul class="checklist reveal">
-            <li>Trae traje de baño, toalla y sandalias</li>
-            <li>Hidrátate: el agua caliente relaja, pero deshidrata</li>
-            <li>Viernes noche, fines de semana y feriados hay más ambiente</li>
-            <li>Entre semana es ideal para descansar con calma</li>
-        </ul>
+        <div class="gallery gallery--preview" id="galeria-preview"></div>
+        <p class="center"><a class="btn btn--outline" href="galeria.html">Ver galería completa</a></p>
     </div>
 </section>
 
-<section class="section section--tint" id="hospedaje">
-    <div class="container">
-        <header class="section__head reveal">
-            <p class="eyebrow">Quédate más</p>
-            <h2>Hospedaje y comida</h2>
-        </header>
-        <div class="promo-grid">
-            <a class="promo reveal" href="servicios/cabanas.html">
-                <div class="promo__img placeholder placeholder--forest"></div>
-                <div class="promo__body">
-                    <h3>Cabañas en el valle</h3>
-                    <p>Quédate la noche, disfruta las termas cuando hay más calma y despierta con el sonido del río.</p>
-                    <span class="promo__link">Ver cabañas →</span>
-                </div>
-            </a>
-            <a class="promo reveal" href="servicios/restaurante.html">
-                <div class="promo__img placeholder placeholder--warm"></div>
-                <div class="promo__body">
-                    <h3>Restaurante</h3>
-                    <p>Comida típica hondureña para recuperar energía entre baño y baño.</p>
-                    <span class="promo__link">Ver menú →</span>
-                </div>
-            </a>
+<section class="section reserve-band">
+    <div class="container reserve-band__inner reveal">
+        <div>
+            <p class="eyebrow eyebrow--light">Reservaciones</p>
+            <h2>Tu escapada empieza con un mensaje</h2>
+            <p>Elige el servicio, las fechas y cuántas personas vienen. Nosotros revisamos la disponibilidad y te confirmamos personalmente.</p>
+            <p class="reserve-band__note">La solicitud queda <strong>pendiente de confirmación</strong> hasta que nuestro personal la apruebe. No se confirma ni se cobra automáticamente.</p>
         </div>
+        <a class="btn btn--light btn--lg" href="solicitar.html">Hacer mi solicitud</a>
     </div>
 </section>
 
-<section class="section" id="ubicacion">
-    <div class="container location">
-        <div class="location__text reveal">
-            <p class="eyebrow">Ubicación</p>
-            <h2>Cómo llegar</h2>
-            <p class="location__address">Km 7, carretera Gracias – Santa Rosa de Copán, aldea Río Grande, Gracias, Lempira, Honduras.</p>
-            <div class="route">
-                <h3>En carro</h3>
-                <p>Desde el centro de Gracias toma la carretera hacia Santa Rosa de Copán. La entrada está señalizada a la altura del kilómetro 7.</p>
-            </div>
-            <div class="route">
-                <h3>En bus</h3>
-                <p>Toma el bus que va hacia Santa Rosa de Copán, La Iguala o Lepaera y pide que te bajen en la entrada de Termas del Río.</p>
-            </div>
-            <div class="hero__actions">
-                <a class="btn btn--primary" href="https://www.google.com/maps/search/?api=1&amp;query=Termas%20del%20Rio%2C%20Gracias%2C%20Lempira%2C%20Honduras" target="_blank" rel="noopener">Abrir en Google Maps</a>
-                <a class="btn btn--outline" href="ubicacion.html">Más sobre cómo llegar</a>
-            </div>
-        </div>
-        <div class="location__map reveal">
-            <iframe title="Mapa de Termas del Río" src="https://www.google.com/maps?q=Termas%20del%20Rio%2C%20Gracias%2C%20Lempira%2C%20Honduras&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-    </div>
-</section>
-
-<section class="section section--tint" id="faq">
+<section class="section" id="faq">
     <div class="container container--narrow">
         <header class="section__head reveal">
-            <p class="eyebrow">Dudas comunes</p>
-            <h2>Preguntas frecuentes</h2>
+            <p class="eyebrow">Preguntas frecuentes</p>
+            <h2>Antes de venir</h2>
         </header>
-        <div class="faq reveal">
-            <details>
-                <summary>¿Necesito reservar?</summary>
-                <p>Para pasar el día en el balneario no. Para las cabañas sí conviene reservar con anticipación, sobre todo en feriados.</p>
-            </details>
-            <details>
-                <summary>¿Qué temperatura tiene el agua?</summary>
-                <p>Las piscinas están entre 35 y 42 °C, según la piscina. Si es tu primera vez, empieza por la más templada.</p>
-            </details>
-            <details>
-                <summary>¿El canopy está incluido en la entrada?</summary>
-                <p>No, el canopy se paga aparte. Consulta el precio vigente y el horario en recepción o por WhatsApp.</p>
-            </details>
-            <details>
-                <summary>¿Hay comida en el lugar?</summary>
-                <p>Sí, tenemos <a href="servicios/restaurante.html">restaurante</a> con comida típica hondureña.</p>
-            </details>
-            <details>
-                <summary>¿Qué más hay para conocer cerca?</summary>
-                <p>Gracias es una de las ciudades coloniales más antiguas de Honduras: visita el Fuerte de San Cristóbal, sus iglesias coloniales y el Parque Nacional Montaña de Celaque, con el punto más alto del país.</p>
-            </details>
-        </div>
+        <div class="faq" id="faq-list"></div>
     </div>
 </section>
 
 <section class="cta" id="contacto">
     <div class="container cta__inner reveal">
-        <h2>¿Listo para un baño termal?</h2>
-        <p>Escríbenos para consultar precios, canopy, cabañas o visitas de grupo.</p>
+        <h2>¿Listo para venir?</h2>
+        <p>Escríbenos y te ayudamos a organizar tu visita. Confirmamos cada solicitud manualmente.</p>
         <div class="cta__actions">
-            <a class="btn btn--light" href="https://wa.me/50493515778?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Termas%20del%20R%C3%ADo" target="_blank" rel="noopener">Escribir por WhatsApp</a>
-            <a class="btn btn--ghost-light" href="solicitar.html">Solicitar información</a>
+            <a class="btn btn--light" data-wa="general" data-wa-text="@sitio" href="#">Escribir por WhatsApp</a>
+            <a class="btn btn--ghost-light" href="contacto.html">Ver contacto</a>
         </div>
     </div>
 </section>
@@ -308,22 +182,12 @@
             <path fill="#16474a" d="M0 165 L140 115 L260 155 L400 90 L540 150 L690 110 L820 160 L960 100 L1100 155 L1240 115 L1440 150 V220 H0Z"/>
             <path fill="#0c2a29" d="M0 200 C200 175 360 210 560 190 C760 170 920 210 1120 188 C1260 175 1360 192 1440 185 V220 H0Z"/>
         </svg>
-        <div class="footer-scene__water">
-            <svg viewBox="0 0 2880 100" preserveAspectRatio="none"><path fill="#2f8f8a" fill-opacity=".45" d="M0 40 Q180 0 360 40 T720 40 T1080 40 T1440 40 T1800 40 T2160 40 T2520 40 T2880 40 V100 H0Z"/></svg>
-            <svg viewBox="0 0 2880 100" preserveAspectRatio="none"><path fill="#9fd6cf" fill-opacity=".25" d="M0 55 Q180 25 360 55 T720 55 T1080 55 T1440 55 T1800 55 T2160 55 T2520 55 T2880 55 V100 H0Z"/></svg>
-        </div>
-        <span class="footer-scene__steam"></span>
-        <span class="footer-scene__steam"></span>
-        <span class="footer-scene__steam"></span>
-        <span class="footer-scene__steam"></span>
+        <div class="footer-scene__water"><svg viewBox="0 0 2880 100" preserveAspectRatio="none"><path fill="#2f8f8a" fill-opacity=".45" d="M0 40 Q180 0 360 40 T720 40 T1080 40 T1440 40 T1800 40 T2160 40 T2520 40 T2880 40 V100 H0Z"/></svg></div>
     </div>
     <div class="container site-footer__grid">
         <div>
-            <a class="brand brand--light" href="./">
-                <img src="img/favicon.svg" alt="" width="40" height="40">
-                <span><strong>Termas del Río</strong><small>Aguas termales</small></span>
-            </a>
-            <p class="site-footer__text">Aguas termales y canopy en Gracias, Lempira</p>
+            <a class="brand brand--light" href="./"><img src="img/favicon.svg" alt="" width="40" height="40"><span><strong>Termas del Río</strong><small>Aguas termales</small></span></a>
+            <p class="site-footer__text">Aguas termales y canopy en Gracias, Lempira, Honduras.</p>
         </div>
         <div>
             <h3>Explora</h3>
@@ -333,7 +197,7 @@
                 <li><a href="servicios/cabanas.html">Cabañas</a></li>
                 <li><a href="servicios/restaurante.html">Restaurante</a></li>
                 <li><a href="galeria.html">Galería</a></li>
-                <li><a href="ubicacion.html">Cómo llegar</a></li>
+                <li><a href="solicitar.html">Reservaciones</a></li>
             </ul>
         </div>
         <div>
@@ -344,23 +208,20 @@
         <div>
             <h3>Contacto</h3>
             <ul class="site-footer__list">
-                <li><a href="https://wa.me/50493515778?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Termas%20del%20R%C3%ADo" target="_blank" rel="noopener">WhatsApp</a></li>
-                <li><a href="tel:+50493515778">+504 9351-5778</a></li>
-                <li><a href="mailto:reservaciones@termasdelrio.com">reservaciones@termasdelrio.com</a></li>
+                <li><a data-wa="general" data-wa-text="@sitio" href="#">WhatsApp</a></li>
+                <li><a data-tel href="tel:+50493515778">+504 9351-5778</a></li>
+                <li><a data-mail href="mailto:reservaciones@termasdelrio.com">reservaciones@termasdelrio.com</a></li>
                 <li><a href="https://www.facebook.com/termas.lodge.1/" target="_blank" rel="noopener">Facebook</a></li>
                 <li><a href="https://www.instagram.com/termas_del_rio" target="_blank" rel="noopener">Instagram</a></li>
-                <li class="muted">Todos los días de 7:00 a. m. a 9:00 p. m. (uso de la piscina hasta las 11:00 p. m.)</li>
             </ul>
         </div>
     </div>
-    <div class="container site-footer__bottom">
-        <span>© 2026 Termas del Río · Gracias, Lempira, Honduras</span>
-        <a href="contacto.html">Contacto</a>
-    </div>
+    <div class="container site-footer__bottom"><span>© 2026 Termas del Río · Gracias, Lempira, Honduras</span><a href="contacto.html">Contacto</a></div>
 </footer>
 
-<a class="wa-float" href="https://wa.me/50493515778?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Termas%20del%20R%C3%ADo" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+<a class="wa-float wa-float--v2" data-wa="general" data-wa-text="@sitio" href="#" aria-label="Escríbenos por WhatsApp">
     <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.7c-2 0-4-.6-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.7 10.7 0 1 1 16 26.7zm5.9-8c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.8 8.8 0 0 1-4.4-3.8c-.3-.6.3-.5 1-1.7.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.1 1.1-1.1 2.7s1.2 3.1 1.3 3.3c.2.2 2.3 3.5 5.5 4.9 2 .9 2.8.9 3.8.8.6-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5-.1-.2-.3-.3-.7-.5z"/></svg>
+    <span class="wa-float__label">Reservar</span>
 </a>
 
 <div class="lightbox" id="lightbox" hidden>
@@ -370,6 +231,9 @@
     <button type="button" class="lightbox__nav lightbox__next" aria-label="Siguiente">›</button>
 </div>
 
-<script src="js/main.js?v=3" defer></script>
+<script src="js/site-data.js?v=2" defer></script>
+<script src="js/main.js?v=4" defer></script>
+<script src="js/home.js?v=2" defer></script>
+<script src="js/intro.js?v=2" defer></script>
 </body>
 </html>

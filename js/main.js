@@ -25,21 +25,25 @@
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
 
-    // Aparición al hacer scroll
-    var items = document.querySelectorAll('.reveal');
-    if ('IntersectionObserver' in window) {
-        var io = new IntersectionObserver(function (entries) {
-            entries.forEach(function (entry) {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    io.unobserve(entry.target);
-                }
-            });
-        }, { rootMargin: '0px 0px -60px 0px' });
-        items.forEach(function (el) { io.observe(el); });
-    } else {
-        items.forEach(function (el) { el.classList.add('is-visible'); });
+    // Aparición al hacer scroll (también para contenido creado después)
+    function observar(root, selector) {
+        var items = (root || document).querySelectorAll(selector || '.reveal');
+        if ('IntersectionObserver' in window) {
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        io.unobserve(entry.target);
+                    }
+                });
+            }, { rootMargin: '0px 0px -60px 0px' });
+            items.forEach(function (el) { io.observe(el); });
+        } else {
+            items.forEach(function (el) { el.classList.add('is-visible'); });
+        }
     }
+    observar();
+    window.TermasUI = { observar: observar };
 
     // Menú del restaurante: botones Anterior / Siguiente de cada categoría
     document.querySelectorAll('.menu__cat').forEach(function (cat) {
@@ -66,40 +70,54 @@
         update();
     });
 
-    // Lightbox de galería
-    var links = Array.prototype.slice.call(document.querySelectorAll('[data-lightbox]'));
+    // Lightbox de galería (delegado: funciona con fotos cargadas por JS)
     var box = document.getElementById('lightbox');
-    if (!links.length || !box) return;
-    var img = box.querySelector('img');
-    var cap = box.querySelector('figcaption');
-    var current = 0;
+    if (box) {
+        var img = box.querySelector('img');
+        var cap = box.querySelector('figcaption');
+        var actual = null;
 
-    function show(i) {
-        current = (i + links.length) % links.length;
-        img.src = links[current].getAttribute('href');
-        img.alt = links[current].dataset.caption || '';
-        cap.textContent = links[current].dataset.caption || '';
-    }
-    function close() {
-        box.hidden = true;
-        document.body.style.overflow = '';
-    }
-    links.forEach(function (a, i) {
-        a.addEventListener('click', function (e) {
+        function enlaces() {
+            return Array.prototype.slice.call(document.querySelectorAll('[data-lightbox]')).filter(function (a) {
+                return !a.closest('[hidden]') && a.offsetParent !== null;
+            });
+        }
+
+        function show(enlace) {
+            actual = enlace;
+            img.src = enlace.getAttribute('href');
+            img.alt = enlace.dataset.caption || '';
+            cap.textContent = enlace.dataset.caption || '';
+        }
+        function close() {
+            box.hidden = true;
+            document.body.style.overflow = '';
+            actual = null;
+        }
+        function mover(paso) {
+            var lista = enlaces();
+            var i = lista.indexOf(actual);
+            if (i < 0) { close(); return; }
+            show(lista[(i + paso + lista.length) % lista.length]);
+        }
+
+        document.addEventListener('click', function (e) {
+            var a = e.target.closest('[data-lightbox]');
+            if (!a) return;
             e.preventDefault();
-            show(i);
+            show(a);
             box.hidden = false;
             document.body.style.overflow = 'hidden';
         });
-    });
-    box.querySelector('.lightbox__close').addEventListener('click', close);
-    box.querySelector('.lightbox__prev').addEventListener('click', function () { show(current - 1); });
-    box.querySelector('.lightbox__next').addEventListener('click', function () { show(current + 1); });
-    box.addEventListener('click', function (e) { if (e.target === box) close(); });
-    document.addEventListener('keydown', function (e) {
-        if (box.hidden) return;
-        if (e.key === 'Escape') close();
-        if (e.key === 'ArrowLeft') show(current - 1);
-        if (e.key === 'ArrowRight') show(current + 1);
-    });
+        box.querySelector('.lightbox__close').addEventListener('click', close);
+        box.querySelector('.lightbox__prev').addEventListener('click', function () { mover(-1); });
+        box.querySelector('.lightbox__next').addEventListener('click', function () { mover(1); });
+        box.addEventListener('click', function (e) { if (e.target === box) close(); });
+        document.addEventListener('keydown', function (e) {
+            if (box.hidden) return;
+            if (e.key === 'Escape') close();
+            if (e.key === 'ArrowLeft') mover(-1);
+            if (e.key === 'ArrowRight') mover(1);
+        });
+    }
 })();

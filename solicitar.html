@@ -3,19 +3,20 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Solicitar información o reserva | Termas del Río</title>
-    <meta name="description" content="Solicita información o una reserva en Termas del Río: hospedaje en cabañas, visita de un día al balneario, canopy o grupos. Confirmación manual por nuestro personal.">
+    <title>Reservaciones | Termas del Río</title>
+    <meta name="description" content="Solicita tu reservación en Termas del Río: balneario, cabañas, canopy o grupos. Revisa el resumen y envía tu solicitud por WhatsApp. Queda pendiente de confirmación por nuestro personal.">
     <meta name="theme-color" content="#123b3a">
     <link rel="canonical" href="https://asambleadedios18-cmyk.github.io/termas-del-rio/solicitar.html">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Solicitar información o reserva | Termas del Río">
-    <meta property="og:description" content="Solicita información o una reserva en Termas del Río: hospedaje, visita de un día, canopy o grupos.">
+    <meta property="og:site_name" content="Termas del Río">
+    <meta property="og:title" content="Reservaciones | Termas del Río">
+    <meta property="og:description" content="Elige tu servicio, revisa el resumen y envía tu solicitud por WhatsApp. Confirmación manual por el personal de Termas del Río.">
     <meta property="og:url" content="https://asambleadedios18-cmyk.github.io/termas-del-rio/solicitar.html">
     <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?v=11">
+    <link rel="stylesheet" href="css/style.css?v=12">
     <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
@@ -25,40 +26,32 @@
     <div class="container topbar__inner">
         <span class="topbar__item">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
-            Km 7, Gracias – Santa Rosa de Copán
+            <span data-horario>Horario de atención</span>
         </span>
-        <a class="topbar__item" href="tel:+50493515778">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
-            +504 9351-5778
-        </a>
-        <a class="topbar__item" href="mailto:reservaciones@termasdelrio.com">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
-            reservaciones@termasdelrio.com
-        </a>
+        <a class="topbar__item" data-tel href="#"></a>
+        <a class="topbar__item" data-mail href="#"></a>
     </div>
 </div>
 
 <header class="site-header" id="top">
     <div class="container site-header__inner">
-        <a class="brand" href="./">
-            <img src="img/favicon.svg" alt="" width="40" height="40">
-            <span>
-                <strong>Termas del Río</strong>
-                <small>Aguas termales</small>
-            </span>
+        <a class="brand" href="./" aria-label="Termas del Río, inicio">
+            <img src="img/favicon.svg" alt="" width="42" height="42">
+            <span><strong>Termas del Río</strong><small>Aguas termales</small></span>
         </a>
         <button class="nav-toggle" type="button" aria-controls="nav" aria-expanded="false" aria-label="Abrir menú">
             <span></span><span></span><span></span>
         </button>
         <nav class="nav" id="nav" aria-label="Principal">
+            <a href="./">Inicio</a>
             <a href="servicios/balneario.html">Balneario</a>
-            <a href="servicios/canopy.html">Canopy</a>
-            <a href="servicios/cabanas.html">Cabañas</a>
             <a href="servicios/restaurante.html">Restaurante</a>
+            <a href="servicios/cabanas.html">Cabañas</a>
+            <a href="servicios/canopy.html">Canopy</a>
+            <a href="solicitar.html" class="is-active">Reservaciones</a>
             <a href="galeria.html">Galería</a>
-            <a href="ubicacion.html">Cómo llegar</a>
             <a href="contacto.html">Contacto</a>
-            <a href="solicitar.html" class="is-active">Solicitar</a>
+            <a class="nav__wa" data-wa="general" data-wa-text="@sitio" href="#">WhatsApp</a>
         </nav>
     </div>
 </header>
@@ -67,90 +60,163 @@
 
 <section class="page-head">
     <div class="container">
-        <p class="eyebrow">Solicitudes</p>
-        <h1>Reservas e información</h1>
-        <p class="page-hero__lead">Completa el formulario y se abrirá WhatsApp con tu solicitud ya redactada. Nuestro personal la revisa y te confirma personalmente.</p>
-    </div>
-</section>
-
-<section class="section" id="como-funciona">
-    <div class="container">
-        <header class="section__head reveal">
-            <p class="eyebrow">Sin complicaciones</p>
-            <h2>Así funciona</h2>
-        </header>
-        <div class="request-steps">
-            <article class="card reveal">
-                <div class="step-num">1</div>
-                <h3>Elige y completa</h3>
-                <p>Selecciona el tipo de solicitud y escribe tu nombre, teléfono, fecha y personas.</p>
-            </article>
-            <article class="card reveal">
-                <div class="step-num">2</div>
-                <h3>Se abre WhatsApp</h3>
-                <p>Al enviar, se abre WhatsApp con tu mensaje listo. Solo presiona enviar.</p>
-            </article>
-            <article class="card reveal">
-                <div class="step-num">3</div>
-                <h3>Te confirmamos</h3>
-                <p>Nuestro personal autorizado revisa y confirma cada solicitud manualmente.</p>
-            </article>
-        </div>
+        <p class="eyebrow">Reservaciones</p>
+        <h1>Tu visita, en un solo mensaje</h1>
+        <p class="page-hero__lead">Elige el servicio, la fecha y cuántas personas vienen. Revisa el resumen y envía todo listo a nuestro WhatsApp oficial.</p>
+        <p class="pending-badge">Solicitud pendiente de confirmación</p>
     </div>
 </section>
 
 <section class="section section--tint" id="formulario">
-    <div class="container container--narrow">
-        <header class="section__head reveal">
-            <p class="eyebrow">Formulario</p>
-            <h2>Cuéntanos qué necesitas</h2>
-        </header>
+    <div class="container request-layout">
 
-        <div class="type-nav reveal" id="type-nav" role="group" aria-label="Tipo de solicitud"></div>
+        <div>
+            <form class="request-card reveal" id="reserve-form" novalidate>
+                <p class="eyebrow">Paso 1 de 2</p>
+                <h2>Cuéntanos qué necesitas</h2>
+                <p class="service-note" id="service-note" hidden></p>
 
-        <form class="request-card reveal" id="request-form" novalidate>
-            <p class="eyebrow" id="form-type-eyebrow">Solicitud</p>
-            <div class="form-grid" id="form-fields"></div>
+                <div class="form-grid">
+                    <div class="field field--wide" data-field="servicio">
+                        <label for="f-servicio">Servicio que deseas reservar *</label>
+                        <select id="f-servicio" name="servicio" required>
+                            <option value="">Cargando servicios…</option>
+                        </select>
+                        <p class="field-error">Elige un servicio, por favor.</p>
+                    </div>
 
-            <div class="request-honeypot" aria-hidden="true">
-                <label for="f-empresa">No completar este campo</label>
-                <input type="text" id="f-empresa" name="empresa" tabindex="-1" autocomplete="off">
-            </div>
+                    <div class="field" data-field="fecha">
+                        <label for="f-fecha">Fecha de visita o llegada *</label>
+                        <input type="date" id="f-fecha" name="fecha" required>
+                        <p class="field-error">Elige una fecha, por favor.</p>
+                    </div>
 
-            <label class="request-consent">
-                <input type="checkbox" id="f-consentimiento" name="consentimiento" required>
-                <span>Autorizo que Termas del Río use mis datos únicamente para atender esta solicitud de reservación.</span>
-            </label>
-            <p class="field-error request-consent__error" id="consent-error">Marca la autorización para poder enviar tu solicitud.</p>
+                    <div class="field" data-field="hora">
+                        <label for="f-hora">Hora estimada de llegada</label>
+                        <input type="time" id="f-hora" name="hora">
+                        <span class="field-hint">Opcional. La hora final siempre la confirma el establecimiento.</span>
+                    </div>
 
-            <div class="request-actions">
-                <button type="submit" class="btn btn--primary" id="send-request">Enviar solicitud</button>
-                <button type="button" class="btn btn--ghost" id="send-whatsapp">Prefiero WhatsApp</button>
-                <button type="button" class="btn btn--ghost" id="send-mail">Enviar por correo</button>
-            </div>
-            <p class="request-privacy" id="request-privacy">La confirmación de cada solicitud es manual por parte de nuestro personal autorizado.</p>
-            <div class="request-result" id="request-result" hidden>
-                <p class="eyebrow">Solicitud recibida</p>
-                <h3 id="request-result-code">—</h3>
-                <p id="request-result-text" class="request-result__text"></p>
-                <div class="request-result__actions">
-                    <button type="button" class="btn btn--primary" id="request-result-wa">Enviar también por WhatsApp</button>
-                    <button type="button" class="btn btn--ghost" id="request-result-new">Hacer otra solicitud</button>
+                    <div class="field" data-field="adultos">
+                        <label for="f-adultos">Adultos *</label>
+                        <input type="number" id="f-adultos" name="adultos" min="1" max="30" value="2" required>
+                        <p class="field-error">Indica al menos 1 adulto.</p>
+                    </div>
+
+                    <div class="field" data-field="ninos">
+                        <label for="f-ninos">Niños</label>
+                        <input type="number" id="f-ninos" name="ninos" min="0" max="30" value="0">
+                        <span class="field-hint">Escribe 0 si no vienen niños.</span>
+                    </div>
+
+                    <div class="field field--wide field--hidden" data-field="alojamiento">
+                        <label for="f-alojamiento">Tipo de alojamiento *</label>
+                        <select id="f-alojamiento" name="alojamiento">
+                            <option value="">Elige una opción</option>
+                        </select>
+                        <p class="field-error">Elige el tipo de cabaña, por favor.</p>
+                    </div>
+
+                    <div class="field field--hidden" data-field="noches">
+                        <label for="f-noches">Cantidad de noches *</label>
+                        <input type="number" id="f-noches" name="noches" min="1" max="30" value="1">
+                        <p class="field-error">Indica al menos 1 noche.</p>
+                    </div>
+
+                    <div class="field field--wide" data-field="notas">
+                        <label for="f-notas">Información adicional</label>
+                        <textarea id="f-notas" name="notas" rows="4" placeholder="Celebración, necesidades especiales, dudas sobre el lugar…"></textarea>
+                    </div>
+
+                    <div class="field" data-field="nombre">
+                        <label for="f-nombre">Nombre completo *</label>
+                        <input type="text" id="f-nombre" name="nombre" autocomplete="name" placeholder="Tu nombre y apellidos" required>
+                        <p class="field-error">Escribe tu nombre, por favor.</p>
+                    </div>
+
+                    <div class="field" data-field="telefono">
+                        <label for="f-telefono">Teléfono / WhatsApp *</label>
+                        <input type="tel" id="f-telefono" name="telefono" autocomplete="tel" placeholder="+504 0000-0000" required>
+                        <p class="field-error">Escribe un teléfono válido, por favor.</p>
+                    </div>
                 </div>
-            </div>
-            <p class="form__error request-error" id="request-error" role="alert" hidden></p>
-        </form>
 
-        <p class="contact-note" id="form-fallback" hidden>
-            No se pudo cargar el formulario.
-            <a href="https://wa.me/50493515778?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Termas%20del%20R%C3%ADo" target="_blank" rel="noopener">Escríbenos directamente por WhatsApp</a>.
-        </p>
-        <noscript>
-            <p class="contact-note">Este formulario necesita JavaScript. <a href="https://wa.me/50493515778?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Termas%20del%20R%C3%ADo" target="_blank" rel="noopener">Escríbenos directamente por WhatsApp</a> o llámanos al <a href="tel:+50493515778">+504 9351-5778</a>.</p>
-        </noscript>
+                <label class="request-consent">
+                    <input type="checkbox" id="f-consentimiento" name="consentimiento" required>
+                    <span>Autorizo que Termas del Río use mis datos únicamente para atender esta solicitud de reservación.</span>
+                </label>
+                <p class="field-error request-consent__error" id="consent-error">Marca la autorización para continuar.</p>
+
+                <div class="request-actions">
+                    <button type="submit" class="btn btn--primary" id="revisar">Revisar solicitud</button>
+                    <button type="reset" class="btn btn--ghost" id="limpiar">Limpiar</button>
+                </div>
+                <p class="request-privacy" id="request-privacy">Esta solicitud no confirma ni cobra una reserva. El personal autorizado revisa disponibilidad y te confirma personalmente.</p>
+                <p class="form__error request-error" id="request-error" role="alert" hidden></p>
+            </form>
+
+            <section class="resumen reveal" id="resumen" hidden aria-labelledby="resumen-titulo">
+                <p class="eyebrow">Paso 2 de 2</p>
+                <h2 id="resumen-titulo">Revisa tu solicitud</h2>
+                <p class="muted">Si algo no está bien, vuelve a editarla antes de enviarla.</p>
+
+                <dl class="summary-list" id="summary-list"></dl>
+
+                <p class="pending-badge">Pendiente de confirmación</p>
+                <p class="wa-status">Al enviar, se abrirá WhatsApp con este mensaje ya redactado. Tu solicitud <strong>no queda confirmada</strong> hasta que nuestro personal te responda.</p>
+
+                <div class="resumen__acciones">
+                    <button type="button" class="btn btn--wa btn--lg" id="confirmar-wa">Confirmar reservación por WhatsApp</button>
+                    <button type="button" class="btn btn--ghost" id="editar-solicitud">Editar datos</button>
+                </div>
+                <p class="wa-status" id="wa-status" role="status"></p>
+                <p><a class="link-arrow" id="wa-fallback" href="#" target="_blank" rel="noopener">Abrir WhatsApp manualmente →</a></p>
+            </section>
+
+            <p class="contact-note" id="form-fallback" hidden>
+                No se pudo cargar el formulario.
+                <a href="contacto.html">Escríbenos desde la página de contacto</a>.
+            </p>
+            <noscript>
+                <p class="contact-note">Este formulario necesita JavaScript. Puedes ver nuestros canales en <a href="contacto.html">contacto</a>.</p>
+            </noscript>
+        </div>
+
+        <aside class="reserve-aside" aria-label="Información de reservaciones">
+            <div class="reserve-aside__card">
+                <h3>Así funciona</h3>
+                <ol>
+                    <li>Completa los datos y revisa el resumen.</li>
+                    <li>Presiona «Confirmar reservación por WhatsApp».</li>
+                    <li>Envía el mensaje desde WhatsApp.</li>
+                    <li>Nuestro personal revisa y te confirma la disponibilidad.</li>
+                </ol>
+            </div>
+            <div class="reserve-aside__card reserve-aside__card--alert">
+                <h3>Estado: pendiente</h3>
+                <p><strong>Ninguna reserva se confirma automáticamente.</strong> El envío por WhatsApp es una solicitud. La confirmación definitiva y cualquier forma de pago se acuerdan directamente con el establecimiento.</p>
+            </div>
+            <div class="reserve-aside__card">
+                <h3>¿Prefieres escribirnos?</h3>
+                <p><a data-wa="general" data-wa-text="@sitio" href="#">WhatsApp oficial</a></p>
+                <p><a data-tel href="#">Llamarnos</a></p>
+                <p><a data-mail href="#">Correo de reservaciones</a></p>
+            </div>
+        </aside>
+
     </div>
 </section>
 
+<section class="cta">
+    <div class="container cta__inner reveal">
+        <h2>¿Aún tienes dudas?</h2>
+        <p>Consulta horarios, precios o disponibilidad antes de llenar el formulario.</p>
+        <div class="cta__actions">
+            <a class="btn btn--light" data-wa="general" data-wa-text="@sitio" href="#">Escribir por WhatsApp</a>
+            <a class="btn btn--ghost-light" href="contacto.html">Ver contacto</a>
+        </div>
+    </div>
+</section>
 </main>
 
 <footer class="site-footer">
@@ -160,22 +226,12 @@
             <path fill="#16474a" d="M0 165 L140 115 L260 155 L400 90 L540 150 L690 110 L820 160 L960 100 L1100 155 L1240 115 L1440 150 V220 H0Z"/>
             <path fill="#0c2a29" d="M0 200 C200 175 360 210 560 190 C760 170 920 210 1120 188 C1260 175 1360 192 1440 185 V220 H0Z"/>
         </svg>
-        <div class="footer-scene__water">
-            <svg viewBox="0 0 2880 100" preserveAspectRatio="none"><path fill="#2f8f8a" fill-opacity=".45" d="M0 40 Q180 0 360 40 T720 40 T1080 40 T1440 40 T1800 40 T2160 40 T2520 40 T2880 40 V100 H0Z"/></svg>
-            <svg viewBox="0 0 2880 100" preserveAspectRatio="none"><path fill="#9fd6cf" fill-opacity=".25" d="M0 55 Q180 25 360 55 T720 55 T1080 55 T1440 55 T1800 55 T2160 55 T2520 55 T2880 55 V100 H0Z"/></svg>
-        </div>
-        <span class="footer-scene__steam"></span>
-        <span class="footer-scene__steam"></span>
-        <span class="footer-scene__steam"></span>
-        <span class="footer-scene__steam"></span>
+        <div class="footer-scene__water"><svg viewBox="0 0 2880 100" preserveAspectRatio="none"><path fill="#2f8f8a" fill-opacity=".45" d="M0 40 Q180 0 360 40 T720 40 T1080 40 T1440 40 T1800 40 T2160 40 T2520 40 T2880 40 V100 H0Z"/></svg></div>
     </div>
     <div class="container site-footer__grid">
         <div>
-            <a class="brand brand--light" href="./">
-                <img src="img/favicon.svg" alt="" width="40" height="40">
-                <span><strong>Termas del Río</strong><small>Aguas termales</small></span>
-            </a>
-            <p class="site-footer__text">Aguas termales y canopy en Gracias, Lempira</p>
+            <a class="brand brand--light" href="./"><img src="img/favicon.svg" alt="" width="40" height="40"><span><strong>Termas del Río</strong><small>Aguas termales</small></span></a>
+            <p class="site-footer__text">Aguas termales y canopy en Gracias, Lempira, Honduras.</p>
         </div>
         <div>
             <h3>Explora</h3>
@@ -185,7 +241,7 @@
                 <li><a href="servicios/cabanas.html">Cabañas</a></li>
                 <li><a href="servicios/restaurante.html">Restaurante</a></li>
                 <li><a href="galeria.html">Galería</a></li>
-                <li><a href="ubicacion.html">Cómo llegar</a></li>
+                <li><a href="solicitar.html">Reservaciones</a></li>
             </ul>
         </div>
         <div>
@@ -196,27 +252,25 @@
         <div>
             <h3>Contacto</h3>
             <ul class="site-footer__list">
-                <li><a href="https://wa.me/50493515778?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Termas%20del%20R%C3%ADo" target="_blank" rel="noopener">WhatsApp</a></li>
-                <li><a href="tel:+50493515778">+504 9351-5778</a></li>
-                <li><a href="mailto:reservaciones@termasdelrio.com">reservaciones@termasdelrio.com</a></li>
+                <li><a data-wa="general" data-wa-text="@sitio" href="#">WhatsApp</a></li>
+                <li><a data-tel href="#">Teléfono</a></li>
+                <li><a data-mail href="#">Correo</a></li>
                 <li><a href="https://www.facebook.com/termas.lodge.1/" target="_blank" rel="noopener">Facebook</a></li>
                 <li><a href="https://www.instagram.com/termas_del_rio" target="_blank" rel="noopener">Instagram</a></li>
-                <li class="muted">Todos los días de 7:00 a. m. a 9:00 p. m. (uso de la piscina hasta las 11:00 p. m.)</li>
             </ul>
         </div>
     </div>
-    <div class="container site-footer__bottom">
-        <span>© 2026 Termas del Río · Gracias, Lempira, Honduras</span>
-        <a href="contacto.html">Contacto</a>
-    </div>
+    <div class="container site-footer__bottom"><span>© 2026 Termas del Río · Gracias, Lempira, Honduras</span><a href="contacto.html">Contacto</a></div>
 </footer>
 
-<a class="wa-float" href="https://wa.me/50493515778?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Termas%20del%20R%C3%ADo" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+<a class="wa-float wa-float--v2" data-wa="general" data-wa-text="@sitio" href="#" aria-label="Escríbenos por WhatsApp">
     <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.7c-2 0-4-.6-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.7 10.7 0 1 1 16 26.7zm5.9-8c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.8 8.8 0 0 1-4.4-3.8c-.3-.6.3-.5 1-1.7.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.1 1.1-1.1 2.7s1.2 3.1 1.3 3.3c.2.2 2.3 3.5 5.5 4.9 2 .9 2.8.9 3.8.8.6-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5-.1-.2-.3-.3-.7-.5z"/></svg>
+    <span class="wa-float__label">Reservar</span>
 </a>
 
+<script src="js/site-data.js?v=2" defer></script>
 <script src="js/supabase-config.js?v=1" defer></script>
-<script src="js/main.js?v=3" defer></script>
-<script src="js/solicitar.js?v=3" defer></script>
+<script src="js/main.js?v=4" defer></script>
+<script src="js/solicitar.js?v=4" defer></script>
 </body>
 </html>

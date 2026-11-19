@@ -31,9 +31,10 @@
         "Hidrátate: el agua caliente relaja, pero deshidrata."
       ],
       "fotos": {
-        "estado": "pendiente",
-        "espacios_previstos": ["img/hero.webp", "img/balneario.webp"],
-        "referencia_panel_oficial": ["img[hero_image]", "img[about_image]"]
+        "estado": "reales",
+        "principal": "img/cabanas/piscina-principal.jpg",
+        "galeria": ["img/cabanas/piscina-principal.jpg", "img/cabanas/piscina-secundaria.jpg"],
+        "seccion_galeria": "balneario"
       },
       "videos": [],
       "solicitud": "visita-dia"
@@ -64,8 +65,9 @@
       ],
       "fotos": {
         "estado": "pendiente",
-        "espacios_previstos": ["img/canopy.webp"],
-        "referencia_panel_oficial": ["img[canopy_image]"]
+        "nota": "Sin fotografías reales del canopy disponibles todavía. No se usan imágenes genéricas.",
+        "galeria": [],
+        "seccion_galeria": "canopy"
       },
       "videos": [],
       "solicitud": "canopy"
@@ -98,9 +100,15 @@
         "Reserva con anticipación, sobre todo en fines de semana, feriados y Semana Santa."
       ],
       "fotos": {
-        "estado": "pendiente",
-        "espacios_previstos": ["img/cabanas.webp"],
-        "referencia_panel_oficial": ["img[cabins_image]"]
+        "estado": "reales",
+        "principal": "img/cabanas/cabanas-bosque-01.jpg",
+        "galeria": [
+          "img/cabanas/cabanas-bosque-01.jpg",
+          "img/cabanas/cabanas-bosque-02.jpg",
+          "img/cabanas/cabanas-exterior.jpg",
+          "img/cabanas/cabanas-interior.jpg"
+        ],
+        "seccion_galeria": "cabanas"
       },
       "videos": [],
       "solicitud": "hospedaje"
@@ -130,8 +138,9 @@
       ],
       "fotos": {
         "estado": "pendiente",
-        "espacios_previstos": ["img/restaurante.webp"],
-        "referencia_panel_oficial": ["img[food_image]", "img_cat[food_cat_*]"]
+        "nota": "Sin fotografías reales del restaurante disponibles en este repositorio. No se usan imágenes genéricas.",
+        "galeria": [],
+        "seccion_galeria": "restaurante"
       },
       "videos": [],
       "solicitud": "grupos"

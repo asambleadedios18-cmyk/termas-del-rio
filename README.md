@@ -1,192 +1,186 @@
-# Termas del Río 🌊♨️ — Plataforma turística integral
+# Termas del Río 🌊♨️ — Sitio público rediseñado (v12)
 
-Plataforma turística de **Termas del Río** (balneario de aguas termales y canopy
-en Gracias, Lempira, Honduras), desarrollada en fases en este repositorio.
-También sirve de respaldo del contenido administrado en el panel del sitio oficial.
+Sitio público estático de **Termas del Río** (balneario de aguas termales y
+canopy en Gracias, Lempira, Honduras), con portada cinematográfica, galería de
+fotos reales y solicitudes de reserva por WhatsApp.
 
-- **Sitio oficial (panel PHP, administrado por terceros):** https://www.termasdelrio.com
-- **Vista previa de la plataforma (GitHub Pages):** https://asambleadedios18-cmyk.github.io/termas-del-rio/
+El sitio PHP oficial sigue siendo administrado por terceros y **no se ha
+modificado**: este repositorio es la vista previa y la capa pública del
+proyecto. No hay acceso a archivos ni FTP de Hostinger.
+
+- **Panel oficial (PHP, administrado por terceros):** https://www.termasdelrio.com/admin/index.php
+- **Vista previa (GitHub Pages):** https://asambleadedios18-cmyk.github.io/termas-del-rio/
 - **Repositorio:** https://github.com/asambleadedios18-cmyk/termas-del-rio
 
 ## ⚠️ Regla de oro del contenido
 
 > **Nunca inventar servicios, precios, horarios ni información comercial.**
-> Todo el contenido real proviene del panel oficial (www.termasdelrio.com/admin)
-> o de lo que confirme el establecimiento. Las categorías previstas pero NO
-> confirmadas se guardan con `"estado": "borrador"` en `data/` y **no se publican**
-> en el sitio hasta que el establecimiento las confirme.
+> Todo el contenido real proviene del panel oficial o de lo que confirme el
+> establecimiento. Las categorías previstas pero NO confirmadas se guardan con
+> `"estado": "borrador"` y **no se publican**.
+
+**Servicios publicados:** balneario, restaurante, cabañas y canopy.
+
+**No publicar:** salón de conferencias, áreas recreativas, campo de fútbol/vóley,
+bungalós ni asados. Restaurante y canopy se muestran sin foto hasta recibir
+material real del establecimiento.
 
 ## Estructura
 
 ```
 termas-del-rio/
-├── index.html                 → Portada cinematográfica del portal
+├── index.html                 → Portada cinematográfica (v12)
 ├── servicios/                 → Una página por servicio confirmado
-│   ├── balneario.html         → Balneario y piscinas termales
-│   ├── canopy.html            → Canopy sobre el valle
-│   ├── cabanas.html           → Cabañas y hospedaje
-│   └── restaurante.html       → Restaurante (menú real)
-├── galeria.html               → Galería (vacía hasta tener fotos)
-├── ubicacion.html             → Ubicación y cómo llegar
-├── contacto.html              → Contacto y canales
-├── solicitar.html             → Formulario de solicitudes (Fase 3)
-├── 404.html                   → Página de error
-├── css/style.css              → Estilos (diseño oficial + estilos de la plataforma)
-├── js/main.js                 → Comportamientos (menú, animaciones, lightbox)
-├── js/solicitar.js            → Motor del formulario de solicitudes
-├── js/supabase-config.js      → URL y clave pública (anon) de Supabase
-├── admin/                     → PANEL DE RESERVACIONES (SPA estática)
-│   ├── index.html             → Acceso, login y arranque del panel
-│   ├── css/admin.css          → Diseño del panel (escritorio, tableta y móvil)
-│   └── js/                    → Router, conexión y módulos del panel
-├── supabase/                  → Esquema, funciones, RLS y datos iniciales (SQL)
-│   └── README.md              → Guía de instalación paso a paso
-├── img/                       → Imágenes del sitio (incluye img/cabanas/)
-├── data/                      → CAPA DE DATOS: catálogo del contenido
-│   ├── sitio.json             → Identidad, contacto, tarifas, horario, FAQ, SEO
-│   ├── servicios.json         → Servicios: publicados y borradores
-│   ├── menu.json               → Menú oficial del restaurante (transcrito del PDF)
-│   ├── galeria.json           → Esquema de fotos y videos (sin fotos aún)
-│   └── solicitudes-tipos.json → Tipos de solicitud/reserva (activos y borradores)
+│   ├── balneario.html
+│   ├── canopy.html
+│   ├── cabanas.html
+│   └── restaurante.html
+├── solicitar.html             → Motor de reservas por WhatsApp
+├── galeria.html               → Galería de fotos reales con filtros y lightbox
+├── contacto.html · ubicacion.html · 404.html
+├── css/style.css              → Diseño v12 (intro, hero, tarjetas, reservas, responsive)
+├── js/
+│   ├── site-data.js           → Capa central: contacto, WhatsApp, servicios y galería
+│   ├── intro.js               → Introducción animada, omitir y prefers-reduced-motion
+│   ├── home.js                → Render data-driven de la portada
+│   ├── galeria.js             → Filtros y render de la galería
+│   ├── main.js                → Menú móvil, reveal, lightbox y enlaces
+│   ├── solicitar.js           → Validación, resumen, wa.me y registro opcional
+│   └── supabase-config.js     → URL y clave anon (vacías hasta configurar)
+├── data/
+│   ├── sitio.json             → Identidad, contacto, WhatsApp, FAQ, tarifas, tipos de cabaña
+│   ├── servicios.json         → Servicios publicados y borradores
+│   ├── galeria.json           → 7 fotos reales; secciones vacías declaradas
+│   ├── menu.json              → Menú oficial del restaurante
+│   └── solicitudes-tipos.json → Tipos de solicitud (activos y borradores)
+├── admin/                     → Panel de reservaciones (SPA estática, sin cambios de diseño)
+├── supabase/                  → SQL: tablas, funciones, RPC, RLS y datos iniciales
+├── img/                       → Imágenes reales (incluye img/cabanas/)
 ├── robots.txt · sitemap.xml · .nojekyll
 └── README.md
 ```
 
-## Cómo se administra el contenido (sin tocar código)
+## Novedades de la v12
 
-La administración se hace con **GitHub + OpenCode** en lenguaje natural:
+- **Introducción cinematográfica:** «BIENVENIDO A TERMAS DEL RÍO», logo real,
+  transición entre fotografías del establecimiento, botón **Omitir**, tecla
+  `Escape`, duración menor a 3 segundos y una sola vez por sesión. Se crea por
+  JavaScript para no ocultar el contenido de SEO. Con
+  `prefers-reduced-motion: reduce` no se muestra.
+- **Portada data-driven:** hero con foto real, datos rápidos, experiencias,
+  vista previa de galería, FAQ y banda de reserva. El contenido sale de
+  `data/*.json`, no del HTML.
+- **Reservas en dos pasos:** el visitante completa servicio, fecha, hora,
+  adultos, niños, alojamiento, noches y notas; revisa un resumen y envía un
+  mensaje ya redactado a WhatsApp. El estado es siempre **pendiente de
+  confirmación**.
+- **WhatsApp centralizado:** el número real `50493515778` vive únicamente en
+  `data/sitio.json`. Todos los enlaces `data-wa` se construyen desde ahí con
+  `js/site-data.js`; ya no hay `wa.me` escrito a mano en el HTML.
+- **Galería real:** 7 fotografías de `img/cabanas/` organizadas por balneario,
+  cabañas y entorno. Los filtros respetan el lightbox/carrusel y las secciones
+  sin fotos muestran una nota, nunca imágenes genéricas.
+- **SEO y responsive:** metadatos y `og:*` por página, `sitemap.xml` con
+  `lastmod` al 2026-11-19, navegación móvil, imágenes con `alt` y `lazy`,
+  enlaces de contacto accesibles.
+
+## Cómo administrar el contenido (sin tocar código)
 
 1. Abre OpenCode en este repositorio.
 2. Pide el cambio en español, por ejemplo:
-   - «Cambia el precio de entrada de adultos a L 120 en todo el sitio»
-   - «Cambia el precio del desayuno americano en el menú del restaurante»
-   - «Agrega una nueva promoción» (queda como borrador si no está confirmada)
-   - «Actualiza el horario de atención»
-   - «Sube estas fotos a la galería» (indicando las rutas de los archivos)
-3. OpenCode actualiza `data/*.json` (catálogo) y las páginas HTML
-   correspondientes, y hace el commit.
+   - «Cambia el número de WhatsApp en todo el sitio» → edita `data/sitio.json`.
+   - «Agrega una foto real a la galería» → edita `data/galeria.json`.
+   - «Actualiza el horario o una respuesta de FAQ» → edita `data/sitio.json`.
+   - «Publica/habilita un servicio confirmado» → edita `data/servicios.json`.
+3. OpenCode actualiza los JSON y, si hace falta, las páginas y hace el commit.
 4. GitHub Pages publica el cambio automáticamente en la vista previa.
 
-**Si usas GitHub Desktop:** puedes ver y confirmar los cambios desde la app,
-pero la vía principal es pedirle los cambios a OpenCode.
+**Regla:** si una categoría sigue en borrador, no se activa en el menú ni en el
+formulario hasta confirmación del establecimiento.
 
-## Contenido real actual (2026-11-10)
+## Contacto, tarifas y horario (confirmados en el panel oficial)
 
-### Contacto
-- **WhatsApp / Celular:** +504 9351-5778 (wa.me/50493515778)
+- **WhatsApp / celular:** +504 9351-5778 (`50493515778`)
 - **Correo:** reservaciones@termasdelrio.com
 - **Facebook:** https://www.facebook.com/termas.lodge.1/
 - **Instagram:** https://www.instagram.com/termas_del_rio
-- **TikTok:** https://www.tiktok.com/@termasdelriolodge
-  *(nota: el panel oficial no tiene campo para TikTok por ahora)*
+- **Entrada adultos:** L 100 · **Entrada niños:** L 50 · **Canopy:** L 800 (5 líneas)
+- **Cabañas:** precio por noche, a consultar
+- **Horario:** todos los días de 7:00 a. m. a 9:00 p. m. (uso de piscina hasta las 11:00 p. m.)
+- **Dirección:** Km 7, carretera Gracias – Santa Rosa de Copán, aldea Río Grande,
+  Gracias, Lempira, Honduras
 
-### Tarifas y horario (confirmados en el panel oficial)
-- Entrada adultos: **L 100** · Entrada niños: **L 50** · Canopy: **L 800** (5 líneas)
-- Horario: **todos los días de 7:00 a. m. a 9:00 p. m.** (uso de la piscina hasta las 11:00 p. m.)
-- Cabañas por noche: **consultar**
+Los tipos reales publicados son **Cabaña Doble** (2 camas Queen, hasta 2
+personas) y **Cabaña Triple** (2 camas Queen + 1 unipersonal, hasta 3 personas).
+Están en `data/sitio.json` y se cargan también desde Supabase cuando esté
+configurado.
 
-### Menú del restaurante (confirmado, transcripción del PDF oficial)
+### Galería
 
-El menú completo de la carta está transcrito en **`data/menu.json`** y publicado
-en `servicios/restaurante.html`: 8 categorías (desayunos, antojos, campestres,
-sugerencias de la casa, mariscos, bebidas frías, cervezas y cócteles, bebidas
-calientes) con precios en lempiras e impuestos incluidos. Fuente: PDF
-«MENU A LA CARTA TERMAS DEL RIO» del establecimiento (octubre 2026).
+Fotos reales incluidas: piscina principal, piscina secundaria, cabañas en el
+bosque (2), exterior e interior de cabaña y camino al bosque. Restaurante y
+canopy quedan sin fotografías hasta que el establecimiento entregue material
+real.
 
-**Regla de edición:** el menú vive en DOS lugares que deben coincidir —
-`data/menu.json` (catálogo editable) y `servicios/restaurante.html` (página
-pública). Para cambiar un precio o platillo: edita `data/menu.json` y pide a
-OpenCode «sincroniza el menú de la página del restaurante», o edita ambos a mano.
+## Sistema de reservas (WhatsApp primero)
 
-**Error detectado en el PDF original:** la descripción en inglés de
-«Tajadas de plátano con carne molida» repite el texto de los panqueques
-(error de copia y pega en el archivo fuente). En el sitio se omite esa
-descripción en inglés hasta que el establecimiento confirme la corrección.
+1. En `solicitar.html` se elige servicio, fecha, hora estimada, adultos, niños,
+   tipo de cabaña, noches y notas, además de nombre y teléfono.
+2. «Revisar solicitud» valida los campos y muestra el resumen antes de enviar.
+3. «Confirmar reservación por WhatsApp» abre `wa.me` con el mensaje organizado y
+   el número centralizado. Si no se abre, hay un enlace manual.
+4. La solicitud queda **pendiente**. El personal autorizado confirma
+   disponibilidad, horario y cualquier forma de pago directamente con el
+   visitante. **Nunca hay confirmación ni cobro automático.**
 
-### Servicios confirmados (publicados)
-Balneario, canopy, cabañas, restaurante.
+Si Supabase está configurado, la misma solicitud se registra como pendiente en
+el panel mediante `crear_solicitud_publica` y se muestra un código `SOL-...`. Si
+no está configurado o falla, WhatsApp sigue funcionando igual.
 
-### Cabañas
-Dos tipos publicados en `servicios/cabanas.html`, con descripciones proporcionadas
-por el establecimiento:
+Los tipos activos y sus mensajes se definen en `data/solicitudes-tipos.json`.
+Los borradores (`restaurante`, `eventos`, `paquetes`) **no se activan** sin
+confirmación.
 
-- **Cabaña Doble** — 2 camas Queen, hasta 2 personas.
-- **Cabaña Triple** — 2 camas Queen + 1 cama unipersonal, hasta 3 personas.
+## Panel de reservaciones y Supabase
 
-El **precio por noche se consulta** (aún no hay tarifa pública cargada). El
-inventario inicial es de **10 cabañas dobles y 4 triples**, editable desde el
-panel. Las tarifas se configuran en el panel cuando el establecimiento las
-confirme.
+El panel en `admin/` se conserva sin cambios de diseño: tablero, reservaciones,
+calendario, cabañas, huéspedes, pagos, solicitudes, notificaciones y seguridad.
 
-### Categorías previstas (borrador, NO publicar hasta confirmación)
-Instalaciones, aventuras, naturaleza, eventos, promociones, paquetes, historia.
+- **URL y clave `anon public` pendientes:** `admin/js/config.js` y
+  `js/supabase-config.js` están vacíos a la espera del proyecto real.
+- Hasta configurarlos, el flujo público funciona solo con WhatsApp.
+- La clave `service_role` **nunca** se escribe en el repositorio.
+- Instalación: seguir `supabase/README.md` (ejecutar `01` → `05`, crear el
+  usuario administrador y promoverlo).
+- No se ha probado el ciclo completo web → panel → confirmación → pago →
+  notificación porque faltan las credenciales públicas del proyecto.
 
-## Estado del panel oficial (www.termasdelrio.com)
+## Estado del sitio oficial
 
-- [x] Datos de contacto ingresados (WhatsApp, teléfono, correo, Facebook, Instagram)
-- [x] Tarifas actualizadas (adultos L 100, niños L 50, canopy L 800)
-- [x] Horario actualizado en el panel
-- [x] Menú del restaurante publicado en `s[food_menu]` (2026-11-12): 8 categorías, 35 líneas, precios con «L.» y alitas de 12 unidades corregidas a L 350
-- [ ] Subir fotos (portada, balneario, canopy, cabañas, restaurante, galería)
-- [ ] Quitar el modo mantenimiento y poner el sitio en línea
-
-## Sistema de solicitudes (Fase 3)
-
-La página **`solicitar.html`** permite pedir información o reservas:
-
-1. El visitante elige el tipo de solicitud (hospedaje, visita de un día,
-   canopy, grupos, piscinas) y completa sus datos.
-2. Al enviar, la solicitud se registra en el panel de reservaciones mediante
-   Supabase y recibe un código **`SOL-...`**. Si Supabase aún no está
-   configurado o no hay conexión, el formulario abre **WhatsApp** (o el correo)
-   con el mensaje ya redactado, sin perder los datos.
-3. **La confirmación es MANUAL** por el personal autorizado del balneario.
-   El formulario nunca confirma ni cobra una reserva por sí solo.
-
-Los tipos de solicitud, sus campos y el texto de cada mensaje se definen en
-`data/solicitudes-tipos.json`. Los tipos `"estado": "borrador"`
-(restaurante, eventos, paquetes) **no aparecen** en el formulario hasta que
-el establecimiento los confirme.
-
-## Panel de reservaciones (administración)
-
-El panel es una aplicación estática dentro de **`admin/`**:
-
-- **Vista previa:** https://asambleadedios18-cmyk.github.io/termas-del-rio/admin/
-- **Módulos:** tablero, reservaciones, calendario de disponibilidad, cabañas y
-  tarifas, huéspedes, pagos, solicitudes web, notificaciones y seguridad
-  (roles y auditoría).
-- **Acceso:** solo usuarios creados en Supabase Auth y marcados como
-  `rol = 'admin'` o `rol = 'recepcion'` con `activo = true`.
-- **Instalación:** sigue **`supabase/README.md`** (ejecutar `01`→`05`, crear el
-  usuario administrador, promoverlo y copiar la URL y la clave `anon public` en
-  `admin/js/config.js` y `js/supabase-config.js`).
-- **Seguridad:** la clave `service_role` **nunca** se escribe en el sitio. Las
-  reglas RLS limitan lo que cada rol puede leer y modificar; la web pública solo
-  puede crear solicitudes mediante una función controlada.
-- **Disponibilidad:** una restricción de exclusión impide reservas traslapadas
-  para la misma cabaña en estado pendiente o confirmada.
+- El panel PHP sigue con el modo mantenimiento activo. **No se desactiva sin
+  autorización explícita.**
+- No hay acceso a archivos/FTP de Hostinger: el rediseño no puede aplicarse
+  directamente al sitio PHP desde este repositorio.
+- La publicación en `termasdelrio.com` es un paso posterior y requiere aprobación.
 
 ## Fases del proyecto
 
-1. **Fundación modular** ✅ *(estructura, portada, páginas de servicios, capa de datos)*
-2. Páginas individuales de cada servicio ✅ *estructura lista; falta integrar fotos y videos cuando existan*
-3. **Sistema de solicitudes por WhatsApp** ✅ *(solicitar.html + js/solicitar.js, confirmación manual)*
-4. Portal completo
-5. **Panel de reservaciones con Supabase** ✅ *código listo; pendiente conectar el proyecto y crear el usuario administrador*
-6. Administración 100 % sin código (GitHub + OpenCode)
-7. Publicación en termasdelrio.com (solo con aprobación explícita)
+1. **Fundación modular** ✅
+2. **Páginas de servicios** ✅ *con foto real en balneario; restaurante y canopy sin foto*
+3. **Solicitudes por WhatsApp** ✅ *(resumen, validación, pendiente y registro opcional)*
+4. **Rediseño v12 y galería real** ✅ *(intro, portada, reservas, SEO y responsive)*
+5. **Panel con Supabase** 🟡 *código listo; pendiente URL/anon key y prueba end-to-end*
+6. Administración 100 % sin código 🟡 *(GitHub + OpenCode)*
+7. Publicación en termasdelrio.com ⏳ *(requiere autorización y acceso)*
 
 ## Notas técnicas
 
-- Sitio 100 % estático: HTML + CSS + JS, sin paso de compilación.
-- El diseño reutiliza la identidad visual del sitio oficial
-  (verde termal `#123b3a`, agua `#2f8f8a`, dorado `#c8a24a`, Playfair Display + Montserrat).
-- Mientras no haya fotos, las secciones usan marcadores de posición generados
-  con CSS (no imágenes genéricas de banco). Cuando lleguen las fotos reales,
-  se reemplazan los marcadores.
-- Reservas y solicitudes: canal principal WhatsApp; la confirmación es manual
-  por personal autorizado. El panel permite registrar pagos, pero **no procesa
-  cobros en línea** ni confirma reservas automáticamente.
-- Los archivos `styles.css` e `images/` del respaldo inicial fueron retirados
-  en la Fase 1 (quedan en el historial de Git si se necesitan).
+- Sitio 100 % estático: HTML + CSS + JS, sin compilación.
+- Las rutas de `data/*.json` se calculan desde la etiqueta `<script>`, por lo que
+  funcionan igual en la raíz, en `/servicios/` y bajo `/termas-del-rio/` en
+  GitHub Pages.
+- Caché de assets con sufijo `?v=12` (CSS), `?v=4` (JS principal/reservas) y
+  `?v=2` (datos, intro, portada y galería).
+- El lightbox filtra enlaces ocultos para que el carrusel respete los filtros de
+  la galería.
+- Sin credenciales ni `service_role` en el repositorio.
