@@ -4,12 +4,14 @@ Sitio público estático de **Termas del Río** (balneario de aguas termales y
 canopy en Gracias, Lempira, Honduras), con portada cinematográfica, galería de
 fotos reales y solicitudes de reserva por WhatsApp.
 
-El sitio PHP oficial sigue siendo administrado por terceros y **no se ha
-modificado**: este repositorio es la vista previa y la capa pública del
-proyecto. No hay acceso a archivos ni FTP de Hostinger.
+Este repositorio publica la capa pública en GitHub Pages y está configurado
+para servirse desde el dominio propio. El sitio PHP oficial sigue siendo
+administrado por terceros y **no se ha modificado**: no hay acceso a archivos
+ni FTP de Hostinger.
 
+- **Sitio público (destino):** https://termasdelrio.com
+- **Vista previa temporal (GitHub Pages):** https://asambleadedios18-cmyk.github.io/termas-del-rio/
 - **Panel oficial (PHP, administrado por terceros):** https://www.termasdelrio.com/admin/index.php
-- **Vista previa (GitHub Pages):** https://asambleadedios18-cmyk.github.io/termas-del-rio/
 - **Repositorio:** https://github.com/asambleadedios18-cmyk/termas-del-rio
 
 ## ⚠️ Regla de oro del contenido
@@ -162,7 +164,28 @@ calendario, cabañas, huéspedes, pagos, solicitudes, notificaciones y seguridad
   autorización explícita.**
 - No hay acceso a archivos/FTP de Hostinger: el rediseño no puede aplicarse
   directamente al sitio PHP desde este repositorio.
-- La publicación en `termasdelrio.com` es un paso posterior y requiere aprobación.
+- GitHub Pages ya tiene el dominio `termasdelrio.com` configurado en el repo
+  (archivo `CNAME` y ajuste de la API). Falta aplicar los registros DNS en
+  Cloudflare para que el dominio apunte a GitHub Pages.
+- Al cambiar el DNS, el dominio dejará de servir el sitio PHP actual. El panel
+  `/admin/index.php` debe migrarse o alojarse en otro hostname antes de hacerlo.
+
+## Dominio propio (Cloudflare)
+
+El dominio usa Cloudflare (`novalee.ns.cloudflare.com` y
+`fred.ns.cloudflare.com`). En **DNS → Records** configurar:
+
+| Tipo | Nombre | Valor | Proxy |
+|---|---|---|---|
+| A | `@` | `185.199.108.153` | DNS only (nube gris) |
+| A | `@` | `185.199.109.153` | DNS only |
+| A | `@` | `185.199.110.153` | DNS only |
+| A | `@` | `185.199.111.153` | DNS only |
+| CNAME | `www` | `asambleadedios18-cmyk.github.io` | DNS only |
+
+Borrar los A/CNAME actuales de `@` y `www` que apuntan a Cloudflare/Hostinger.
+Después marcar **Enforce HTTPS** en *Settings → Pages → Custom domain* cuando
+GitHub termine de emitir el certificado.
 
 ## Fases del proyecto
 
@@ -172,7 +195,7 @@ calendario, cabañas, huéspedes, pagos, solicitudes, notificaciones y seguridad
 4. **Rediseño v12 y galería real** ✅ *(intro, portada, reservas, SEO y responsive)*
 5. **Panel con Supabase** 🟡 *código listo; pendiente URL/anon key y prueba end-to-end*
 6. Administración 100 % sin código 🟡 *(GitHub + OpenCode)*
-7. Publicación en termasdelrio.com ⏳ *(requiere autorización y acceso)*
+7. Publicación en termasdelrio.com 🟡 *(GitHub listo; falta aplicar DNS en Cloudflare)*
 
 ## Notas técnicas
 
