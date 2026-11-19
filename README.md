@@ -57,7 +57,8 @@ termas-del-rio/
 ├── supabase/                  → SQL: tablas, funciones, RPC, RLS y datos iniciales
 ├── img/                       → Imágenes reales (incluye img/cabanas/)
 ├── robots.txt · sitemap.xml · .nojekyll
-└── README.md
+├── README.md
+└── plan-facebook.md           → Plan de redes sociales (documento de trabajo, sin credenciales)
 ```
 
 ## Novedades de la v12

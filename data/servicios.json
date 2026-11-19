@@ -17,8 +17,7 @@
       "caracteristicas": [
         { "nombre": "Piscinas termales", "detalle": "Agua mineral caliente de origen volcánico, entre 35 y 42 °C." },
         { "nombre": "Vestidores y baños", "detalle": "Para cambiarte con comodidad antes y después del baño." },
-        { "nombre": "Áreas verdes", "detalle": "Jardines y zonas para descansar en un valle abierto, junto al río." },
-        { "nombre": "Zona de asados", "detalle": "Espacio para compartir en familia o con amigos." }
+        { "nombre": "Áreas verdes", "detalle": "Jardines y zonas para descansar en un valle abierto, junto al río." }
       ],
       "horario": "Todos los días de 7:00 a. m. a 9:00 p. m. (uso de la piscina hasta las 11:00 p. m.)",
       "precios": [
@@ -150,7 +149,7 @@
       "nombre": "Instalaciones",
       "estado": "borrador",
       "confirmado": false,
-      "nota": "Categoría prevista para la plataforma. No publicar hasta confirmación del establecimiento. Lo confirmado hoy en cuanto a instalaciones (vestidores, áreas verdes, zona de asados) se muestra dentro del servicio Balneario."
+      "nota": "Categoría prevista para la plataforma. No publicar hasta confirmación del establecimiento. Lo confirmado hoy en cuanto a instalaciones (vestidores y áreas verdes) se muestra dentro del servicio Balneario."
     },
     {
       "id": "aventuras",
