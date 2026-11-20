@@ -196,7 +196,20 @@ calendario, cabañas, huéspedes, pagos, solicitudes, notificaciones y seguridad
 ## Dominio propio (Cloudflare)
 
 El dominio usa Cloudflare (`novalee.ns.cloudflare.com` y
-`fred.ns.cloudflare.com`). En **DNS → Records** configurar:
+`fred.ns.cloudflare.com`). El cambio se puede aplicar de dos formas:
+
+1. **Automática:** con un token de Cloudflare con permiso `Zone:DNS Edit` sobre
+   `termasdelrio.com`, ejecutar desde PowerShell:
+
+   ```powershell
+   .\scripts\apply-cloudflare-dns.ps1 -Token 'TU_TOKEN'
+   ```
+
+   El script elimina los registros anteriores, crea los nuevos en DNS only,
+   verifica el resultado e intenta activar *Enforce HTTPS*. El token no se
+   guarda en disco ni se muestra.
+
+2. **Manual:** en **DNS → Records** configurar:
 
 | Tipo | Nombre | Valor | Proxy |
 |---|---|---|---|
