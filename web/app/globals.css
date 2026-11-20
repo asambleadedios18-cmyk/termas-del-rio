@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #f8f7f2;
+  color: #333333;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: #d8c7a1;
+  color: #183d32;
+}
+
+@layer components {
+  .container-luxe {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12;
+  }
+
+  .eyebrow {
+    @apply mb-4 inline-flex items-center gap-3 text-[11px] font-semibold uppercase tracking-luxe text-forest-deep;
+  }
+
+  .eyebrow::before {
+    content: '';
+    @apply h-px w-8 bg-beige;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold tracking-wide transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-beige;
+  }
+
+  .btn-primary {
+    @apply btn bg-beige text-forest shadow-soft hover:-translate-y-0.5 hover:bg-[#e6d8b6] hover:shadow-lift;
+  }
+
+  .btn-ghost {
+    @apply btn border border-forest/20 bg-transparent text-forest hover:border-forest hover:bg-forest hover:text-warm;
+  }
+
+  .btn-light {
+    @apply btn border border-white/40 bg-white/10 text-white backdrop-blur-sm hover:bg-white hover:text-forest;
+  }
+
+  .section-pad {
+    @apply py-20 sm:py-24 lg:py-32;
+  }
+
+  .heading-serif {
+    @apply font-serif text-4xl leading-[1.05] tracking-tight text-forest sm:text-5xl lg:text-6xl;
+  }
+
+  .card-luxe {
+    @apply overflow-hidden rounded-[26px] bg-white shadow-soft transition-all duration-500 hover:-translate-y-1.5 hover:shadow-lift;
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.hero-title {
+  text-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+}
+
+.masonry {
+  column-gap: 1rem;
+}
+
+.masonry > * {
+  break-inside: avoid;
+  margin-bottom: 1rem;
+}
+
+@keyframes float-down {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+.animate-float-down {
+  animation: float-down 2.8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}

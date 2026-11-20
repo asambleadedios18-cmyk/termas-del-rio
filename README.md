@@ -1,8 +1,12 @@
 # Termas del Río 🌊♨️ — Sitio público rediseñado (v12)
 
-Sitio público estático de **Termas del Río** (balneario de aguas termales y
-canopy en Gracias, Lempira, Honduras), con portada cinematográfica, galería de
-fotos reales y solicitudes de reserva por WhatsApp.
+Sitio público de **Termas del Río** (balneario de aguas termales y canopy en
+Gracias, Lempira, Honduras), con portada cinematográfica, galería de fotos
+reales y solicitudes de reserva por WhatsApp.
+
+La carpeta `web/` contiene la implementación moderna en **Next.js (App Router),
+TypeScript, Tailwind CSS y Lucide React**. Usa los mismos datos confirmados y
+las fotografías reales del sitio estático, sin reemplazarlo.
 
 Este repositorio publica la capa pública en GitHub Pages y está configurado
 para servirse desde el dominio propio. El sitio PHP oficial sigue siendo
@@ -31,7 +35,15 @@ material real del establecimiento.
 
 ```
 termas-del-rio/
-├── index.html                 → Portada cinematográfica (v12)
+├── web/                       → Sitio Next.js (App Router + TS + Tailwind)
+│   ├── app/                   → Layout, página, SEO, sitemap y robots
+│   ├── components/           → Header, Hero, About, Facilities, Restaurant,
+│   │                           Gallery, CTA, Contact, Footer, WhatsAppButton
+│   ├── config/site.ts        → Datos editables y WhatsApp centralizado
+│   ├── lib/whatsapp.ts       → Construcción de enlaces wa.me
+│   ├── public/images/        → Copia de las fotos reales
+│   └── scripts/serve.mjs     → Servidor local para `out/`
+├── index.html                 → Portada cinematográfica (v12, estático)
 ├── servicios/                 → Una página por servicio confirmado
 │   ├── balneario.html
 │   ├── canopy.html
