@@ -1,0 +1,59 @@
+name: Deploy Next.js a GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'web/**'
+      - 'CNAME'
+      - '.github/workflows/deploy-next.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pages-deploy
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+
+      - name: Install dependencies
+        working-directory: web
+        run: npm ci
+
+      - name: Build static export
+        working-directory: web
+        env:
+          NEXT_TELEMETRY_DISABLED: '1'
+          NEXT_PUBLIC_SITE_URL: https://termasdelrio.com
+          NEXT_PUBLIC_WHATSAPP_NUMBER: '50493515778'
+        run: npm run build
+
+      - name: Verify export
+        working-directory: web
+        run: npm run verify:static
+
+      - name: Add custom domain
+        run: cp CNAME web/out/CNAME
+
+      - name: Publish to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./web/out
+          publish_branch: gh-pages
+          cname: termasdelrio.com
+          keep_files: false
