@@ -176,11 +176,22 @@ calendario, cabañas, huéspedes, pagos, solicitudes, notificaciones y seguridad
   autorización explícita.**
 - No hay acceso a archivos/FTP de Hostinger: el rediseño no puede aplicarse
   directamente al sitio PHP desde este repositorio.
-- GitHub Pages ya tiene el dominio `termasdelrio.com` configurado en el repo
-  (archivo `CNAME` y ajuste de la API). Falta aplicar los registros DNS en
-  Cloudflare para que el dominio apunte a GitHub Pages.
+- GitHub Pages ya tiene el dominio `termasdelrio.com` configurado y sirve la
+  rama `gh-pages` con la versión Next.js de `web/`.
+- Falta aplicar los registros DNS en Cloudflare para que el dominio apunte a
+  GitHub Pages. Hasta entonces `termasdelrio.com` sigue en Cloudflare/Hostinger.
 - Al cambiar el DNS, el dominio dejará de servir el sitio PHP actual. El panel
   `/admin/index.php` debe migrarse o alojarse en otro hostname antes de hacerlo.
+
+## Deployment del sitio Next.js
+
+- Workflow: `.github/workflows/deploy-next.yml`.
+- Se ejecuta en cada push a `main` que toque `web/`, `CNAME` o el propio workflow.
+- Compila `web/`, ejecuta `verify:static` y publica `web/out` en la rama
+  `gh-pages` con `peaceiris/actions-gh-pages`.
+- GitHub Pages tiene como fuente la rama `gh-pages` (`/`), con
+  `cname = termasdelrio.com`.
+- El sitio estático de la raíz se conserva como respaldo/histórico.
 
 ## Dominio propio (Cloudflare)
 
